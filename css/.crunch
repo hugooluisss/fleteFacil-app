@@ -1,0 +1,32 @@
+{
+	"files": {
+		"style.less": {
+			"engines": [
+				{
+					"compiler": "less",
+					"output": "style.css",
+					"options": {
+						"compress": false,
+						"ieCompat": false,
+						"strictMath": false,
+						"strictUnits": false,
+						"javascriptEnabled": false,
+						"sourceMap": true,
+						"sourcemap": true
+					}
+				}
+			],
+			"sources": [
+				"componentes/modal.less",
+				"componentes/validate.less",
+				"funciones.less",
+				"variables.less",
+				"vistas/login.less",
+				"vistas/misDatos.less",
+				"vistas/ordenes.less",
+				"vistas/panel.less",
+				"vistas/reparaciones.less"
+			]
+		}
+	}
+}

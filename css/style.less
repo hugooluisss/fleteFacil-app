@@ -1,0 +1,22 @@
+@import "variables.less";
+@import "funciones.less";
+@import "componentes/modal.less";
+@import "componentes/validate.less";
+
+@import "vistas/login.less";
+@import "vistas/panel.less";
+@import "vistas/misDatos.less";
+
+#WindowLoad{
+	position: fixed;
+	top: 0px;
+	left: 0px;
+	z-index: 3200;
+	.opacar(.80);
+	.degradado(@winModal-bg1, @winModal-bg2);
+	color: white;
+	
+	img{
+		width: 50%;
+	}
+}

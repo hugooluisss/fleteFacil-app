@@ -1,0 +1,160 @@
+.sombra {
+  box-shadow: 2px 2px 5px #B2DFDB;
+}
+.sombra {
+  box-shadow: 2px 2px 5px #B2DFDB;
+}
+.modal .modal-header {
+  background: #4060A6;
+  /* For browsers that do not support gradients */
+  background: -webkit-linear-gradient(#4060A6, #5177C8);
+  /* For Safari 5.1 to 6.0 */
+  background: -o-linear-gradient(#4060A6, #5177C8);
+  /* For Opera 11.1 to 12.0 */
+  background: -moz-linear-gradient(#4060A6, #5177C8);
+  /* For Firefox 3.6 to 15 */
+  background: linear-gradient(#4060A6, #5177C8);
+  /* Standard syntax */
+  color: white;
+}
+.modal .modal-body {
+  overflow-y: auto;
+}
+@media (max-width: 728px) {
+  .modal .modal-body {
+    max-height: 350px;
+  }
+}
+form input.validateError,
+form input.validateError:focus {
+  border: 1px solid orange;
+}
+form label.validateError {
+  color: red;
+  font-size: 12px;
+}
+#login {
+  background: url("../img/bg_login.jpg") no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+#login .inicio {
+  top: 100px;
+  text-align: center;
+  width: 100%;
+  position: absolute;
+}
+#login .inicio img {
+  margin-bottom: 20px;
+}
+#home {
+  background: url("../img/bg_login.jpg") no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  overflow-y: hidden;
+}
+#home .navbar {
+  z-index: 1;
+  border-bottom: none;
+}
+#home .navbar .navbar-header .navbar-brand {
+  font-family: 'Pacifico', cursive;
+  color: #4F4F4F;
+}
+#home .navbar .navbar-header .navbar-brand span {
+  margin-left: 10px;
+}
+#home .navbar .navbar-header img {
+  width: 35px;
+  display: inline;
+}
+#home .navbar.navbar-fixed-top {
+  background: none;
+}
+#home .navbar.navbar-fixed-bottom {
+  background: rgba(211, 211, 211, 0.3);
+  display: flex;
+  justify-content: center;
+  margin-top: 70px;
+}
+#home .navbar.navbar-fixed-bottom .menu div.boton-menu {
+  float: left;
+  width: 100px;
+  text-align: center;
+}
+#home #modulo {
+  margin-top: 55px;
+  margin-bottom: 56px;
+  overflow-y: scroll;
+}
+#home #modulo .container {
+  background: rgba(255, 255, 255, 0.8);
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+#home #modulo .page-header {
+  margin-top: 5px;
+  border-bottom-color: #295179;
+}
+#home #modulo .page-header h1 {
+  font-size: 16px;
+  color: #295179;
+  margin: 0px;
+}
+@media (max-width: 728px) {
+  #home #modulo #misDatos #fotoPerfil {
+    width: 90px;
+  }
+}
+@media (min-width: 728px + 1) {
+  #home #modulo #misDatos #fotoPerfil {
+    width: 150px;
+  }
+}
+#home #modulo .reparaciones #opciones img {
+  height: 100px;
+}
+#home #modulo .reparaciones #mapaSitio {
+  height: 150px;
+  margin-bottom: 10px;
+}
+#winMensajes #dvMensajes {
+  overflow-y: scroll;
+}
+@media (max-width: 728px) {
+  #winMensajes #dvMensajes {
+    max-height: 230px;
+  }
+}
+@media (max-width: 940px) {
+  #winMensajes #dvMensajes {
+    max-height: 330px;
+  }
+}
+#WindowLoad {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  z-index: 3200;
+  opacity: 0.8;
+  background: #000000;
+  /* For browsers that do not support gradients */
+  background: -webkit-linear-gradient(#000000, #423C37);
+  /* For Safari 5.1 to 6.0 */
+  background: -o-linear-gradient(#000000, #423C37);
+  /* For Opera 11.1 to 12.0 */
+  background: -moz-linear-gradient(#000000, #423C37);
+  /* For Firefox 3.6 to 15 */
+  background: linear-gradient(#000000, #423C37);
+  /* Standard syntax */
+  color: white;
+}
+#WindowLoad img {
+  width: 50%;
+}
+
+/*# sourceMappingURL=style.css.map */

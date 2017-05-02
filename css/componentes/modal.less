@@ -1,0 +1,14 @@
+.modal{
+	.modal-header{
+		.degradado(@moda-color1, @moda-color2);
+		color: white;
+	}
+	
+	.modal-body {
+		@media (max-width: @mq-xs-max){
+			max-height: 350px;
+		}
+		
+    	overflow-y: auto;
+    }
+}
