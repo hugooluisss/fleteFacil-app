@@ -5,15 +5,15 @@
   box-shadow: 2px 2px 5px #B2DFDB;
 }
 .modal .modal-header {
-  background: #4060A6;
+  background: #4060a6;
   /* For browsers that do not support gradients */
-  background: -webkit-linear-gradient(#4060A6, #5177C8);
+  background: -webkit-linear-gradient(#4060a6, #5177c8);
   /* For Safari 5.1 to 6.0 */
-  background: -o-linear-gradient(#4060A6, #5177C8);
+  background: -o-linear-gradient(#4060a6, #5177c8);
   /* For Opera 11.1 to 12.0 */
-  background: -moz-linear-gradient(#4060A6, #5177C8);
+  background: -moz-linear-gradient(#4060a6, #5177c8);
   /* For Firefox 3.6 to 15 */
-  background: linear-gradient(#4060A6, #5177C8);
+  background: linear-gradient(#4060a6, #5177c8);
   /* Standard syntax */
   color: white;
 }
@@ -34,42 +34,69 @@ form label.validateError {
   font-size: 12px;
 }
 #login {
-  background: url("../img/bg_login.jpg") no-repeat center center fixed;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
+  background: #0043a4;
+}
+#login a {
+  color: white;
 }
 #login .inicio {
-  top: 100px;
   text-align: center;
-  width: 100%;
-  position: absolute;
+  width: 99%;
 }
 #login .inicio img {
   margin-bottom: 20px;
 }
 #home {
-  background: url("../img/bg_login.jpg") no-repeat center center fixed;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
   overflow-y: hidden;
+}
+#home #menu {
+  border-bottom: 1px solid #d8d8d8;
+  position: fixed;
+  top: 50px;
+  z-index: 9;
+  background: #0043a4;
+  width: 100%;
+}
+#home #menu a[role=button] {
+  background: #0043a4;
+  border: none;
+  border-right: none;
+  border-radius: inherit;
+  color: white;
+  width: 32%;
+}
+#home #menu a[role=button]:last-child {
+  border: none;
+}
+#home #menu a[role=button] .fa-stack {
+  width: auto;
+}
+#home #menu a[role=button] [campo=nombre] {
+  font-size: 9px;
+  width: 100%;
+  padding-top: 10px;
+  padding-bottom: 0px;
 }
 #home .navbar {
   z-index: 1;
   border-bottom: none;
+  padding: inherit;
+}
+#home .navbar .navbar-header {
+  background: #0043a4;
+  color: white;
+  height: 50px;
 }
 #home .navbar .navbar-header .navbar-brand {
-  font-family: 'Pacifico', cursive;
-  color: #4F4F4F;
+  color: white;
+  float: none;
+  margin-right: 0;
 }
 #home .navbar .navbar-header .navbar-brand span {
   margin-left: 10px;
 }
 #home .navbar .navbar-header img {
-  width: 35px;
+  width: 130px;
   display: inline;
 }
 #home .navbar.navbar-fixed-top {
@@ -87,8 +114,7 @@ form label.validateError {
   text-align: center;
 }
 #home #modulo {
-  margin-top: 55px;
-  margin-bottom: 56px;
+  margin-top: 70px;
   overflow-y: scroll;
 }
 #home #modulo .container {
@@ -105,35 +131,14 @@ form label.validateError {
   color: #295179;
   margin: 0px;
 }
-@media (max-width: 728px) {
-  #home #modulo #misDatos #fotoPerfil {
-    width: 90px;
-  }
+#home #modulo div.orden {
+  border: 1px solid #e0e0e0;
+  padding: 15px 15px 15px 15px;
+  margin-bottom: 15px;
+  font-size: 12px;
 }
-@media (min-width: 728px + 1) {
-  #home #modulo #misDatos #fotoPerfil {
-    width: 150px;
-  }
-}
-#home #modulo .reparaciones #opciones img {
-  height: 100px;
-}
-#home #modulo .reparaciones #mapaSitio {
-  height: 150px;
-  margin-bottom: 10px;
-}
-#winMensajes #dvMensajes {
-  overflow-y: scroll;
-}
-@media (max-width: 728px) {
-  #winMensajes #dvMensajes {
-    max-height: 230px;
-  }
-}
-@media (max-width: 940px) {
-  #winMensajes #dvMensajes {
-    max-height: 330px;
-  }
+#home #modulo div.orden .mapa {
+  height: 200px;
 }
 #WindowLoad {
   position: fixed;
@@ -141,16 +146,7 @@ form label.validateError {
   left: 0px;
   z-index: 3200;
   opacity: 0.8;
-  background: #000000;
-  /* For browsers that do not support gradients */
-  background: -webkit-linear-gradient(#000000, #423C37);
-  /* For Safari 5.1 to 6.0 */
-  background: -o-linear-gradient(#000000, #423C37);
-  /* For Opera 11.1 to 12.0 */
-  background: -moz-linear-gradient(#000000, #423C37);
-  /* For Firefox 3.6 to 15 */
-  background: linear-gradient(#000000, #423C37);
-  /* Standard syntax */
+  background: #0043a4;
   color: white;
 }
 #WindowLoad img {

@@ -11,8 +11,8 @@
 						"strictMath": false,
 						"strictUnits": false,
 						"javascriptEnabled": false,
-						"sourceMap": true,
-						"sourcemap": true
+						"sourcemap": true,
+						"sourceMap": true
 					}
 				}
 			],
@@ -22,10 +22,7 @@
 				"funciones.less",
 				"variables.less",
 				"vistas/login.less",
-				"vistas/misDatos.less",
-				"vistas/ordenes.less",
-				"vistas/panel.less",
-				"vistas/reparaciones.less"
+				"vistas/panel.less"
 			]
 		}
 	}
