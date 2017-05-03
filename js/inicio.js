@@ -17,7 +17,7 @@
  * under the License.
  */
 var db = null;
-var idCliente;
+var idTransportista = undefined;
 var mapa = null;
 var marca = null;
 
@@ -44,84 +44,22 @@ var app = {
 			return false;
 		}, true);
 		//window.localStorage.removeItem("sesion");
-		idCliente = window.localStorage.getItem("sesion");
-		if (idCliente == null || idCliente == undefined || idCliente == '')
+		idTransportista = window.localStorage.getItem("sesion");
+		if (idTransportista == null || idTransportista == undefined || idTransportista == '')
 			location.href = "index.html";
-		
-		setMenu();
-		
-		checkConnection();
-		
-		setInterval(function(){
-			getNotificaciones();
-		}, 60 * 1000);
-		
-		function getNotificaciones(){
-			$.get(server + "chome", {
-				"action": "getNotificaciones".
-				"cliente": idCliente,
-				"movil": 1
-			}, function(data){
-				if (data.total)
-					alertify.log("Tienes nuevas notificaciones, ingresa al panel Ordenes");
-			}, "json");
-		}
-		
-		window.plugins.PushbotsPlugin.initialize("59026bc34a9efa502f8b456b", {
-			"android":{
-				"sender_id":"89928880199"
-			}
-		});
-		
-		// Should be called once app receive the notification only while the application is open or in background
-		window.plugins.PushbotsPlugin.on("notification:received", function(data){
-			console.log("received:" + JSON.stringify(data));
 			
-			//Silent notifications Only [iOS only]
-			//Send CompletionHandler signal with PushBots notification Id
-			window.plugins.PushbotsPlugin.done(data.pb_n_id);
-		});
-		
-		// Should be called once the notification is clicked
-		window.plugins.PushbotsPlugin.on("notification:clicked", function(data){
-			console.log("clicked:" + JSON.stringify(data));
-			if (data.message != undefined)
-				alertify.success(data.message);
-			panelOrdenes();
-		});	
-		
-		//window.plugins.PushbotsPlugin.debug(true);
-		// Should be called once the device is registered successfully with Apple or Google servers
-		window.plugins.PushbotsPlugin.on("registered", function(token){
-			console.log("Token de registro", token);
-		});
-		
-		//Get device token
-		window.plugins.PushbotsPlugin.getRegistrationId(function(token){
-		    console.log("Registration Id:" + token);
-		});	
-		
-		window.plugins.PushbotsPlugin.on("user:ids", function (data) {
-			console.log("user:ids" + JSON.stringify(data));
-			// userToken = data.token; 
-			// userId = data.userId
-		});
-		
-		window.plugins.PushbotsPlugin.resetBadge();
-		
-		//window.plugins.PushbotsPlugin.toggleNotifications(false);
-		window.plugins.PushbotsPlugin.setTags(["cliente_" + idCliente]);
+		setMenu();
 	}
 };
 
-app.initialize();
+//app.initialize();
 
 $(document).ready(function(){
 	//$("body").css("height", $(window).height());
-	$("#modulo").css("height", $(window).height() - $(".navbar-fixed-bottom").height() - 10 - $(".navbar-fixed-top").height());
+	$("#modulo").css("height", $(window).height() - $(".navbar-fixed-top").height() - $("#menu").height());
 	$( window ).resize(function(){
-		$("#modulo").css("height", $(window).height() - $(".navbar-fixed-bottom").height() - 10 - $(".navbar-fixed-top").height());
+		$("#modulo").css("height", $(window).height() - $(".navbar-fixed-top").height() - $("#menu").height());
 	});
 	
-	//app.onDeviceReady();
+	app.onDeviceReady();
 });

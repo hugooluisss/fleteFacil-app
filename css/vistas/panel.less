@@ -1,8 +1,49 @@
 #home{
 	overflow-y: hidden;
+	
+	#menu{
+		border-bottom: 1px solid @menu-botones-borde-color;
+		position: fixed;
+		top: 50px;
+		z-index: 9;
+		background: @bgAzul;
+		width: 100%;
+		
+		a{	
+			&[role=button]{
+				background: @bgAzul;
+				border: none;
+				border-right: none;
+				border-radius:inherit;
+				color: white;
+				width: 32%;
+				
+				&:last-child{
+					border: none;
+				}
+				
+				.fa-stack{
+					width: auto;
+				}
+				
+				i.fa{
+				}
+				
+				[campo=nombre]{
+					font-size: 9px;
+					width: 100%;
+					padding-top: 10px;
+					padding-bottom: 0px;
+				}
+			}
+		}
+	}
+	
+	
 	.navbar{
 		z-index: 1;
 		border-bottom: none;
+		padding: inherit;
 		.navbar-header{
 			background: @bgAzul;
 			color: white;
@@ -43,8 +84,7 @@
 	}
 	
 	#modulo{
-		margin-top: 55px;
-		margin-bottom: 56px;
+		margin-top: 70px;
 		overflow-y: scroll;
 		
 		.container{
@@ -64,6 +104,14 @@
 			border-bottom-color: @azul;
 		}
 		
-		
+		div.orden{
+			border: 1px solid #e0e0e0;
+			padding: 15px 15px 15px 15px;
+			margin-bottom: 15px;
+			font-size: 12px;
+			.mapa{
+				height: 200px;
+			}
+		}
 	}
 }

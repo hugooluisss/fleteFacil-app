@@ -1,14 +1,19 @@
 function setMenu(){
-	$("[action=perfil]").click(function(){
-		actualizarDatos();
+	$("#btnOfertas").click(function(){
+		panelOfertas();
 	});
 	
-	$("[action=reparaciones]").click(function(){
-		panelReparaciones();
+	$("#btnAdjudicados").click(function(){
+		panelAdjudicados();
 	});
 	
-	$("[action=ordenes]").click(function(){
-		panelOrdenes();
+	$("#btnSalir").click(function(){
+		alertify.confirm("¿Seguro?", function(e){
+    		if(e) {
+	    		window.localStorage.removeItem("sesion");
+	    		location.href = "index.html";
+	    	}
+    	});
 	});
 	
 	console.log("Cargando menu");
