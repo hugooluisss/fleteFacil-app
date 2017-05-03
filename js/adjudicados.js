@@ -68,7 +68,7 @@ function panelAdjudicados(){
 										}
 									 	
 								 	}else{
-									 	alertify.error("La propuesta fue aceptada, intentalo más tarde");
+									 	alertify.error("Ocurrió un error, intentalo más tarde");
 								 	}
 							 	}
 								}

@@ -67,7 +67,7 @@ function panelOfertas(){
 										}
 						    		 	
 					    		 	}else{
-						    		 	alertify.error("La propuesta fue aceptada, intentalo más tarde");
+						    		 	alertify.error("La propuesta no fue aceptada, intentalo más tarde");
 					    		 	}
 				    		 	}
 			    		 	}
