@@ -48,7 +48,7 @@ var app = {
 
 $(document).ready(function(){
 	app.onDeviceReady();	
-	/*
+	
 	$("#lnkLostPass").click(function(){
 		$("#winInicioSesion").modal("hide");
 		alertify.prompt("<b>¿Olvidaste tu contraseña?</b>, introduce tu correo electrónico:", function (e, str) { 
@@ -56,9 +56,9 @@ $(document).ready(function(){
 				if (str == '')
 					alertify.error("No se indicó un correo electrónico");
 				else{
-					var cliente = new TCliente;
+					var transportista = new TTransportista;
 					
-					cliente.recuperarPass(str, {
+					transportista.recuperarPass(str, {
 						before: function(){
 							$("#lnkLostPass").prop("disabled", true);
 							alertify.success("Gracias, enviaremos un correo a <b>" + str + "</b> para la recuperación de tu contraseña");
@@ -73,7 +73,7 @@ $(document).ready(function(){
 				$("#winInicioSesion").modal();
 		}, $("#frmLogin").find("#txtUsuario").val());
 	});
-	*/
+	
 	$("#frmLogin").find("#txtUsuario").focus();
 	$("#frmLogin").validate({
 		debug: true,
