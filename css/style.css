@@ -5,15 +5,15 @@
   box-shadow: 2px 2px 5px #B2DFDB;
 }
 .modal .modal-header {
-  background: #4060a6;
+  background: #4060A6;
   /* For browsers that do not support gradients */
-  background: -webkit-linear-gradient(#4060a6, #5177c8);
+  background: -webkit-linear-gradient(#4060A6, #5177C8);
   /* For Safari 5.1 to 6.0 */
-  background: -o-linear-gradient(#4060a6, #5177c8);
+  background: -o-linear-gradient(#4060A6, #5177C8);
   /* For Opera 11.1 to 12.0 */
-  background: -moz-linear-gradient(#4060a6, #5177c8);
+  background: -moz-linear-gradient(#4060A6, #5177C8);
   /* For Firefox 3.6 to 15 */
-  background: linear-gradient(#4060a6, #5177c8);
+  background: linear-gradient(#4060A6, #5177C8);
   /* Standard syntax */
   color: white;
 }
@@ -50,7 +50,7 @@ form label.validateError {
   overflow-y: hidden;
 }
 #home #menu {
-  border-bottom: 1px solid #d8d8d8;
+  border-bottom: 1px solid #D8D8D8;
   position: fixed;
   top: 50px;
   z-index: 9;
@@ -72,7 +72,7 @@ form label.validateError {
   width: auto;
 }
 #home #menu a[role=button] [campo=nombre] {
-  font-size: 9px;
+  font-size: 12px;
   width: 100%;
   padding-top: 10px;
   padding-bottom: 0px;
@@ -135,10 +135,16 @@ form label.validateError {
   border: 1px solid #e0e0e0;
   padding: 15px 15px 15px 15px;
   margin-bottom: 15px;
-  font-size: 12px;
+  font-size: 13px;
 }
 #home #modulo div.orden .mapa {
   height: 200px;
+}
+#home #modulo div.listaOrden {
+  font-size: 12px;
+}
+#home #modulo div.listaOrden .badge {
+  font-size: 12px;
 }
 #WindowLoad {
   position: fixed;

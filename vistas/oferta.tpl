@@ -42,10 +42,10 @@
 	<br />
 	<div class="row">
 		<div class="col-6">
-			<button type="button" class="btn btn-warning btn-block btnTerminar">Terminar</button>
+			<button type="button" class="btn btn-success btn-block btnAceptar">Aceptar</button>
 		</div>
 		<div class="col-6">
-			<button type="button" class="btn btn-danger btn-block btnRegresar">Cancelar</button>
+			<button type="button" class="btn btn-danger btn-block btnRegresar">Regresar</button>
 		</div>
 	</div>
 </div>
