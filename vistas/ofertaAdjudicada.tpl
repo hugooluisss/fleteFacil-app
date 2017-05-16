@@ -53,6 +53,16 @@
 			<button id="btnGaleria" indice="1" class="btn btn-default btn-sm"><i class="fa fa-picture-o" aria-hidden="true"></i></button>
 		</div>
 	</div>
+	<br />
+	<div class="row">
+		<div class="col-12 text-mute text-center">¿Algún comentario?</div>
+	</div>
+	<div class="row">
+		<div class="col-12 text-center">
+			<textarea id="txtComentario" name="txtComentario" class="form-control" rows="5"></textarea>
+		</div>
+	</div>
+	<br />
 	<div class="row">
 		<div class="col-6">
 			<button type="button" class="btn btn-warning btn-block btnTerminar">Terminar</button>

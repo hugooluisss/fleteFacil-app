@@ -73,43 +73,72 @@ function panelAdjudicados(){
 			
 			
 			plantilla.find(".btnTerminar").attr("oferta", el.idOrden).click(function(){
-				var oferta = $(this).attr("oferta");
-				alertify.prompt("¿Algún comentario?", function (e, str) { 
-			    	if(e) {
-						var obj = new TOferta;
-						obj.terminar({
-							"id": idTransportista,
-							"oferta": oferta,
-							"comentario": str,
-							fn: {
-							 	before: function(){
-								 	jsShowWindowLoad("Estamos indicando que el servicio se ha completado, por favor espera");
-							 	}, after: function(resp){
-								 	jsRemoveWindowLoad();
-								 	console.log(resp);
-								 	if (resp.band){
-									 	panelAdjudicados();
-								 	}else{
-									 	alertify.error("Ocurrió un error, intentalo más tarde");
-								 	}
+				if ($("#txtComentario").val() == ''){
+					alertify.error("Escribe un comentario");
+				}elseif ($("#lstImg").find("img").length < 1){
+					alertify.error("Envianos una evidencia con en fotografía");
+				}else{
+					alertify.confirm("¿Estás seguro?", function (e) {
+						if (e) {
+							var oferta = $(this).attr("oferta");
+							var fotografias = new Array;
+							
+							$("#lstImg").find("img").each(function(i){
+								fotografias[i] = "";
+								fotografias[i] = $(this).attr("src2");
+							});
+							
+							var obj = new TOferta;
+							obj.terminar({
+								"id": idTransportista,
+								"oferta": oferta,
+								"comentario": $("#txtComentario").val(),
+								"fotografias": fotografias,
+								fn: {
+								 	before: function(){
+									 	jsShowWindowLoad("Estamos indicando que el servicio se ha completado, por favor espera");
+								 	}, after: function(resp){
+									 	jsRemoveWindowLoad();
+									 	console.log(resp);
+									 	if (resp.band){
+										 	panelAdjudicados();
+										 	alertify.success("Muchas gracias por la información, tu trabajo fue enviado");
+									 	}else{
+										 	alertify.error("Ocurrió un error, intentalo más tarde");
+									 	}
+									}
 								}
-							}
-						});
-		    		}
-		    	});
+							});
+						}
+					}); 
+				}
 			});
 			
 			plantilla.find(".btnRegresar").click(function(){
 				panelAdjudicados();
 			});
 			
+			funuction agregarFoto(imageURI){
+				var img = $("<img />");
+								
+				$("#lstImg").append(img);
+				img.attr("src", "data:image/jpeg;base64," + imageURI);
+				img.attr("src2", imageURI);
+				
+				img.click(function(){
+					var foto = $(this);
+					alertify.confirm("Se eliminará la fotografía del reporte ¿seguro?", function (e) {
+						if (e) {
+							foto.remove();
+							alertify.success("Fotografía eliminada");
+						}
+					}); 
+				});
+			}
+			
 			$("#btnCamara").click(function(){
 				navigator.camera.getPicture(function(imageURI){
-					var img = $("<img />");
-									
-					$("#lstImg").append(img);
-					img.attr("src", "data:image/jpeg;base64," + imageURI);
-					img.attr("src2", imageURI);
+					agregarFoto(imagenURI);
 				}, function(message){
 					alertify.error("Ocurrio un error al subir la imagen");
 				}, { 
@@ -126,11 +155,7 @@ function panelAdjudicados(){
 			
 			$("#btnGaleria").click(function(){
 				navigator.camera.getPicture(function(imageURI){
-					var img = $("<img />");
-									
-					$("#lstImg").append(img);
-					img.attr("src", "data:image/jpeg;base64," + imageURI);
-					img.attr("src2", imageURI);
+					agregarFoto(imagenURI);
 				}, function(message){
 					alertify.error("Ocurrio un error al subir la imagen");
 				}, { 
