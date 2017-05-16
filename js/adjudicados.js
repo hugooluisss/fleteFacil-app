@@ -75,7 +75,7 @@ function panelAdjudicados(){
 			plantilla.find(".btnTerminar").attr("oferta", el.idOrden).click(function(){
 				if ($("#txtComentario").val() == ''){
 					alertify.error("Escribe un comentario");
-				}elseif ($("#lstImg").find("img").length < 1){
+				}else if ($("#lstImg").find("img").length < 1){
 					alertify.error("Envianos una evidencia con en fotografía");
 				}else{
 					alertify.confirm("¿Estás seguro?", function (e) {
