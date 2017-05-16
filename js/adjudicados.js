@@ -87,8 +87,9 @@ function panelAdjudicados(){
 							$("#lstImg").find("img").each(function(i){
 								fotografias[i] = "";
 								fotografias[i] = $(this).attr("src2");
+								console.log("foto": i);
 							});
-							
+							console.log(fotografias.length);
 							var obj = new TOferta;
 							obj.terminar({
 								"id": idTransportista,
