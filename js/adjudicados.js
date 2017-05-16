@@ -1,7 +1,7 @@
 function panelAdjudicados(){
 	$("#dvTitulo").html("Propuestas adjudicadas");
 	$.get("vistas/listaOfertas.tpl", function(plantillaOferta){
-		jsShowWindowLoad("Espera mientras obtenemos las ofertas para ti");
+		jsShowWindowLoad("Espera mientras obtenemos tus ordenes");
 		$.post(server + "listaOrdenesAdjudicadas", {
 			"transportista": idTransportista,
 			"movil": 1
@@ -11,6 +11,10 @@ function panelAdjudicados(){
 			if(resp.length == 0){
 				$.get("vistas/sinAdjudicaciones.tpl", function(sinOfertas){
 					$("#modulo").html(sinOfertas);
+					
+					$(".btnOfertas").click(function(){
+						panelOfertas();
+					});
 				});
 			}else{
 				$("#modulo").html('<h5 class="text-center"><span class="text-danger">' + resp.length + '</span> CARGAS ADJUDICADAS</h5>');
@@ -83,10 +87,10 @@ function panelAdjudicados(){
 					alertify.confirm("¿Estás seguro?", function (e) {
 						if (e) {
 							var fotografias = new Array;
-							
-							$("#lstImg").find("img").each(function(i){
+							i = 0;
+							$("#lstImg").find("img").each(function(){
 								fotografias[i] = "";
-								fotografias[i] = $(this).attr("src2");
+								fotografias[i++] = $(this).attr("src2");
 							});
 							
 							var obj = new TOferta;

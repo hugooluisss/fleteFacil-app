@@ -15,6 +15,10 @@ function setMenu(){
 		panelAdjudicados();
 	});
 	
+	$("#menu").find("#btnPerfil").click(function(){
+		panelPerfil();
+	});
+	
 	$("#btnSalir").click(function(){
 		alertify.confirm("¿Seguro?", function(e){
     		if(e) {

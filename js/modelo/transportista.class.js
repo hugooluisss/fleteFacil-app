@@ -19,18 +19,17 @@ TTransportista = function(fn){
 	}
 		
 	this.getData = function(datos){
-		if (datos.before !== undefined) datos.before();
-		
+		if (datos.fn.before !== undefined) datos.fn.before();
 		$.post(server + 'ctransportistas', {
-				"id": datos.id == undefined?"":datos.id,
+				"id": datos.id,
 				"action": 'getData',
 				"movil": 1
 			}, function(data){
 				if (data.band == 'false')
 					console.log("No se pudo recuperar la información del usuario");
 					
-				if (datos.after !== undefined)
-					datos.after(data);
+				if (datos.fn.after !== undefined)
+					datos.fn.after(data);
 			}, "json");
 	}
 	
@@ -49,6 +48,38 @@ TTransportista = function(fn){
 					fn.after(data);
 			}, "json");
 	};
+	
+	this.addRegion = function(datos){
+		if (datos.fn.before !== undefined) datos.fn.before();
+		$.post(server + 'ctransportistas', {
+			"transportista": datos.transportista,
+			"region": datos.region,
+			"action": 'addRegion',
+			"movil": 1
+		}, function(data){
+			if (data.band == 'false')
+				console.log("Ocurrió un error");
+				
+			if (datos.fn.after !== undefined)
+				datos.fn.after(data);
+		}, "json");
+	}
+	
+	this.delRegion = function(datos){
+		if (datos.fn.before !== undefined) datos.fn.before();
+		$.post(server + 'ctransportistas', {
+			"transportista": datos.transportista,
+			"region": datos.region,
+			"action": 'delRegion',
+			"movil": 1
+		}, function(data){
+			if (data.band == 'false')
+				console.log("Ocurrió un error");
+				
+			if (datos.fn.after !== undefined)
+				datos.fn.after(data);
+		}, "json");
+	}
 	
 	this.guardar = function(datos){
 		if (datos.fn.before !== undefined) datos.fn.before();
