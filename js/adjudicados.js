@@ -138,9 +138,9 @@ function panelAdjudicados(){
 			
 			$("#btnCamara").click(function(){
 				navigator.camera.getPicture(function(imageURI){
-					agregarFoto(imagenURI);
+					agregarFoto(imageURI);
 				}, function(message){
-					alertify.error("Ocurrio un error al subir la imagen");
+					alertify.error("Ocurrio un error al obtener la imagen");
 				}, { 
 					quality: 100,
 					destinationType: Camera.DestinationType.DATA_URL,
@@ -155,9 +155,9 @@ function panelAdjudicados(){
 			
 			$("#btnGaleria").click(function(){
 				navigator.camera.getPicture(function(imageURI){
-					agregarFoto(imagenURI);
+					agregarFoto(imageURI);
 				}, function(message){
-					alertify.error("Ocurrio un error al subir la imagen");
+					alertify.error("Ocurrio un error al obtener la imagen");
 				}, { 
 					quality: 100,
 					destinationType: Camera.DestinationType.DATA_URL,
