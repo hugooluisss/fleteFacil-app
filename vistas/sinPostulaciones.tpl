@@ -11,8 +11,8 @@
 </div>
 
 <div class="row">
-	<div class="col-12 col-md-4 col-md-offset-4 text-center">
-		No existen adjudicaciones a tu cuenta, intenta buscando nuevas ofertas
+	<div class="col-12 col-md-4 offset-md-4 text-center">
+		No tenemos una propuesta tuya registrada, ¿por que no intentas ver nuestras ordenes de carga y ofertas en una?
 	</div>
 </div>
 

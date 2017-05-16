@@ -1,20 +1,22 @@
-function panelOfertas(){
-	$("#dvTitulo").html("Ofertas");
-	
+function panelPostuladas(){
+	$("#dvTitulo").html("Propuestas activas");
 	$.get("vistas/listaOfertas.tpl", function(plantillaOferta){
-		jsShowWindowLoad("Espera mientras obtenemos las ofertas para ti");
-		$.post(server + "listaOrdenesTransportista", {
+		jsShowWindowLoad("Espera mientras obtenemos las ordenes donde te has postulado");
+		$.post(server + "listaOrdenesPostuladas", {
 			"transportista": idTransportista,
 			"movil": 1
 		}, function(resp){
 			$("#modulo").html("");
 			
 			if(resp.length == 0){
-				$.get("vistas/sinOfertas.tpl", function(sinOfertas){
+				$.get("vistas/sinPostulaciones.tpl", function(sinOfertas){
 					$("#modulo").html(sinOfertas);
+					$(".btnOfertas").click(function(){
+						panelOfertas();
+					});
 				});
 			}else{
-				$("#modulo").html('<h5 class="text-center"><span class="text-danger">' + resp.length + '</span> CARGAS DISPONIBLES</h5>');
+				$("#modulo").html('<h5 class="text-center"><span class="text-danger">' + resp.length + '</span> PROPUESTAS</h5>');
 			}
 				
 			$.each(resp, function(i, el){
@@ -39,7 +41,7 @@ function panelOfertas(){
 	});
 	
 	function getDetalle(el){
-		$.get("vistas/oferta.tpl", function(plantilla){
+		$.get("vistas/ofertaPostulada.tpl", function(plantilla){
 			plantilla = $(plantilla);
 			
 			$.each(el, function(campo, valor){
@@ -72,37 +74,8 @@ function panelOfertas(){
 			el.destino.setPosition(LatLng);
 			el.destino.setMap(el.mapa);
 			
-			
-			plantilla.find(".btnAceptar").attr("oferta", el.idOrden).click(function(){
-				var oferta = $(this).attr("oferta");
-				alertify.confirm("¿Seguro?", function(e){
-		    		if(e) {
-		    		 var obj = new TOferta;
-		    		 obj.aceptar({
-		    		 	"id": idTransportista,
-		    		 	"oferta": oferta,
-		    		 	fn: {
-			    		 	before: function(){
-				    		 	jsShowWindowLoad("Estamos aceptando la propuesta");
-			    		 	}, after: function(resp){
-				    		 	jsRemoveWindowLoad();
-				    		 	console.log(resp);
-				    		 	if (resp.band){
-					    		 	panelOfertas();
-					    		 	
-					    		 	alertify.success("Muchas gracias por tu interes, te mantendremos informado de la adjudicación de la orden de trabajo");
-				    		 	}else{
-					    		 	alertify.error("La propuesta no fue aceptada, intentalo más tarde");
-				    		 	}
-			    		 	}
-		    		 	}
-		    		 });
-		    		}
-		    	});
-			});
-			
 			plantilla.find(".btnRegresar").click(function(){
-				panelOfertas();
+				panelPostuladas();
 			});
 		});
 	}

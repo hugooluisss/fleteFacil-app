@@ -40,25 +40,9 @@
 	<p campo="requisitos">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
 	
 	<br />
-	<hr />
-	<h6 class="card-subtitle text-danger text-center">Terminar servicio</span></h6>
-	<br />
-	<br />
 	<div class="row">
-		<div id="lstImg" class="col-12 text-center"></div>
-	</div>
-	<div class="row">
-		<div class="col-12 text-center">
-			<button id="btnCamara" indice="1" class="btn btn-default btn-sm"><i class="fa fa-camera" aria-hidden="true"></i></button>
-			<button id="btnGaleria" indice="1" class="btn btn-default btn-sm"><i class="fa fa-picture-o" aria-hidden="true"></i></button>
-		</div>
-	</div>
-	<div class="row">
-		<div class="col-6">
-			<button type="button" class="btn btn-warning btn-block btnTerminar">Terminar</button>
-		</div>
-		<div class="col-6">
-			<button type="button" class="btn btn-danger btn-block btnRegresar">Cancelar</button>
+		<div class="col-12">
+			<button type="button" class="btn btn-danger btn-block btnRegresar">Regresar</button>
 		</div>
 	</div>
 </div>

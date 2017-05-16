@@ -102,6 +102,48 @@ function panelAdjudicados(){
 			plantilla.find(".btnRegresar").click(function(){
 				panelAdjudicados();
 			});
+			
+			$("#btnCamara").click(function(){
+				navigator.camera.getPicture(function(imageURI){
+					var img = $("<img />");
+									
+					$("#lstImg").append(img);
+					img.attr("src", "data:image/jpeg;base64," + imageURI);
+					img.attr("src2", imageURI);
+				}, function(message){
+					alertify.error("Ocurrio un error al subir la imagen");
+				}, { 
+					quality: 100,
+					destinationType: Camera.DestinationType.DATA_URL,
+					encodingType: Camera.EncodingType.JPEG,
+					targetWidth: 250,
+					targetHeight: 250,
+					correctOrientation: true,
+					allowEdit: false,
+					saveToPhotoAlbum: true
+				});
+			});
+			
+			$("#btnGaleria").click(function(){
+				navigator.camera.getPicture(function(imageURI){
+					var img = $("<img />");
+									
+					$("#lstImg").append(img);
+					img.attr("src", "data:image/jpeg;base64," + imageURI);
+					img.attr("src2", imageURI);
+				}, function(message){
+					alertify.error("Ocurrio un error al subir la imagen");
+				}, { 
+					quality: 100,
+					destinationType: Camera.DestinationType.DATA_URL,
+					encodingType: Camera.EncodingType.JPEG,
+					targetWidth: 250,
+					targetHeight: 250,
+					correctOrientation: true,
+					allowEdit: false,
+					sourceType: navigator.camera.PictureSourceType.SAVEDPHOTOALBUM
+				});
+			});
 		});
 	}
 }

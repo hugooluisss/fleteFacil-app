@@ -3,11 +3,15 @@ function setMenu(){
 		$("#menuPrincipal").removeClass("show").prop("aria-expanded", "true");
 	});
 	
-	$("#btnOfertas").click(function(){
+	$("#menu").find("#btnOfertas").click(function(){
 		panelOfertas();
 	});
 	
-	$("#btnAdjudicados").click(function(){
+	$("#menu").find("#btnPostuladas").click(function(){
+		panelPostuladas();
+	});
+	
+	$("#menu").find("#btnAdjudicados").click(function(){
 		panelAdjudicados();
 	});
 	
@@ -21,4 +25,18 @@ function setMenu(){
 	});
 	
 	console.log("Cargando menu");
+}
+
+function setPrincipal(){
+	$("#modulo").find("#btnOfertas").click(function(){
+		panelOfertas();
+	});
+	
+	$("#modulo").find("#btnPostuladas").click(function(){
+		panelPostuladas();
+	});
+	
+	$("#modulo").find("#btnAdjudicados").click(function(){
+		panelAdjudicados();
+	});
 }
