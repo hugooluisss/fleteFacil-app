@@ -56,6 +56,7 @@ var app = {
 
 $(document).ready(function(){
 	//$("body").css("height", $(window).height());
+	
 	$("#modulo").css("height", $(window).height() - $(".navbar-fixed-top").height() - $("#menu").height() - 33);
 	$( window ).resize(function(){
 		$("#modulo").css("height", $(window).height() - $(".navbar-fixed-top").height() - $("#menu").height() - 33);

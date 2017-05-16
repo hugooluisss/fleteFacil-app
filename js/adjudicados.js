@@ -1,4 +1,5 @@
 function panelAdjudicados(){
+	$("#dvTitulo").html("Propuestas adjudicadas");
 	$.get("vistas/listaOfertas.tpl", function(plantillaOferta){
 		jsShowWindowLoad("Espera mientras obtenemos las ofertas para ti");
 		$.post(server + "listaOrdenesAdjudicadas", {

@@ -2,21 +2,39 @@
 	overflow-y: hidden;
 	
 	#menu{
-		border-bottom: 1px solid @menu-botones-borde-color;
-		position: fixed;
-		top: 50px;
-		z-index: 9;
 		background: @bgAzul;
-		width: 100%;
+		img{
+		    width: 150px;
+		    margin-bottom: 10px;
+		}
+		
+		.navbar{
+		    background: @bgAzul;
+		    
+		    .navbar-toggler{
+		        color: white;
+		    }
+		    
+		    .navbar-brand{
+		        color: white;
+		        font-size: 16px;
+		        text-align: center;
+		    }
+		}
+		
+		.col-4{
+		    padding-left: 2px;
+		    padding-right: 2px;
+		}
 		
 		a{	
 			&[role=button]{
-				background: @bgAzul;
+				background: white;
 				border: none;
 				border-right: none;
 				border-radius:inherit;
-				color: white;
-				width: 32%;
+				color: @bgAzul;
+				width: 100%;
 				
 				&:last-child{
 					border: none;
@@ -30,7 +48,7 @@
 				}
 				
 				[campo=nombre]{
-					font-size: 12px;
+					font-size: 11px;
 					width: 100%;
 					padding-top: 10px;
 					padding-bottom: 0px;
@@ -39,53 +57,8 @@
 		}
 	}
 	
-	
-	.navbar{
-		z-index: 1;
-		border-bottom: none;
-		padding: inherit;
-		.navbar-header{
-			background: @bgAzul;
-			color: white;
-			height: 50px;
-			
-			.navbar-brand{
-				color: white;
-				float: none;
-				margin-right: 0;
-				span{
-					margin-left: 10px;
-				}
-			}
-			
-			img{
-				width: 130px;
-				display: inline;
-			}
-		}
-		
-		&.navbar-fixed-top{
-			background: none;
-		}
-		
-		&.navbar-fixed-bottom{
-			background: rgba(211,211,211,0.3);
-			display: flex;
-			justify-content:center;
-			margin-top: 70px;
-			.menu{
-				
-				div.boton-menu{
-					float: left;
-					width: 100px;
-					text-align: center;
-				}
-			}
-		}
-	}
-	
 	#modulo{
-		margin-top: 70px;
+		margin-top: 10px;
 		overflow-y: scroll;
 		
 		.container{

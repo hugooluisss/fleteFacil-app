@@ -34,7 +34,7 @@ form label.validateError {
   font-size: 12px;
 }
 #login {
-  background: #0043a4;
+  background: #4e81a2;
 }
 #login a {
   color: white;
@@ -50,20 +50,34 @@ form label.validateError {
   overflow-y: hidden;
 }
 #home #menu {
-  border-bottom: 1px solid #D8D8D8;
-  position: fixed;
-  top: 50px;
-  z-index: 9;
-  background: #0043a4;
-  width: 100%;
+  background: #4e81a2;
+}
+#home #menu img {
+  width: 150px;
+  margin-bottom: 10px;
+}
+#home #menu .navbar {
+  background: #4e81a2;
+}
+#home #menu .navbar .navbar-toggler {
+  color: white;
+}
+#home #menu .navbar .navbar-brand {
+  color: white;
+  font-size: 16px;
+  text-align: center;
+}
+#home #menu .col-4 {
+  padding-left: 2px;
+  padding-right: 2px;
 }
 #home #menu a[role=button] {
-  background: #0043a4;
+  background: white;
   border: none;
   border-right: none;
   border-radius: inherit;
-  color: white;
-  width: 32%;
+  color: #4e81a2;
+  width: 100%;
 }
 #home #menu a[role=button]:last-child {
   border: none;
@@ -72,49 +86,13 @@ form label.validateError {
   width: auto;
 }
 #home #menu a[role=button] [campo=nombre] {
-  font-size: 12px;
+  font-size: 11px;
   width: 100%;
   padding-top: 10px;
   padding-bottom: 0px;
 }
-#home .navbar {
-  z-index: 1;
-  border-bottom: none;
-  padding: inherit;
-}
-#home .navbar .navbar-header {
-  background: #0043a4;
-  color: white;
-  height: 50px;
-}
-#home .navbar .navbar-header .navbar-brand {
-  color: white;
-  float: none;
-  margin-right: 0;
-}
-#home .navbar .navbar-header .navbar-brand span {
-  margin-left: 10px;
-}
-#home .navbar .navbar-header img {
-  width: 130px;
-  display: inline;
-}
-#home .navbar.navbar-fixed-top {
-  background: none;
-}
-#home .navbar.navbar-fixed-bottom {
-  background: rgba(211, 211, 211, 0.3);
-  display: flex;
-  justify-content: center;
-  margin-top: 70px;
-}
-#home .navbar.navbar-fixed-bottom .menu div.boton-menu {
-  float: left;
-  width: 100px;
-  text-align: center;
-}
 #home #modulo {
-  margin-top: 70px;
+  margin-top: 10px;
   overflow-y: scroll;
 }
 #home #modulo .container {
@@ -152,11 +130,14 @@ form label.validateError {
   left: 0px;
   z-index: 3200;
   opacity: 0.8;
-  background: #0043a4;
+  background: #4e81a2;
   color: white;
 }
 #WindowLoad img {
   width: 50%;
+}
+.btn-primary {
+  background: #4e81a2;
 }
 
 /*# sourceMappingURL=style.css.map */

@@ -1,4 +1,8 @@
 function setMenu(){
+	$("#menu").find("a[role=button]").click(function(){
+		$("#menuPrincipal").removeClass("show").prop("aria-expanded", "true");
+	});
+	
 	$("#btnOfertas").click(function(){
 		panelOfertas();
 	});

@@ -1,4 +1,6 @@
 function panelOfertas(){
+	$("#dvTitulo").html("Ofertas");
+	
 	$.get("vistas/listaOfertas.tpl", function(plantillaOferta){
 		jsShowWindowLoad("Espera mientras obtenemos las ofertas para ti");
 		$.post(server + "listaOrdenesTransportista", {
