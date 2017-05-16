@@ -73,6 +73,8 @@ function panelAdjudicados(){
 			
 			
 			plantilla.find(".btnTerminar").attr("oferta", el.idOrden).click(function(){
+				var oferta = $(this).attr("oferta");
+				
 				if ($("#txtComentario").val() == ''){
 					alertify.error("Escribe un comentario");
 				}else if ($("#lstImg").find("img").length < 1){
@@ -80,7 +82,6 @@ function panelAdjudicados(){
 				}else{
 					alertify.confirm("¿Estás seguro?", function (e) {
 						if (e) {
-							var oferta = $(this).attr("oferta");
 							var fotografias = new Array;
 							
 							$("#lstImg").find("img").each(function(i){
