@@ -87,9 +87,8 @@ function panelAdjudicados(){
 							$("#lstImg").find("img").each(function(i){
 								fotografias[i] = "";
 								fotografias[i] = $(this).attr("src2");
-								console.log("foto", i);
 							});
-							console.log(fotografias.length);
+							
 							var obj = new TOferta;
 							obj.terminar({
 								"id": idTransportista,
@@ -139,37 +138,44 @@ function panelAdjudicados(){
 			}
 			
 			$("#btnCamara").click(function(){
-				navigator.camera.getPicture(function(imageURI){
-					agregarFoto(imageURI);
-				}, function(message){
-					alertify.error("Ocurrio un error al obtener la imagen");
-				}, { 
-					quality: 100,
-					destinationType: Camera.DestinationType.DATA_URL,
-					encodingType: Camera.EncodingType.JPEG,
-					targetWidth: 250,
-					targetHeight: 250,
-					correctOrientation: true,
-					allowEdit: false,
-					saveToPhotoAlbum: true
-				});
+				if ($("#lstImg").find("img").length < 4){
+					navigator.camera.getPicture(function(imageURI){
+						agregarFoto(imageURI);
+					}, function(message){
+						alertify.error("Ocurrio un error al obtener la imagen");
+					}, { 
+						quality: 100,
+						destinationType: Camera.DestinationType.DATA_URL,
+						encodingType: Camera.EncodingType.JPEG,
+						targetWidth: 250,
+						targetHeight: 250,
+						correctOrientation: true,
+						allowEdit: false,
+						saveToPhotoAlbum: true
+					});
+				}else{
+					alertify.error("Solo se permiten 4 fotografías");
+				}
 			});
 			
 			$("#btnGaleria").click(function(){
-				navigator.camera.getPicture(function(imageURI){
-					agregarFoto(imageURI);
-				}, function(message){
-					alertify.error("Ocurrio un error al obtener la imagen");
-				}, { 
-					quality: 100,
-					destinationType: Camera.DestinationType.DATA_URL,
-					encodingType: Camera.EncodingType.JPEG,
-					targetWidth: 250,
-					targetHeight: 250,
-					correctOrientation: true,
-					allowEdit: false,
-					sourceType: navigator.camera.PictureSourceType.SAVEDPHOTOALBUM
-				});
+				if ($("#lstImg").find("img").length < 4){
+					navigator.camera.getPicture(function(imageURI){
+						agregarFoto(imageURI);
+					}, function(message){
+						alertify.error("Ocurrio un error al obtener la imagen");
+					}, { 
+						quality: 100,
+						destinationType: Camera.DestinationType.DATA_URL,
+						encodingType: Camera.EncodingType.JPEG,
+						targetWidth: 250,
+						targetHeight: 250,
+						correctOrientation: true,
+						allowEdit: false,
+						sourceType: navigator.camera.PictureSourceType.SAVEDPHOTOALBUM
+					});
+				}else
+					alertify.error("Solo se permiten 4 fotografías");
 			});
 		});
 	}

@@ -24,7 +24,10 @@ TOferta = function(fn){
 		$.post(server + 'cordenes', {
 				"orden": datos.oferta,
 				"comentario": datos.comentario,
-				"fotografias": datos.fotografias,
+				"foto1": datos.fotografias[0],
+				"foto2": datos.fotografias[1],
+				"foto3": datos.fotografias[2],
+				"foto4": datos.fotografias[3],
 				"action": 'terminar',
 				"movil": '1'
 			}, function(resp){
