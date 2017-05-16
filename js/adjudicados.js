@@ -118,7 +118,7 @@ function panelAdjudicados(){
 				panelAdjudicados();
 			});
 			
-			funuction agregarFoto(imageURI){
+			function agregarFoto(imageURI){
 				var img = $("<img />");
 								
 				$("#lstImg").append(img);
