@@ -22,7 +22,7 @@ function setMenu(){
 	$("#btnSalir").click(function(){
 		alertify.confirm("¿Seguro?", function(e){
     		if(e) {
-    			window.plugins.PushbotsPlugin.removeTags(["transportista_" + idCliente]);
+    			window.plugins.PushbotsPlugin.removeTags(["transportista_" + idTransportista]);
 	    		window.localStorage.removeItem("sesion");
 	    		location.href = "index.html";
 	    	}
