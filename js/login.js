@@ -41,6 +41,12 @@ var app = {
 			location.href = "inicio.html";
 		
 		jsRemoveWindowLoad();
+		
+		window.plugins.PushbotsPlugin.initialize("591c5d2d4a9efa6e888b4567", {
+			"android":{
+				"sender_id":"298644715501"
+			}
+		});
 	}
 };
 

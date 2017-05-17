@@ -1,5 +1,6 @@
 function panelPerfil(){
 	var tplRegion = '<div class="row"><div class="col-12"><label class="custom-control custom-checkbox"><input type="checkbox" class="custom-control-input"><span class="custom-control-indicator"></span><span class="custom-control-description"></span></label></div></div>';
+	$("#dvTitulo").html("Perfil de usuario");
 	
 	$.get("vistas/perfil.tpl", function(plantillaPerfil){
 		jsShowWindowLoad("Estamos obteniendo tus datos");
