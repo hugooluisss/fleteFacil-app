@@ -6,7 +6,7 @@
 		version  = "1.0.0">  
 		
 		<name>Syncro</name>  
-		<description>La primera empresa en Chile que mediante el uso de tecnología, Data Análisis y una Red de Transportistas de alto nivel, ofrece servicios de transporte de carga en todo el país, con costos hasta un 20% más bajos que el un servicio tradicional, tracking permanente de carga, atención personalizada y disponibilidad inmediata.</description>  
+		<description>La primera empresa en Chile que mediante el uso de tecnologia, Data Analisis y una Red de Transportistas de alto nivel, ofrece servicios de transporte de carga en todo el pais, con costos hasta un 20% mas bajos que el un servicio tradicional, tracking permanente de carga, atencion personalizada y disponibilidad inmediata.</description>  
 		<!--  
 			If you do not want any permissions to be added to your app, add the  
 			following tag to your config.xml; you will still have the INTERNET  
