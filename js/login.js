@@ -47,6 +47,30 @@ var app = {
 				"sender_id":"298644715501"
 			}
 		});
+		
+		// Should be called once app receive the notification only while the application is open or in background
+		window.plugins.PushbotsPlugin.on("notification:received", function(data){
+			console.log("received:", data);
+			var datos = JSON.stringify(data);
+			window.plugins.PushbotsPlugin.resetBadge();
+			
+			//Silent notifications Only [iOS only]
+			//Send CompletionHandler signal with PushBots notification Id
+			window.plugins.PushbotsPlugin.done(data.pb_n_id);
+			if (data.aps.alert != '')
+				alertify.success(data.aps.alert);
+				
+			window.plugins.PushbotsPlugin.resetBadge();
+		});
+		
+		// Should be called once the notification is clicked
+		window.plugins.PushbotsPlugin.on("notification:clicked", function(data){
+			console.log("clicked:" + JSON.stringify(data));
+			if (data.message != undefined)
+				alertify.success(data.message);
+				
+			window.plugins.PushbotsPlugin.resetBadge();
+		});	
 	}
 };
 
