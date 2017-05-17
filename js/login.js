@@ -34,14 +34,6 @@ var app = {
 	// The scope of 'this' is the event. In order to call the 'receivedEvent'
 	// function, we must explicitly call 'app.receivedEvent(...);'
 	onDeviceReady: function() {
-		jsShowWindowLoad();
-		idTransportista = window.localStorage.getItem("sesion");
-		
-		if (idTransportista != null && idTransportista != undefined && idTransportista != '')
-			location.href = "inicio.html";
-		
-		jsRemoveWindowLoad();
-		
 		window.plugins.PushbotsPlugin.initialize("591c5d2d4a9efa6e888b4567", {
 			"android":{
 				"sender_id":"298644715501"
@@ -70,7 +62,15 @@ var app = {
 				alertify.success(data.message);
 				
 			window.plugins.PushbotsPlugin.resetBadge();
-		});	
+		});
+		
+		jsShowWindowLoad();
+		idTransportista = window.localStorage.getItem("sesion");
+		
+		if (idTransportista != null && idTransportista != undefined && idTransportista != '')
+			location.href = "inicio.html";
+		
+		jsRemoveWindowLoad();
 	}
 };
 
