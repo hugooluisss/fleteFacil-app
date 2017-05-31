@@ -111,9 +111,9 @@ app.initialize();
 $(document).ready(function(){
 	//$("body").css("height", $(window).height());
 	
-	$("#modulo").css("height", $(window).height() - $(".navbar-fixed-top").height() - $("#menu").height() - 33);
+	$("#modulo").css("height", $(window).height() - $(".navbar-fixed-top").height() - $("#menu").height() - 13);
 	$( window ).resize(function(){
-		$("#modulo").css("height", $(window).height() - $(".navbar-fixed-top").height() - $("#menu").height() - 33);
+		$("#modulo").css("height", $(window).height() - $(".navbar-fixed-top").height() - $("#menu").height() - 13);
 	});
 	
 	//app.onDeviceReady();

@@ -2,14 +2,14 @@
 	overflow-y: hidden;
 	
 	#menu{
-		background: @bgAzul;
+		background: @bgGris;
 		img{
 		    width: 150px;
 		    margin-bottom: 10px;
 		}
 		
 		.navbar{
-		    background: @bgAzul;
+		    background: @bgGris;
 		    
 		    .navbar-toggler{
 		        color: white;
@@ -18,7 +18,6 @@
 		    .navbar-brand{
 		        color: white;
 		        font-size: 16px;
-		        text-align: center;
 		    }
 		}
 		
@@ -33,7 +32,7 @@
 				border: none;
 				border-right: none;
 				border-radius:inherit;
-				color: @bgAzul;
+				color: @bgGris;
 				width: 100%;
 				
 				&:last-child{
@@ -79,21 +78,41 @@
 		}
 		
 		div.orden{
-			border: 1px solid #e0e0e0;
-			padding: 15px 15px 15px 15px;
 			margin-bottom: 15px;
 			font-size: 13px;
 			.mapa{
 				height: 200px;
 			}
+			
+			.presupuesto{
+				font-size: 16px;
+				margin-bottom: 5px;
+			}
+			
+			.posiciones{
+				margin-top: 10px;
+			}
 		}
 		
 		div.listaOrden{
 		    font-size: 12px;
-		    
+		    @medida: 30px;
 		    .badge{
 		        font-size: 12px;
+		        background: #8ac247;
+		        font-weight: normal;
+		        
+		        border-radius: @medida @medida @medida @medida;
+				-moz-border-radius: @medida @medida @medida @medida;
+				-webkit-border-radius: @medida @medida @medida @medida;
 		    }
 		}
+	}
+	
+	.footer{
+		position: relative;
+		margin-top: -40px;
+		height: 40px;
+		clear: both;
 	}
 }

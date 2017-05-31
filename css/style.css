@@ -5,15 +5,15 @@
   box-shadow: 2px 2px 5px #B2DFDB;
 }
 .modal .modal-header {
-  background: #4060A6;
+  background: #4060a6;
   /* For browsers that do not support gradients */
-  background: -webkit-linear-gradient(#4060A6, #5177C8);
+  background: -webkit-linear-gradient(#4060a6, #5177c8);
   /* For Safari 5.1 to 6.0 */
-  background: -o-linear-gradient(#4060A6, #5177C8);
+  background: -o-linear-gradient(#4060a6, #5177c8);
   /* For Opera 11.1 to 12.0 */
-  background: -moz-linear-gradient(#4060A6, #5177C8);
+  background: -moz-linear-gradient(#4060a6, #5177c8);
   /* For Firefox 3.6 to 15 */
-  background: linear-gradient(#4060A6, #5177C8);
+  background: linear-gradient(#4060a6, #5177c8);
   /* Standard syntax */
   color: white;
 }
@@ -33,12 +33,6 @@ form label.validateError {
   color: red;
   font-size: 12px;
 }
-#login {
-  background: #4e81a2;
-}
-#login a {
-  color: white;
-}
 #login .inicio {
   text-align: center;
   width: 99%;
@@ -50,14 +44,14 @@ form label.validateError {
   overflow-y: hidden;
 }
 #home #menu {
-  background: #4e81a2;
+  background: #393d40;
 }
 #home #menu img {
   width: 150px;
   margin-bottom: 10px;
 }
 #home #menu .navbar {
-  background: #4e81a2;
+  background: #393d40;
 }
 #home #menu .navbar .navbar-toggler {
   color: white;
@@ -65,7 +59,6 @@ form label.validateError {
 #home #menu .navbar .navbar-brand {
   color: white;
   font-size: 16px;
-  text-align: center;
 }
 #home #menu .col-4 {
   padding-left: 2px;
@@ -76,7 +69,7 @@ form label.validateError {
   border: none;
   border-right: none;
   border-radius: inherit;
-  color: #4e81a2;
+  color: #393d40;
   width: 100%;
 }
 #home #menu a[role=button]:last-child {
@@ -110,19 +103,35 @@ form label.validateError {
   margin: 0px;
 }
 #home #modulo div.orden {
-  border: 1px solid #e0e0e0;
-  padding: 15px 15px 15px 15px;
   margin-bottom: 15px;
   font-size: 13px;
 }
 #home #modulo div.orden .mapa {
   height: 200px;
 }
+#home #modulo div.orden .presupuesto {
+  font-size: 16px;
+  margin-bottom: 5px;
+}
+#home #modulo div.orden .posiciones {
+  margin-top: 10px;
+}
 #home #modulo div.listaOrden {
   font-size: 12px;
 }
 #home #modulo div.listaOrden .badge {
   font-size: 12px;
+  background: #8ac247;
+  font-weight: normal;
+  border-radius: 30px 30px 30px 30px;
+  -moz-border-radius: 30px 30px 30px 30px;
+  -webkit-border-radius: 30px 30px 30px 30px;
+}
+#home .footer {
+  position: relative;
+  margin-top: -40px;
+  height: 40px;
+  clear: both;
 }
 #WindowLoad {
   position: fixed;
@@ -130,14 +139,28 @@ form label.validateError {
   left: 0px;
   z-index: 3200;
   opacity: 0.8;
-  background: #4e81a2;
+  background: #393d40;
   color: white;
 }
 #WindowLoad img {
   width: 50%;
 }
+.text-success {
+  color: #46baad !important;
+}
 .btn-primary {
-  background: #4e81a2;
+  background: #46baad;
+  border-color: inherit;
+}
+.btn-primary:hover {
+  background: #24988b;
+  border-color: #3d8f86;
+}
+.btn-primary.btn-sm {
+  font-size: 10px;
+}
+nav.footer .btn-primary {
+  font-size: 10px;
 }
 
 /*# sourceMappingURL=style.css.map */

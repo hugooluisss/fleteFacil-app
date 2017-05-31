@@ -1,5 +1,7 @@
 function panelOfertas(){
-	$("#dvTitulo").html("Ofertas");
+	$("#dvTitulo").html("<center>CARGAS DISPONIBLES</center>");
+	$("nav.footer").show();
+	$("nav.footer").html("");
 	
 	$.get("vistas/listaOfertas.tpl", function(plantillaOferta){
 		jsShowWindowLoad("Espera mientras obtenemos las ofertas para ti");
@@ -23,6 +25,8 @@ function panelOfertas(){
 				$.each(el, function(campo, valor){
 					plantilla.find("[campo=" + campo + "]").html(valor);
 				});
+				
+				plantilla.find("[campo=presupuesto]").html("$ " + el.presupuesto);
 				plantilla.find(".mapa").attr("id", "mapa_" + el.idOrden);
 				
 				plantilla.find("[campo=origen]").html(el.origen_json.direccion);
@@ -39,6 +43,12 @@ function panelOfertas(){
 	});
 	
 	function getDetalle(el){
+		$("#dvTitulo").html('<i class="fa fa-arrow-left" action="back" aria-hidden="true"></i> ORDEN Nº ' + el.folio).find("[action=back]").click(function(){
+			panelOfertas();
+		});
+		
+		$("nav.footer").show();
+		
 		$.get("vistas/oferta.tpl", function(plantilla){
 			plantilla = $(plantilla);
 			
@@ -46,6 +56,7 @@ function panelOfertas(){
 				plantilla.find("[campo=" + campo + "]").html(valor);
 			});
 			
+			plantilla.find("[campo=presupuesto]").html("$ " + el.presupuesto);
 			plantilla.find(".mapa").attr("id", "mapa_" + el.idOrden);
 				
 			plantilla.find("[campo=origen]").html(el.origen_json.direccion);
@@ -72,8 +83,9 @@ function panelOfertas(){
 			el.destino.setPosition(LatLng);
 			el.destino.setMap(el.mapa);
 			
+			$("nav.footer").html('<div class="btn-group btn-group-sm btn-group-justified" role="group"><div class="btn-group" role="group" style="width: 100%"><button type="button" class="btn btnRegresar btn-primary btn-block">VER OTRO</button></div><div class="btn-group" role="group" style="width: 100%"><button type="button" class="btnAceptar btn btn-primary btn-block">ACEPTAR</button></div></div>');
 			
-			plantilla.find(".btnAceptar").attr("oferta", el.idOrden).click(function(){
+			$("nav.footer").find(".btnAceptar").attr("oferta", el.idOrden).click(function(){
 				var oferta = $(this).attr("oferta");
 				alertify.confirm("¿Seguro?", function(e){
 		    		if(e) {
@@ -101,7 +113,7 @@ function panelOfertas(){
 		    	});
 			});
 			
-			plantilla.find(".btnRegresar").click(function(){
+			$("nav.footer").find(".btnRegresar").click(function(){
 				panelOfertas();
 			});
 		});

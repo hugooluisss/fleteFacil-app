@@ -1,5 +1,10 @@
 function panelAdjudicados(){
 	$("#dvTitulo").html("Propuestas adjudicadas");
+	
+	$("#dvTitulo").html("<center>CARGAS ADJUDICADAS</center>");
+	$("nav.footer").hide();
+	$("nav.footer").html("");
+	
 	$.get("vistas/listaOfertas.tpl", function(plantillaOferta){
 		jsShowWindowLoad("Espera mientras obtenemos tus ordenes");
 		$.post(server + "listaOrdenesAdjudicadas", {
@@ -44,6 +49,17 @@ function panelAdjudicados(){
 	function getDetalle(el){
 		$.get("vistas/ofertaAdjudicada.tpl", function(plantilla){
 			plantilla = $(plantilla);
+			
+			$("#dvTitulo").html('<i class="fa fa-arrow-left" action="back" aria-hidden="true"></i> ORDEN Nº ' + el.folio).find("[action=back]").click(function(){
+				panelAdjudicados();
+			});
+			
+			if (el.idEstado != 4){
+				plantilla.find(".dvReportar").hide();
+				plantilla.find(".groupTerminar").hide();
+				plantilla.find(".btnRegresar").html("REGRESAR");
+				plantilla.find(".viewEstado").show();
+			}
 			
 			$.each(el, function(campo, valor){
 				plantilla.find("[campo=" + campo + "]").html(valor);

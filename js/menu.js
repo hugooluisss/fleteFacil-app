@@ -28,8 +28,6 @@ function setMenu(){
 	    	}
     	});
 	});
-	
-	console.log("Cargando menu");
 }
 
 function setPrincipal(){

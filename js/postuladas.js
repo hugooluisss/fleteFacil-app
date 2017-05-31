@@ -1,5 +1,8 @@
 function panelPostuladas(){
-	$("#dvTitulo").html("Propuestas activas");
+	$("#dvTitulo").html("<center>CARGAS PROPUESTAS</center>");
+	$("nav.footer").hide();
+	$("nav.footer").html("");
+	
 	$.get("vistas/listaOfertas.tpl", function(plantillaOferta){
 		jsShowWindowLoad("Espera mientras obtenemos las ordenes donde te has postulado");
 		$.post(server + "listaOrdenesPostuladas", {
@@ -63,6 +66,10 @@ function panelPostuladas(){
 				zoomControl: true
 			});
 			
+			plantilla.find(".btnRegresar").click(function(){
+				panelPostuladas();
+			});
+			
 			var LatLng = new google.maps.LatLng(el.origen_json.latitude, el.origen_json.longitude);
 			el.origen = new google.maps.Marker({label: "Origen"});
 			el.mapa.setCenter(LatLng);
@@ -73,10 +80,6 @@ function panelPostuladas(){
 			el.destino = new google.maps.Marker({label: "Destino"});
 			el.destino.setPosition(LatLng);
 			el.destino.setMap(el.mapa);
-			
-			plantilla.find(".btnRegresar").click(function(){
-				panelPostuladas();
-			});
 		});
 	}
 }

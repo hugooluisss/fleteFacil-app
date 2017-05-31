@@ -12,7 +12,7 @@
 	left: 0px;
 	z-index: 3200;
 	.opacar(.80);
-	background: @bgAzul;
+	background: @bgGris;
 	color: white;
 	
 	img{
@@ -20,7 +20,27 @@
 	}
 }
 
+.text-success{
+	color: @bgButtonPrimary !important;
+}
+
 
 .btn-primary{
-    background: @bgAzul;
+    background: @bgButtonPrimary;
+    border-color: inherit;
+    
+    &:hover{
+	    background: @bgButtonPrimary - #222;
+	    border-color: #3d8f86;
+    }
+    
+    &.btn-sm{
+	    font-size: 10px;
+    }
+}
+
+nav.footer{
+	.btn-primary{
+		font-size: 10px;
+	}
 }
