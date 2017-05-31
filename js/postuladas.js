@@ -47,6 +47,10 @@ function panelPostuladas(){
 		$.get("vistas/ofertaPostulada.tpl", function(plantilla){
 			plantilla = $(plantilla);
 			
+			$("#dvTitulo").html('<i class="fa fa-arrow-left" action="back" aria-hidden="true"></i> ORDEN Nº ' + el.folio).find("[action=back]").click(function(){
+				panelPostuladas();
+			});
+			
 			$.each(el, function(campo, valor){
 				plantilla.find("[campo=" + campo + "]").html(valor);
 			});
