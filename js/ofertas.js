@@ -83,7 +83,7 @@ function panelOfertas(){
 			el.destino.setPosition(LatLng);
 			el.destino.setMap(el.mapa);
 			
-			$("nav.footer").html('<div class="btn-group btn-group-sm btn-group-justified" role="group"><div class="btn-group" role="group" style="width: 100%"><button type="button" class="btn btnRegresar btn-primary btn-block">VER OTRO</button></div><div class="btn-group" role="group" style="width: 100%"><button type="button" class="btnAceptar btn btn-primary btn-block">ACEPTAR</button></div></div>');
+			$("nav.footer").html('<div class="btn-group btn-group-justified" role="group"><div class="btn-group" role="group" style="width: 100%"><button type="button" class="btn btnRegresar btn-primary btn-block">VER OTRO</button></div><div class="btn-group" role="group" style="width: 100%"><button type="button" class="btnAceptar btn btn-primary btn-block">ACEPTAR</button></div></div>');
 			
 			$("nav.footer").find(".btnAceptar").attr("oferta", el.idOrden).click(function(){
 				var oferta = $(this).attr("oferta");

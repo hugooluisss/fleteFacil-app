@@ -77,8 +77,6 @@ var app = {
 app.initialize();
 
 $(document).ready(function(){
-	//app.onDeviceReady();	
-	
 	$("#lnkLostPass").click(function(){
 		$("#winInicioSesion").modal("hide");
 		alertify.prompt("<b>¿Olvidaste tu contraseña?</b>, introduce tu correo electrónico:", function (e, str) { 
@@ -141,4 +139,6 @@ $(document).ready(function(){
 			});
 		}
 	});
+	
+	//app.onDeviceReady();
 });

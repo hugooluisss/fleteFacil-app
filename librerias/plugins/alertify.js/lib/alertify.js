@@ -33,9 +33,9 @@
 		dialogs = {
 			buttons : {
 				holder : "<nav class=\"alertify-buttons\">{{buttons}}</nav>",
-				submit : "<button type=\"submit\" class=\"btn btn-success\" id=\"alertify-ok\" />{{ok}}</button>",
-				ok     : "<a href=\"#\" class=\"btn btn-success\" id=\"alertify-ok\">{{ok}}</a>",
-				cancel : "<a href=\"#\" class=\"btn btn-danger\" id=\"alertify-cancel\">{{cancel}}</a>"
+				submit : "<button type=\"submit\" class=\"btn btn-primary\" id=\"alertify-ok\" />{{ok}}</button>",
+				ok     : "<a href=\"#\" class=\"btn btn-primary\" id=\"alertify-ok\">{{ok}}</a>",
+				cancel : "<a href=\"#\" class=\"btn btn-muted\" id=\"alertify-cancel\">{{cancel}}</a>"
 			},
 			input   : "<input type=\"text\" class=\"alertify-text\" id=\"alertify-text\">",
 			password   : "<input type=\"password\" class=\"alertify-text\" id=\"alertify-text\">",

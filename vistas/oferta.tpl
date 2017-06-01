@@ -13,10 +13,14 @@
 	<hr />
 	<div class="row">
 		<div class="col-6">
-			<i class="fa fa-cubes text-success" aria-hidden="true"></i> <span campo="volumen"></span>
+			<i class="fa fa-cubes text-success" aria-hidden="true"></i>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<span campo="volumen"></span>
 		</div>
 		<div class="col-6">
-			<i class="fa fa-balance-scale text-success" aria-hidden="true"></i> <span campo="peso"></span>
+			<i class="fa fa-balance-scale text-success" aria-hidden="true"></i>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<span campo="peso"></span>
 		</div>
 	</div>
 	<hr />

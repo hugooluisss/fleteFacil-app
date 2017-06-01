@@ -1,8 +1,13 @@
 <hr />
 <div class="listaOrden">
 	<div class="row">
-		<div class="col-7 text-justify" campo="descripcion">
+		<div class="col-12 text-justify" campo="descripcion">
 			
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-7 text-justify text-muted">
+			<span campo="origen" /> - <span campo="destino" />
 		</div>
 		<div class="col-5 text-center">
 			<span class="badge badge-success" style="width: 100%" campo="presupuesto"></span>

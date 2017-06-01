@@ -2,7 +2,7 @@
 	<div class="row">
 		<div class="col-12 text-center presupuesto">PRESUPUESTO <span class="badge badge-success" campo="presupuesto"></span> <span campo="plazo"></span></div>
 	</div>
-	<div class="viewEstado text-center text-danger" style="display: none">Reporte entregado</div>
+	<div class="viewEstado text-center text-danger" style="display: none"><b>REPORTE ENTREGADO</b></div>
 	<div class="mapa"></div>
 	<div class="row posiciones">
 		<div class="col-12 text-center">
@@ -14,10 +14,14 @@
 	<hr />
 	<div class="row">
 		<div class="col-6">
-			<i class="fa fa-cubes text-success" aria-hidden="true"></i> <span campo="volumen"></span>
+			<i class="fa fa-cubes text-success" aria-hidden="true"></i>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<span campo="volumen"></span>
 		</div>
 		<div class="col-6">
-			<i class="fa fa-balance-scale text-success" aria-hidden="true"></i> <span campo="peso"></span>
+			<i class="fa fa-balance-scale text-success" aria-hidden="true"></i>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<span campo="peso"></span>
 		</div>
 	</div>
 	<hr />

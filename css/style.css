@@ -5,15 +5,15 @@
   box-shadow: 2px 2px 5px #B2DFDB;
 }
 .modal .modal-header {
-  background: #4060a6;
+  background: #4060A6;
   /* For browsers that do not support gradients */
-  background: -webkit-linear-gradient(#4060a6, #5177c8);
+  background: -webkit-linear-gradient(#4060A6, #5177C8);
   /* For Safari 5.1 to 6.0 */
-  background: -o-linear-gradient(#4060a6, #5177c8);
+  background: -o-linear-gradient(#4060A6, #5177C8);
   /* For Opera 11.1 to 12.0 */
-  background: -moz-linear-gradient(#4060a6, #5177c8);
+  background: -moz-linear-gradient(#4060A6, #5177C8);
   /* For Firefox 3.6 to 15 */
-  background: linear-gradient(#4060a6, #5177c8);
+  background: linear-gradient(#4060A6, #5177C8);
   /* Standard syntax */
   color: white;
 }
@@ -129,7 +129,7 @@ form label.validateError {
 }
 #home .footer {
   position: relative;
-  margin-top: -40px;
+  margin-top: -50px;
   height: 40px;
   clear: both;
 }
@@ -159,8 +159,29 @@ form label.validateError {
 .btn-primary.btn-sm {
   font-size: 10px;
 }
+#alertify .btn {
+  margin-left: 2px;
+  margin-right: 2px;
+}
+#alertify .btn-muted {
+  background: #393d40;
+  color: white;
+  border: none;
+}
+#alertify .btn-muted:hover,
+#alertify .btn-muted:focus {
+  color: white;
+}
+#alertify .btn-primary {
+  border: none;
+}
+#alertify .btn-primary:hover,
+#alertify .btn-primary:focus {
+  color: white;
+}
 nav.footer .btn-primary {
-  font-size: 10px;
+  font-size: 12px;
+  height: 40px;
 }
 
 /*# sourceMappingURL=style.css.map */

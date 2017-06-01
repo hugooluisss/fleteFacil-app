@@ -28,6 +28,8 @@ function panelPostuladas(){
 				$.each(el, function(campo, valor){
 					plantilla.find("[campo=" + campo + "]").html(valor);
 				});
+				
+				plantilla.find("[campo=presupuesto]").html("$ " + el.presupuesto);
 				plantilla.find(".mapa").attr("id", "mapa_" + el.idOrden);
 				
 				plantilla.find("[campo=origen]").html(el.origen_json.direccion);
