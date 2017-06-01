@@ -5,15 +5,15 @@
   box-shadow: 2px 2px 5px #B2DFDB;
 }
 .modal .modal-header {
-  background: #4060A6;
+  background: #4060a6;
   /* For browsers that do not support gradients */
-  background: -webkit-linear-gradient(#4060A6, #5177C8);
+  background: -webkit-linear-gradient(#4060a6, #5177c8);
   /* For Safari 5.1 to 6.0 */
-  background: -o-linear-gradient(#4060A6, #5177C8);
+  background: -o-linear-gradient(#4060a6, #5177c8);
   /* For Opera 11.1 to 12.0 */
-  background: -moz-linear-gradient(#4060A6, #5177C8);
+  background: -moz-linear-gradient(#4060a6, #5177c8);
   /* For Firefox 3.6 to 15 */
-  background: linear-gradient(#4060A6, #5177C8);
+  background: linear-gradient(#4060a6, #5177c8);
   /* Standard syntax */
   color: white;
 }
@@ -52,6 +52,12 @@ form label.validateError {
 }
 #home #menu .navbar {
   background: #393d40;
+}
+#home #menu .navbar a {
+  color: white;
+  position: absolute;
+  right: 3rem;
+  margin-top: 3px;
 }
 #home #menu .navbar .navbar-toggler {
   color: white;
