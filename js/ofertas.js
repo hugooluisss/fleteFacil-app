@@ -1,6 +1,6 @@
 function panelOfertas(){
 	$("#dvTitulo").html("<center>CARGAS DISPONIBLES</center>");
-	$("nav.footer").show();
+	$("nav.footer").hide();
 	$("nav.footer").html("");
 	
 	$.get("vistas/listaOfertas.tpl", function(plantillaOferta){
