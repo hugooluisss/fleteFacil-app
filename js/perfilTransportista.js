@@ -33,9 +33,7 @@ function panelPerfil(){
 									"region": region.idRegion,
 									fn:{
 										after: function(resp){
-											if (resp.band)
-												alertify.success("Región agregada");
-											else
+											if (!resp.band)
 												alertify.error("No se pudo agregar la región");
 										}
 									}
@@ -46,9 +44,7 @@ function panelPerfil(){
 									"region": region.idRegion,
 									fn:{
 										after: function(resp){
-											if (resp.band)
-												alertify.success("Región eliminada");
-											else
+											if (!resp.band)
 												alertify.error("No se pudo eliminar la región");
 										}
 									}
