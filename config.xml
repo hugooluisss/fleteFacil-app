@@ -3,7 +3,7 @@
 	<widget xmlns   = "http://www.w3.org/ns/widgets"  
 		xmlns:gap = "http://phonegap.com/ns/1.0"  
 		id    = "com.syncro.app"
-		version  = "1.0.6">  
+		version  = "1.0.7">  
 		
 		<name>Syncro</name>  
 		<description>La primera empresa en Chile que mediante el uso de tecnologia, Data Analisis y una Red de Transportistas de alto nivel, ofrece servicios de transporte de carga en todo el pais, con costos hasta un 20% mas bajos que el un servicio tradicional, tracking permanente de carga, atencion personalizada y disponibilidad inmediata.</description>  
@@ -75,17 +75,27 @@
 		<icon src="res/icon/ios/icon-40-2x.png" gap:platform="ios" width="80" height="80" />
 		<icon src="res/icon/ios/icon-40-3x.png" gap:platform="ios" width="120" height="120" />
 		
+		<icon src="resources/icon/ios/icon-60.png"        gap:platform="ios"        width="60" height="60" />
+		<icon src="resources/icon/ios/icon-76@2x.png"     gap:platform="ios"        width="152" height="152" />      
+		<icon src="resources/icon/ios/icon-50.png"        gap:platform="ios"        width="50" height="50" />
+		<icon src="resources/icon/ios/icon-50@2x.png"     gap:platform="ios"        width="100" height="100" />
+ 
+		
 		<!-- Define app splash screen for each platform. -->  
 		<gap:splash src="res/screen/android/screen-ldpi-portrait.png"    gap:platform="android" gap:qualifier="port-ldpi" />  
 		<gap:splash src="res/screen/android/screen-mdpi-portrait.png"    gap:platform="android" gap:qualifier="port-mdpi" />  
 		<gap:splash src="res/screen/android/screen-hdpi-portrait.png"    gap:platform="android" gap:qualifier="port-hdpi" />  
 		<gap:splash src="res/screen/android/screen-xhdpi-portrait.png"   gap:platform="android" gap:qualifier="port-xhdpi" />  
 		<gap:splash src="res/screen/blackberry/screen-225.png"       gap:platform="blackberry" />  
+		
 		<gap:splash src="res/screen/ios/screen-iphone-portrait.png"     gap:platform="ios"   width="320" height="480" />  
 		<gap:splash src="res/screen/ios/screen-iphone-portrait-2x.png"   gap:platform="ios"   width="640" height="960" />  
 		<gap:splash src="res/screen/ios/screen-iphone-portrait-568h-2x.png" gap:platform="ios"   width="640" height="1136" />  
 		<gap:splash src="res/screen/ios/screen-ipad-portrait.png"      gap:platform="ios"   width="768" height="1024" />  
 		<gap:splash src="res/screen/ios/screen-ipad-landscape.png"     gap:platform="ios"   width="1024" height="768" />  
+		<gap:splash src="res/screen/ios/screen-ipad-portrait-2x.png"           gap:platform="ios"       width="1536" height="2048" />
+		<gap:splash src="res/screen/ios/screen-ipad-landscape-2x.png"          gap:platform="ios"       width="2048" height="1536" />
+		
 		<gap:splash src="res/screen/windows-phone/screen-portrait.jpg"   gap:platform="winphone" />  
 		<gap:config-file platform="ios" parent="CFBundleShortVersionString">  
 			<string>101</string>  
