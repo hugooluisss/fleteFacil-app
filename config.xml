@@ -3,7 +3,7 @@
 	<widget xmlns   = "http://www.w3.org/ns/widgets"  
 		xmlns:gap = "http://phonegap.com/ns/1.0"  
 		id    = "com.syncro.app"
-		version  = "1.0.7">  
+		version  = "1.0.8">  
 		
 		<name>Syncro</name>  
 		<description>La primera empresa en Chile que mediante el uso de tecnologia, Data Analisis y una Red de Transportistas de alto nivel, ofrece servicios de transporte de carga en todo el pais, con costos hasta un 20% mas bajos que el un servicio tradicional, tracking permanente de carga, atencion personalizada y disponibilidad inmediata.</description>  
@@ -76,9 +76,9 @@
 		<icon src="res/icon/ios/icon-40-3x.png" gap:platform="ios" width="120" height="120" />
 		
 		<icon src="resources/icon/ios/icon-60.png"        gap:platform="ios"        width="60" height="60" />
-		<icon src="resources/icon/ios/icon-76@2x.png"     gap:platform="ios"        width="152" height="152" />      
+		<icon src="resources/icon/ios/icon-76-2x.png"     gap:platform="ios"        width="152" height="152" />      
 		<icon src="resources/icon/ios/icon-50.png"        gap:platform="ios"        width="50" height="50" />
-		<icon src="resources/icon/ios/icon-50@2x.png"     gap:platform="ios"        width="100" height="100" />
+		<icon src="resources/icon/ios/icon-50-2x.png"     gap:platform="ios"        width="100" height="100" />
  
 		
 		<!-- Define app splash screen for each platform. -->  
