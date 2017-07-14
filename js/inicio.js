@@ -129,6 +129,7 @@ var app = {
 			stationaryRadius: 20,
 			distanceFilter: 30,
 			//interval: 60000
+			notificationTitle: "Iniciando ruta",
 			interval: 1000
 		});
 		
