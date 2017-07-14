@@ -111,7 +111,7 @@ var app = {
 			$.post(server + 'cordenes', {
 				"orden": idOrden,
 				"latitude": location.latitude,
-				"logitude": location.longitude,
+				"longitude": location.longitude,
 				"action": 'logPosicion',
 				"movil": '1'
 			}, function(resp){
@@ -132,7 +132,7 @@ var app = {
 			//interval: 60000
 			notificationTitle: "Iniciando ruta",
 			notificationText: "Se está realizando el seguimiento de la ruta para informarle al cliente",
-			interval: 100,
+			interval: 1000,
 			
 		});
 		
