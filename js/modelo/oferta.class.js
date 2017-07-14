@@ -24,7 +24,7 @@ TOferta = function(fn){
 		$.post(server + 'cordenes', {
 				"orden": datos.id,
 				"latitude": datos.latitude,
-				"logitude": datos.longitude
+				"logitude": datos.longitude,
 				"action": 'logPosicion',
 				"movil": '1'
 			}, function(resp){

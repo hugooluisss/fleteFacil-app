@@ -111,7 +111,7 @@ var app = {
 			$.post(server + 'cordenes', {
 				"orden": idOrden,
 				"latitude": location.latitude,
-				"logitude": location.longitude
+				"logitude": location.longitude,
 				"action": 'logPosicion',
 				"movil": '1'
 			}, function(resp){
