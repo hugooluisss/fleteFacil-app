@@ -117,11 +117,11 @@ var app = {
 					after: function(resp){
 						if (!resp.band)
 							console.log("Error");
+							
+						backgroundGeolocation.finish();
 					}
 				}
 			});
-			
-			backgroundGeolocation.finish();
 		}, function(error){
 			console.log('Error');
 		}, {
@@ -130,7 +130,9 @@ var app = {
 			distanceFilter: 30,
 			//interval: 60000
 			notificationTitle: "Iniciando ruta",
-			interval: 1000
+			notificationText: "Se está realizando el seguimiento de la ruta para informarle al cliente"
+			interval: 1000,
+			
 		});
 		
 		backgroundGeolocation.start();
