@@ -21,8 +21,6 @@ var idTransportista = undefined;
 var mapa = null;
 var marca = null;
 
-//var conektaPublic = "key_bqFat52tN6nohmtcU7AFYwg";
-
 var app = {
 	// Application Constructor
 	initialize: function() {
@@ -106,7 +104,7 @@ var app = {
 	}
 };
 
-app.initialize();
+//app.initialize();
 
 $(document).ready(function(){
 	//$("body").css("height", $(window).height());
@@ -116,5 +114,5 @@ $(document).ready(function(){
 		$("#modulo").css("height", $(window).height() - $(".navbar-fixed-top").height() - $("#menu").height() - 13);
 	});
 	
-	//app.onDeviceReady();
+	app.onDeviceReady();
 });

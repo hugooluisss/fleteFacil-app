@@ -81,29 +81,35 @@ TTransportista = function(fn){
 		}, "json");
 	}
 	
-	this.guardar = function(datos){
+	this.setSituacion = function(datos){
 		if (datos.fn.before !== undefined) datos.fn.before();
-		
-		$.post(server + 'cclientes', {
-				"id": datos.id,
-				"nombre": datos.nombre,
-				"direccion": datos.direccion,
-				"correo": datos.correo,
-				"telefono": datos.telefono,
-				"facebook": datos.facebook,
-				"twitter": datos.twitter,
-				"telegram": datos.telegram,
-				"whatsapp": datos.whatsapp,
-				"instagram": datos.instagram,
-				"pass": datos.pass,
-				"movil": '1', 
-				"action": "add"
-			}, function(data){
-				if (data.band == false)
-					console.log(data);
-					
-				if (datos.fn.after !== undefined)
-					datos.fn.after(data);
-			}, "json");
-	};
+		$.post(server + 'ctransportistas', {
+			"transportista": idTransportista,
+			"situacion": datos.situacion,
+			"action": 'setSituacion',
+			"movil": 1
+		}, function(data){
+			if (data.band == 'false')
+				console.log("Ocurrió un error");
+				
+			if (datos.fn.after !== undefined)
+				datos.fn.after(data);
+		}, "json");
+	}
+	
+	this.setImagenPerfil = function(datos){
+		if (datos.fn.before !== undefined) datos.fn.before();
+		$.post(server + 'ctransportistas', {
+			"transportista": idTransportista,
+			"imagen": datos.imagen,
+			"action": 'setImagenPerfil',
+			"movil": 1
+		}, function(data){
+			if (data.band == false)
+				console.log("Ocurrió un error");
+				
+			if (datos.fn.after !== undefined)
+				datos.fn.after(data);
+		}, "json");
+	}
 };
