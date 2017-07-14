@@ -72,7 +72,7 @@ function panelPerfil(){
 						targetHeight: 250,
 						correctOrientation: true,
 						allowEdit: true,
-						source: navigator.camera.PictureSourceType.SAVEDPHOTOALBUM
+						source: navigator.camera.PictureSourceType.PHOTOLIBRARY
 					});
 			}else{
 				alertify.error("No se pudo ingresar a la galería");
@@ -89,7 +89,7 @@ function panelPerfil(){
 						$("#modulo").find("[campo=" + campo + "]").html(valor);
 					});
 					
-					$("#fotoPerfil").prop("src", resp.imagenPerfil == ''?"img/user.png":resp.imagenPerfil);
+					$("#fotoPerfil").prop("src", resp.imagenPerfil == ''?"img/user.png":(server + resp.imagenPerfil));
 					
 					$("[situacion]").click(function(){
 						var el = $(this);
