@@ -51,7 +51,7 @@
 		<plugin name="cordova-plugin-device" source="npm"/>
 		<!--<plugin name="cordova-plugin-sms" source="npm"/>-->
 		<plugin name="cordova-plugin-whitelist" source="npm"/>
-		<plugin name="cordova-plugin-background-geolocation" source="npm"/>
+		<plugin name="cordova-plugin-mauron85-background-geolocation" spec="^2.2.0"/>
 		<gap:plugin name="pushbots-cordova-plugin" spec="^1.4.0" source="npm" />
 		
 		<!-- Define app icon for each platform. -->  
