@@ -132,7 +132,7 @@ var app = {
 			//interval: 60000
 			notificationTitle: "Iniciando ruta",
 			notificationText: "Se está realizando el seguimiento de la ruta para informarle al cliente",
-			interval: 1000,
+			interval: 100,
 			
 		});
 		
