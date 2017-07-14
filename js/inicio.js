@@ -137,7 +137,7 @@ var app = {
 	}
 };
 
-//app.initialize();
+app.initialize();
 
 $(document).ready(function(){
 	//$("body").css("height", $(window).height());
@@ -147,5 +147,5 @@ $(document).ready(function(){
 		$("#modulo").css("height", $(window).height() - $(".navbar-fixed-top").height() - $("#menu").height() - 13);
 	});
 	
-	app.onDeviceReady();
+	//app.onDeviceReady();
 });
