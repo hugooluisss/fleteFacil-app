@@ -106,31 +106,32 @@ var app = {
 		
 		
 		backgroundGeolocation.configure(function(location){
-			console.log('[js] PosiciÛn en background:  ' + location.latitude + ',' + location.longitude);
+			console.log('[js] Posici√≥n en background:  ' + location.latitude + ',' + location.longitude);
 			idOrden = 5;
-			oferta = new TOferta;
-			oferta.sendPosicion({
-				id: idOrden,
+			$.post(server + 'cordenes', {
+				"orden": idOrden,
 				"latitude": location.latitude,
-				"longitude": location.longitude,
-				fn: {
-					after: function(resp){
-						if (!resp.band)
-							console.log("Error");
-							
-						backgroundGeolocation.finish();
-					}
-				}
+				"logitude": location.longitude
+				"action": 'logPosicion',
+				"movil": '1'
+			}, function(resp){
+				if (!resp.band)
+					console.log("Error");
+				
+			}, "json").done(function(){
+				backgroundGeolocation.finish()
+			}).fail(function(){
+				console.log("Error bug");
 			});
 		}, function(error){
-			console.log('Error');
+			console.log('Error BG');
 		}, {
 			desiredAccuracy: 10,
 			stationaryRadius: 20,
 			distanceFilter: 30,
 			//interval: 60000
 			notificationTitle: "Iniciando ruta",
-			notificationText: "Se est· realizando el seguimiento de la ruta para informarle al cliente",
+			notificationText: "Se est√° realizando el seguimiento de la ruta para informarle al cliente",
 			interval: 1000,
 			
 		});
