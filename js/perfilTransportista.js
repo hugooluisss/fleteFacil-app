@@ -44,40 +44,8 @@ function panelPerfil(){
 			}
 		});
 		
-		$("#btnGaleria").click(function(){
-			if (navigator.camera != undefined){
-				navigator.camera.getPicture(function(imageData) {
-						transportista.setImagenPerfil({
-							"imagen": imageData,
-							fn: {
-								before: function(){
-									$("#fotoPerfil").prop("src", "img/user.png");
-								},
-								after: function(resp){
-									if (resp.band){
-										alertify.success("La fotografía se cargó con éxito");
-										$("#fotoPerfil").attr("src", "data:image/jpeg;base64," + imageData);
-									}else
-										alertify.error("Ocurrió un error al actualizar la fotografía");
-								}
-							}
-						});
-					}, function(message){
-						alertify.error("Ocurrió un error al guardar la fotografía");
-					}, { 
-						quality: 100,
-						destinationType: Camera.DestinationType.DATA_URL,
-						encodingType: Camera.EncodingType.JPEG,
-						targetWidth: 250,
-						targetHeight: 250,
-						correctOrientation: true,
-						allowEdit: true,
-						source: navigator.camera.PictureSourceType.PHOTOLIBRARY
-					});
-			}else{
-				alertify.error("No se pudo ingresar a la galería");
-				console.log("No se pudo ingresar a la galería");
-			}
+		$("#btnAdjudicadas").click(function(){
+			panelAdjudicados();
 		});
 		
 		transportista.getData({

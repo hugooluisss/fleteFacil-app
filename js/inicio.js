@@ -20,6 +20,7 @@ var db = null;
 var idTransportista = undefined;
 var mapa = null;
 var marca = null;
+var idOrden = null;
 
 var app = {
 	// Application Constructor
@@ -101,6 +102,38 @@ var app = {
 		
 		//window.plugins.PushbotsPlugin.toggleNotifications(false);
 		window.plugins.PushbotsPlugin.setTags(["transportista_" + idTransportista]);
+		
+		
+		
+		backgroundGeolocation.configure(function(location){
+			console.log('[js] Posición en background:  ' + location.latitude + ',' + location.longitude);
+			idOrden = 5;
+			oferta = new TOferta;
+			oferta.sendPosicion({
+				id: idOrden,
+				"latitude": location.latitude,
+				"longitude": location.longitude,
+				fn: {
+					after: function(resp){
+						if (!resp.band)
+							console.log("Error");
+					}
+				}
+			});
+			
+			backgroundGeolocation.finish();
+		}, function(error){
+			console.log('Error');
+		}, {
+			desiredAccuracy: 10,
+			stationaryRadius: 20,
+			distanceFilter: 30,
+			//interval: 60000
+			interval: 1000
+		});
+		
+		backgroundGeolocation.start();
+
 	}
 };
 

@@ -18,6 +18,24 @@ TOferta = function(fn){
 			}, "json");
 	}
 	
+	this.sendPosicion = function(datos){
+		if (datos.fn.before !== undefined) datos.fn.before();
+		
+		$.post(server + 'cordenes', {
+				"orden": datos.id,
+				"latitude": datos.latitude,
+				"logitude": datos.longitude
+				"action": 'logPosicion',
+				"movil": '1'
+			}, function(resp){
+				if (resp.band == false)
+					console.log(resp.mensaje);
+					
+				if (datos.fn.after !== undefined)
+					datos.fn.after(resp);
+			}, "json");
+	}
+	
 	this.terminar = function(datos){
 		if (datos.fn.before !== undefined) datos.fn.before();
 		

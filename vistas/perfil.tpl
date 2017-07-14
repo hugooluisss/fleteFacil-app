@@ -4,7 +4,6 @@
 		<img src="img/user.png" alt="" class="img-thumbnail" id="fotoPerfil">
 		<br />
 		<button class="btn btn-xs btn-link" id="btnCamara"><i class="fa fa-camera" aria-hidden="true"></i></button>
-		<button class="btn btn-xs btn-link" id="btnGaleria"><i class="fa fa-picture-o" aria-hidden="true"></i></button>
 	</div>
 	
 	<div class="row" id="dvDisponible" class="situacion">
@@ -20,7 +19,8 @@
 	<div class="row" id="dvEnRuta">
 		<div class="col-12 text-justify">
 			<p>
-			<small><b>Tu estado  es <span class="text-success">En ruta</span></b>
+			<small><b>Tu estado  es <span class="text-success">En ruta</span>, tienes una o varias cargas adjudicadas</b>
+			<button type="button" class="btn btn-info btn-lg btn-block" id="btnAdjudicadas">Cargas adjudicadas</button>
 		</div>
 	</div>
 	
