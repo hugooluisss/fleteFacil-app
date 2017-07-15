@@ -106,7 +106,6 @@ var app = {
 		
 		
 		backgroundGeolocation.configure(function(location){
-			console.log('[js] Posición en background:  ' + location.latitude + ',' + location.longitude);
 			idOrden = 5;
 			$.post(server + 'cordenes', {
 				"orden": idOrden,
