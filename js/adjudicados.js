@@ -121,7 +121,7 @@ function panelAdjudicados(){
 							if (!resp.band)
 								console.log("Error");
 						}, "json").done(function(){
-							backgroundGeolocation.finish()
+							//backgroundGeolocation.finish()
 						}).fail(function(){
 							console.log("Error bug");
 						});
