@@ -120,12 +120,17 @@ function panelAdjudicados(){
 						}, function(resp){
 							if (!resp.band)
 								console.log("Error");
+							else
+								console.log("Posición reportada");
+								
+							alert("Realizado");
 						}, "json").done(function(){
 							//backgroundGeolocation.finish()
 						}).fail(function(){
 							console.log("Error bug");
 						});
-					}
+					}else
+						console.log("No se conoce el id de la orden");
 				}, function(error){
 					console.log('Error BG');
 				}, {
@@ -133,7 +138,7 @@ function panelAdjudicados(){
 					stationaryRadius: 20,
 					distanceFilter: 30,
 					//interval: 60000
-					notificationTitle: "Iniciando ruta",
+					notificationTitle: "Transporte en ruta",
 					notificationText: "Se está realizando el seguimiento de la ruta para informarle al cliente",
 					interval: 1000
 				});
