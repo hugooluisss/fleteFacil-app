@@ -31,11 +31,26 @@
 	<p campo="requisitos">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
 	
 	<br />
+	<div class="dvEnRuta">
+		<hr />
+		<h6 class="card-subtitle text-danger text-center">En ruta</h6>
+		<p class="text-justify"><b>En ruta</b> significa que estás iniciando el servicio y que la carga va en camino para ser entregada al cliente. Para esto tomaremos tu ubicación cada X tiempo para informarle al cliente el lugar donde te encuentras</p>
+		<div class="row">
+			<div class="col-12 text-center">
+				<div class="btn-group btn-group-justified" style="width: 90%" role="group">
+					<div class="btn-group" role="group" style="width: 100%">
+						<button type="button" class="btn btn-warning btn-block btnEnRuta">En ruta</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<br />
+	</div>
 	<div class="dvReportar">
 		<hr />
 		<h6 class="card-subtitle text-danger text-center">Terminar servicio</h6>
 		<br />
-		<br />
+		<p class="text-justify">La carga se encuentra en ruta, recuerda que al finalizar la entrega debes de entregar tu reporte</p>
 		<div class="row">
 			<div id="lstImg" class="col-12 text-center"></div>
 		</div>

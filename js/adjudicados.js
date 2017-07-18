@@ -90,11 +90,67 @@ function panelAdjudicados(){
 			el.destino = new google.maps.Marker({label: "Destino"});
 			el.destino.setPosition(LatLng);
 			el.destino.setMap(el.mapa);
+			idOrden = window.localStorage.getItem("idOrden");
 			
+			plantilla.find(".dvReportar").hide();
+			plantilla.find(".dvEnRuta").hide();
+			plantilla.find(".groupTerminar").hide();
+			
+			if (idOrden == undefined)
+				plantilla.find(".dvEnRuta").show();
+			else{
+				plantilla.find(".dvReportar").show();
+				plantilla.find(".groupTerminar").show();
+			}
+			
+			plantilla.find(".btnEnRuta").attr("oferta", el.idOrden).click(function(){
+				window.localStorage.removeItem("idOrden");
+				window.localStorage.setItem("idOrden", plantilla.find(".btnEnRuta").attr("oferta"));
+						
+				backgroundGeolocation.configure(function(location){
+					idOrden = window.localStorage.getItem("idOrden");
+					if (idOrden != undefined){
+						$.post(server + 'cordenes', {
+							"orden": idOrden,
+							"latitude": location.latitude,
+							"longitude": location.longitude,
+							"action": 'logPosicion',
+							"movil": '1'
+						}, function(resp){
+							if (!resp.band)
+								console.log("Error");
+						}, "json").done(function(){
+							backgroundGeolocation.finish()
+						}).fail(function(){
+							console.log("Error bug");
+						});
+					}
+				}, function(error){
+					console.log('Error BG');
+				}, {
+					desiredAccuracy: 10,
+					stationaryRadius: 20,
+					distanceFilter: 30,
+					//interval: 60000
+					notificationTitle: "Iniciando ruta",
+					notificationText: "Se está realizando el seguimiento de la ruta para informarle al cliente",
+					interval: 1000
+				});
+				
+				backgroundGeolocation.start();
+				
+				plantilla.find(".dvReportar").show();
+				plantilla.find(".groupTerminar").show();
+				plantilla.find(".dvEnRuta").hide();
+				
+				alertify.log("Iniciamos el proceso de seguimiento de la carga");
+			});
 			
 			plantilla.find(".btnTerminar").attr("oferta", el.idOrden).click(function(){
 				var oferta = $(this).attr("oferta");
-				
+				backgroundGeolocation.finish();
+				window.localStorage.removeItem("idOrden");
+				idOrden = undefined;
 				if ($("#txtComentario").val() == ''){
 					alertify.error("Escribe un comentario");
 				}else if ($("#lstImg").find("img").length < 1){
@@ -167,8 +223,8 @@ function panelAdjudicados(){
 						quality: 100,
 						destinationType: Camera.DestinationType.DATA_URL,
 						encodingType: Camera.EncodingType.JPEG,
-						targetWidth: 250,
-						targetHeight: 250,
+						targetWidth: 800,
+						targetHeight: 800,
 						correctOrientation: true,
 						allowEdit: false,
 						saveToPhotoAlbum: true

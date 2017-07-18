@@ -102,45 +102,10 @@ var app = {
 		
 		//window.plugins.PushbotsPlugin.toggleNotifications(false);
 		window.plugins.PushbotsPlugin.setTags(["transportista_" + idTransportista]);
-		
-		
-		
-		backgroundGeolocation.configure(function(location){
-			idOrden = 5;
-			$.post(server + 'cordenes', {
-				"orden": idOrden,
-				"latitude": location.latitude,
-				"longitude": location.longitude,
-				"action": 'logPosicion',
-				"movil": '1'
-			}, function(resp){
-				if (!resp.band)
-					console.log("Error");
-				
-			}, "json").done(function(){
-				backgroundGeolocation.finish()
-			}).fail(function(){
-				console.log("Error bug");
-			});
-		}, function(error){
-			console.log('Error BG');
-		}, {
-			desiredAccuracy: 10,
-			stationaryRadius: 20,
-			distanceFilter: 30,
-			//interval: 60000
-			notificationTitle: "Iniciando ruta",
-			notificationText: "Se está realizando el seguimiento de la ruta para informarle al cliente",
-			interval: 1000,
-			
-		});
-		
-		backgroundGeolocation.start();
-
 	}
 };
 
-app.initialize();
+//app.initialize();
 
 $(document).ready(function(){
 	//$("body").css("height", $(window).height());
@@ -150,5 +115,5 @@ $(document).ready(function(){
 		$("#modulo").css("height", $(window).height() - $(".navbar-fixed-top").height() - $("#menu").height() - 13);
 	});
 	
-	//app.onDeviceReady();
+	app.onDeviceReady();
 });
