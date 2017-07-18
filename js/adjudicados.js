@@ -57,8 +57,20 @@ function panelAdjudicados(){
 			if (el.idEstado != 4){
 				plantilla.find(".dvReportar").hide();
 				plantilla.find(".groupTerminar").hide();
+				plantilla.find(".dvEnRuta").hide();
 				plantilla.find(".btnRegresar").html("REGRESAR");
 				plantilla.find(".viewEstado").show();
+			}else{
+				plantilla.find(".dvReportar").hide();
+				plantilla.find(".dvEnRuta").hide();
+				plantilla.find(".groupTerminar").hide();
+				
+				if (idOrden == undefined)
+					plantilla.find(".dvEnRuta").show();
+				else{
+					plantilla.find(".dvReportar").show();
+					plantilla.find(".groupTerminar").show();
+				}
 			}
 			
 			$.each(el, function(campo, valor){
@@ -91,17 +103,6 @@ function panelAdjudicados(){
 			el.destino.setPosition(LatLng);
 			el.destino.setMap(el.mapa);
 			idOrden = window.localStorage.getItem("idOrden");
-			
-			plantilla.find(".dvReportar").hide();
-			plantilla.find(".dvEnRuta").hide();
-			plantilla.find(".groupTerminar").hide();
-			
-			if (idOrden == undefined)
-				plantilla.find(".dvEnRuta").show();
-			else{
-				plantilla.find(".dvReportar").show();
-				plantilla.find(".groupTerminar").show();
-			}
 			
 			plantilla.find(".btnEnRuta").attr("oferta", el.idOrden).click(function(){
 				window.localStorage.removeItem("idOrden");
@@ -148,7 +149,8 @@ function panelAdjudicados(){
 			
 			plantilla.find(".btnTerminar").attr("oferta", el.idOrden).click(function(){
 				var oferta = $(this).attr("oferta");
-				backgroundGeolocation.finish();
+				backgroundGeolocation.stop();
+				
 				window.localStorage.removeItem("idOrden");
 				idOrden = undefined;
 				if ($("#txtComentario").val() == ''){
@@ -244,8 +246,8 @@ function panelAdjudicados(){
 						quality: 100,
 						destinationType: Camera.DestinationType.DATA_URL,
 						encodingType: Camera.EncodingType.JPEG,
-						targetWidth: 250,
-						targetHeight: 250,
+						targetWidth: 800,
+						targetHeight: 800,
 						correctOrientation: true,
 						allowEdit: false,
 						sourceType: navigator.camera.PictureSourceType.SAVEDPHOTOALBUM
