@@ -110,6 +110,7 @@ function panelAdjudicados(){
 						
 				backgroundGeolocation.configure(function(location){
 					idOrden = window.localStorage.getItem("idOrden");
+					alert("Orden: " + idOrden);
 					if (idOrden != undefined){
 						$.post(server + 'cordenes', {
 							"orden": idOrden,
