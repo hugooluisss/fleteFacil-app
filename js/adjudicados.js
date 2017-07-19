@@ -54,23 +54,27 @@ function panelAdjudicados(){
 				panelAdjudicados();
 			});
 			
-			if (el.idEstado != 4){
-				plantilla.find(".dvReportar").hide();
-				plantilla.find(".groupTerminar").hide();
-				plantilla.find(".dvEnRuta").hide();
-				plantilla.find(".btnRegresar").html("REGRESAR");
-				plantilla.find(".viewEstado").show();
-			}else{
-				plantilla.find(".dvReportar").hide();
-				plantilla.find(".dvEnRuta").hide();
-				plantilla.find(".groupTerminar").hide();
-				
-				if (idOrden == undefined)
-					plantilla.find(".dvEnRuta").show();
-				else{
-					plantilla.find(".dvReportar").show();
-					plantilla.find(".groupTerminar").show();
-				}
+			switch(el.idEstado){
+				case 4: //Asignada
+					plantilla.find(".dvReportar").hide();
+					plantilla.find(".dvEnRuta").hide();
+					plantilla.find(".groupTerminar").hide();
+					
+					if (idOrden == undefined)
+						plantilla.find(".dvEnRuta").show();
+					else{
+						plantilla.find(".dvReportar").show();
+						plantilla.find(".groupTerminar").show();
+					}
+				break;
+				case '5': case '6': case '7':
+				default: 
+					plantilla.find(".dvReportar").hide();
+					plantilla.find(".groupTerminar").hide();
+					plantilla.find(".dvEnRuta").hide();
+					plantilla.find(".btnRegresar").html("REGRESAR");
+					plantilla.find(".viewEstado").show();
+				break;
 			}
 			
 			$.each(el, function(campo, valor){
@@ -206,9 +210,14 @@ function panelAdjudicados(){
 			function agregarFoto(imageURI){
 				var img = $("<img />");
 								
-				$("#lstImg").append(img);
 				img.attr("src", "data:image/jpeg;base64," + imageURI);
 				img.attr("src2", imageURI);
+				img.addClass("img-responsive");
+				
+				var div = $("<div />");
+				div.addClass("col-xs-4");
+				div.append(img);
+				$("#lstImg").append(div);
 				
 				img.click(function(){
 					var foto = $(this);

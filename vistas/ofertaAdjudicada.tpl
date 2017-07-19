@@ -51,8 +51,7 @@
 		<h6 class="card-subtitle text-danger text-center">Terminar servicio</h6>
 		<br />
 		<p class="text-justify">La carga se encuentra en ruta, recuerda que al finalizar la entrega debes de entregar tu reporte</p>
-		<div class="row">
-			<div id="lstImg" class="col-12 text-center"></div>
+		<div class="row" id="lstImg">
 		</div>
 		<div class="row">
 			<div class="col-12 text-center">
