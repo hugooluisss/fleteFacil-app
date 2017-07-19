@@ -145,7 +145,7 @@ function panelAdjudicados(){
 					notificationTitle: "Transporte en ruta",
 					notificationText: "Se está realizando el seguimiento de la ruta para informarle al cliente",
 					stopOnStillActivity: false,
-					debug: true
+					debug: false
 				});
 				
 				backgroundGeolocation.start();
