@@ -209,15 +209,10 @@ function panelAdjudicados(){
 			
 			function agregarFoto(imageURI){
 				var img = $("<img />");
-								
+				
+				$("#lstImg").append(img);				
 				img.attr("src", "data:image/jpeg;base64," + imageURI);
 				img.attr("src2", imageURI);
-				img.addClass("img-responsive");
-				
-				var div = $("<div />");
-				div.addClass("col-xs-4");
-				div.append(img);
-				$("#lstImg").append(div);
 				
 				img.click(function(){
 					var foto = $(this);
