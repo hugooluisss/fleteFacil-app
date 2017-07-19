@@ -135,10 +135,12 @@ function panelAdjudicados(){
 				}, {
 					desiredAccuracy: 10,
 					stationaryRadius: 20,
-					distanceFilter: 30,
+					distanceFilter: 1,
 					interval: 600,
 					notificationTitle: "Transporte en ruta",
-					notificationText: "Se está realizando el seguimiento de la ruta para informarle al cliente"
+					notificationText: "Se está realizando el seguimiento de la ruta para informarle al cliente",
+					stopOnStillActivity: false,
+					debug: true
 				});
 				
 				backgroundGeolocation.start();
