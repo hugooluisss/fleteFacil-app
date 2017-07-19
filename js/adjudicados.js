@@ -110,7 +110,6 @@ function panelAdjudicados(){
 						
 				backgroundGeolocation.configure(function(location){
 					idOrden = window.localStorage.getItem("idOrden");
-					alert("Orden: " + idOrden);
 					if (idOrden != undefined){
 						$.post(server + 'cordenes', {
 							"orden": idOrden,
@@ -124,12 +123,14 @@ function panelAdjudicados(){
 							else
 								console.log("Posición reportada");
 						}, "json").done(function(){
-							//backgroundGeolocation.finish();
+							backgroundGeolocation.finish();
 						}).fail(function(){
 							console.log("Error bug");
 						});
-					}else
+					}else{
 						console.log("No se conoce el id de la orden");
+						backgroundGeolocation.finish();
+					}
 				}, function(error){
 					console.log('Error BG');
 				}, {
