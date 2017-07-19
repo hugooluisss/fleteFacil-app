@@ -54,7 +54,7 @@ function panelAdjudicados(){
 				panelAdjudicados();
 			});
 			
-			switch(el.idEstado){
+			switch(parseInt(el.idEstado)){
 				case 4: //Asignada
 					plantilla.find(".dvReportar").hide();
 					plantilla.find(".dvEnRuta").hide();
