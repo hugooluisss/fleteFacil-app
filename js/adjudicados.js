@@ -122,10 +122,8 @@ function panelAdjudicados(){
 								console.log("Error");
 							else
 								console.log("Posición reportada");
-								
-							alert("Realizado");
 						}, "json").done(function(){
-							//backgroundGeolocation.finish()
+							backgroundGeolocation.finish();
 						}).fail(function(){
 							console.log("Error bug");
 						});
@@ -137,10 +135,9 @@ function panelAdjudicados(){
 					desiredAccuracy: 10,
 					stationaryRadius: 20,
 					distanceFilter: 30,
-					//interval: 60000
+					interval: 600,
 					notificationTitle: "Transporte en ruta",
-					notificationText: "Se está realizando el seguimiento de la ruta para informarle al cliente",
-					interval: 1000
+					notificationText: "Se está realizando el seguimiento de la ruta para informarle al cliente"
 				});
 				
 				backgroundGeolocation.start();
