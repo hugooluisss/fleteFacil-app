@@ -124,7 +124,7 @@ function panelAdjudicados(){
 							else
 								console.log("Posición reportada");
 						}, "json").done(function(){
-							backgroundGeolocation.finish();
+							//backgroundGeolocation.finish();
 						}).fail(function(){
 							console.log("Error bug");
 						});
