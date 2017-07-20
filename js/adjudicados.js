@@ -140,10 +140,10 @@ function panelAdjudicados(){
 				}, {
 					desiredAccuracy: 10,
 					stationaryRadius: 20,
-					distanceFilter: 1,
-					interval: 600,
+					distanceFilter: 20,
+					interval: 120000,
 					notificationTitle: "Transporte en ruta",
-					notificationText: "Se está realizando el seguimiento de la ruta para informarle al cliente",
+					notificationText: "Haz iniciado el reporte de la ruta",
 					stopOnStillActivity: false,
 					debug: false
 				});
@@ -159,7 +159,6 @@ function panelAdjudicados(){
 			
 			plantilla.find(".btnTerminar").attr("oferta", el.idOrden).click(function(){
 				var oferta = $(this).attr("oferta");
-				backgroundGeolocation.stop();
 				
 				window.localStorage.removeItem("idOrden");
 				idOrden = undefined;
@@ -188,6 +187,8 @@ function panelAdjudicados(){
 									 	jsShowWindowLoad("Estamos indicando que el servicio se ha completado, por favor espera");
 								 	}, after: function(resp){
 									 	jsRemoveWindowLoad();
+									 	backgroundGeolocation.stop();
+									 	window.localStorage.removeItem("idOrden");
 									 	console.log(resp);
 									 	if (resp.band){
 										 	panelAdjudicados();
