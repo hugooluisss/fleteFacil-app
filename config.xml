@@ -3,7 +3,7 @@
 	<widget xmlns   = "http://www.w3.org/ns/widgets"  
 		xmlns:gap = "http://phonegap.com/ns/1.0"  
 		id    = "com.syncro.app"
-		version  = "1.0.9">  
+		version  = "1.0.10">  
 		
 		<name>Syncro</name>  
 		<description>La primera empresa en Chile que mediante el uso de tecnologia, Data Analisis y una Red de Transportistas de alto nivel, ofrece servicios de transporte de carga en todo el pais, con costos hasta un 20% mas bajos que el un servicio tradicional, tracking permanente de carga, atencion personalizada y disponibilidad inmediata.</description>  
@@ -39,18 +39,18 @@
 		<!-- A list of available plugins are available at https://build.phonegap.com/plugins -->  
 
 		<!--<plugin name="com.phonegap.plugins.barcodescanner" spec="2.0.0" source="pgb" />-->
-		<plugin name="cordova-plugin-camera" source="npm"/>
-		<plugin name="cordova-plugin-file" source="npm"/>
-		<plugin name="cordova-plugin-file-transfer" source="npm"/>
-		<plugin name="cordova-plugin-media-capture" source="npm"/>
+		<plugin name="cordova-plugin-camera" source="npm" spec="https://github.com/apache/cordova-plugin-camera.git"/>
+		<plugin name="cordova-plugin-file" source="npm" spec="https://github.com/apache/cordova-plugin-file.git"/>
+		<plugin name="cordova-plugin-file-transfer" source="npm" spec="https://github.com/apache/cordova-plugin-file-transfer.git"/>
+		<plugin name="cordova-plugin-media-capture" source="npm" spec="https://github.com/apache/cordova-plugin-capture.git"/>
 		
-		<plugin name="cordova-plugin-geolocation" source="npm"/>
+		<plugin name="cordova-plugin-geolocation" source="npm" spec="https://github.com/apache/cordova-plugin-geolocation.git"/>
 		
-		<plugin name="cordova-plugin-network-information" source="npm"/>
+		<plugin name="cordova-plugin-network-information" source="npm" spec="https://github.com/apache/cordova-plugin-network-information.git"/>
 		<!--<plugin name="cordova-plugin-sqlite" source="npm"/>-->
-		<plugin name="cordova-plugin-device" source="npm"/>
+		<plugin name="cordova-plugin-device" source="npm" spec="https://github.com/apache/cordova-plugin-device.git"/>
 		<!--<plugin name="cordova-plugin-sms" source="npm"/>-->
-		<plugin name="cordova-plugin-whitelist" source="npm"/>
+		<plugin name="cordova-plugin-whitelist" source="npm" spec="https://github.com/apache/cordova-plugin-whitelist.git"/>
 		<plugin name="cordova-plugin-mauron85-background-geolocation" spec="^2.2.0"/>
 		<gap:plugin name="pushbots-cordova-plugin" spec="^1.4.0" source="npm" />
 		
