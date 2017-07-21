@@ -85,7 +85,7 @@ function panelOfertas(){
 			
 			$("nav.footer").html('<div class="btn-group btn-group-justified" role="group"><div class="btn-group" role="group" style="width: 100%"><button type="button" class="btn btnRegresar btn-primary btn-block">VER OTRO</button></div><div class="btn-group" role="group" style="width: 100%"><button type="button" class="btnAceptar btn btn-primary btn-block">ACEPTAR</button></div></div>');
 			
-			$("nav.footer").find(".btnAceptar").attr("oferta", el.idOrden).click(function(){
+			$(".btnAceptar").attr("oferta", el.idOrden).click(function(){
 				var oferta = $(this).attr("oferta");
 				alertify.confirm("¿Seguro?", function(e){
 		    		if(e) {
@@ -113,7 +113,7 @@ function panelOfertas(){
 		    	});
 			});
 			
-			$("nav.footer").find(".btnRegresar").click(function(){
+			$(".btnRegresar").click(function(){
 				panelOfertas();
 			});
 		});
