@@ -23,6 +23,13 @@
 			<span campo="peso"></span>
 		</div>
 	</div>
+	<div class="row">
+		<div class="col-12">
+			<i class="fa fa-user text-success" aria-hidden="true"></i>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<span campo="posicion"></span> / <span campo="interesados"></span> Postulados
+		</div>
+	</div>
 	<hr />
 	<p campo="descripcion">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
 	<hr />

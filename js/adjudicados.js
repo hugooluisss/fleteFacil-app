@@ -236,8 +236,8 @@ function panelAdjudicados(){
 						quality: 100,
 						destinationType: Camera.DestinationType.DATA_URL,
 						encodingType: Camera.EncodingType.JPEG,
-						targetWidth: 800,
-						targetHeight: 800,
+						targetWidth: 1024,
+						targetHeight: 728,
 						correctOrientation: true,
 						allowEdit: false,
 						saveToPhotoAlbum: true
@@ -257,8 +257,8 @@ function panelAdjudicados(){
 						quality: 100,
 						destinationType: Camera.DestinationType.DATA_URL,
 						encodingType: Camera.EncodingType.JPEG,
-						targetWidth: 800,
-						targetHeight: 800,
+						targetWidth: 1024,
+						targetHeight: 728,
 						correctOrientation: true,
 						allowEdit: false,
 						sourceType: navigator.camera.PictureSourceType.SAVEDPHOTOALBUM
