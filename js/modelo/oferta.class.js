@@ -7,11 +7,12 @@ TOferta = function(fn){
 		$.post(server + 'cordenes', {
 				"transportista": datos.id,
 				"orden": datos.oferta,
+				"monto": datos.monto,
 				"action": 'aceptar',
 				"movil": '1'
 			}, function(resp){
 				if (resp.band == false)
-					console.log(resp.mensaje);
+					console.log("No se pudo asignar");
 					
 				if (datos.fn.after !== undefined)
 					datos.fn.after(resp);

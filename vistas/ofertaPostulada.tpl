@@ -2,10 +2,10 @@
 	<div class="row">
 		<div class="col-12 text-center presupuesto">PRESUPUESTO <span class="badge badge-success" campo="presupuesto"></span> <span campo="plazo"></span></div>
 	</div>
-	<div class="mapa"></div>
+	<div class="mapa" id=""></div>
 	<div class="row posiciones">
 		<div class="col-12 text-center">
-			<span campo="origen"></span> - <span campo="destino"></span>
+			<span campo="origen"></span> <span campo="destino"></span>
 		</div>
 	</div>
 	<p class="text-center"><i class="fa fa-calendar" aria-hidden="true"></i> <span campo="fechaservicio"></span> <span campo="hora"></span></p>

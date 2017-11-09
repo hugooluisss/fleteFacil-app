@@ -34,7 +34,9 @@ function panelAdjudicados(){
 				plantilla.find(".mapa").attr("id", "mapa_" + el.idOrden);
 				
 				plantilla.find("[campo=origen]").html(el.origen_json.direccion);
-				plantilla.find("[campo=destino]").html(el.destino_json.direccion);
+				$.each(el.destinos, function(i, destino){
+					plantilla.find("[campo=destino]").html(destino.direccion);
+				})
 				
 				plantilla.find(".btnDetalle").click(function(){
 					getDetalle(el);

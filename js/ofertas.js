@@ -30,7 +30,11 @@ function panelOfertas(){
 				plantilla.find(".mapa").attr("id", "mapa_" + el.idOrden);
 				
 				plantilla.find("[campo=origen]").html(el.origen_json.direccion);
-				plantilla.find("[campo=destino]").html(el.destino_json.direccion);
+				$.each(el.destinos, function(i, destino){
+					plantilla.find("[campo=destino]").html(destino.direccion);
+				})
+				
+				//plantilla.find("[campo=destino]").html(el.destino_json.direccion);
 				
 				plantilla.find(".btnDetalle").click(function(){
 					getDetalle(el);
@@ -56,11 +60,37 @@ function panelOfertas(){
 				plantilla.find("[campo=" + campo + "]").html(valor);
 			});
 			
-			plantilla.find("[campo=presupuesto]").html("$ " + el.presupuesto);
+			plantilla.find("[campo=presupuestoFormat]").html("$ " + el.presupuesto);
 			plantilla.find(".mapa").attr("id", "mapa_" + el.idOrden);
 				
-			plantilla.find("[campo=origen]").html(el.origen_json.direccion);
-			plantilla.find("[campo=destino]").html(el.destino_json.direccion);
+			plantilla.find("[campo=origen]").html("");
+			var span = $("<a/>", {
+				href: "#",
+				text: el.origen_json.direccion
+			});
+			cont++;
+			span.click(function(){
+				el.mapa.setCenter(new google.maps.LatLng(el.origen_json.latitude, el.origen_json.longitude));
+				el.mapa.setZoom(15);
+				alertify.alert(el.origen_json.direccion);
+			});
+			plantilla.find("[campo=origen]").append(span);
+
+			plantilla.find("[campo=destino]").html("");
+			var cont = 0
+			$.each(el.destinos, function(i, destino){
+				var span = $("<a/>", {
+					href: "#",
+					text: ' - ' + destino.direccion
+				});
+				cont++;
+				span.click(function(){
+					el.mapa.setCenter(new google.maps.LatLng(destino.posicion.latitude, destino.posicion.longitude));
+					el.mapa.setZoom(15);
+					alertify.alert(destino.direccion);
+				});
+				plantilla.find("[campo=destino]").append(span);
+			});
 			
 			$("#modulo").html(plantilla);
 			
@@ -77,40 +107,53 @@ function panelOfertas(){
 			el.mapa.setCenter(LatLng);
 			el.origen.setPosition(LatLng);
 			el.origen.setMap(el.mapa);
-			
-			var LatLng = new google.maps.LatLng(el.destino_json.latitude, el.destino_json.longitude);
-			el.destino = new google.maps.Marker({label: "Destino"});
-			el.destino.setPosition(LatLng);
-			el.destino.setMap(el.mapa);
+			var cont = 0;
+			$.each(el.destinos, function(i, destino){
+				cont++;
+				var marca = new google.maps.Marker({title: cont.toString()});
+				marca.setPosition(new google.maps.LatLng(destino.posicion.latitude, destino.posicion.longitude));
+				marca.setMap(el.mapa);
+				
+				marca.addListener('click', function(){
+					el.mapa.setCenter(marca.getPosition());
+					el.mapa.setZoom(15);
+					alertify.alert(destino.direccion);
+				});
+			});
 			
 			$("nav.footer").html('<div class="btn-group btn-group-justified" role="group"><div class="btn-group" role="group" style="width: 100%"><button type="button" class="btn btnRegresar btn-primary btn-block">VER OTRO</button></div><div class="btn-group" role="group" style="width: 100%"><button type="button" class="btnAceptar btn btn-primary btn-block">ACEPTAR</button></div></div>');
 			
 			$(".btnAceptar").attr("oferta", el.idOrden).click(function(){
-				var oferta = $(this).attr("oferta");
-				alertify.confirm("¿Seguro?", function(e){
-		    		if(e) {
-		    		 var obj = new TOferta;
-		    		 obj.aceptar({
-		    		 	"id": idTransportista,
-		    		 	"oferta": oferta,
-		    		 	fn: {
-			    		 	before: function(){
-				    		 	jsShowWindowLoad("Estamos aceptando la propuesta");
-			    		 	}, after: function(resp){
-				    		 	jsRemoveWindowLoad();
-				    		 	console.log(resp);
-				    		 	if (resp.band){
-					    		 	panelOfertas();
-					    		 	
-					    		 	alertify.success("Muchas gracias por tu interes, te mantendremos informado de la adjudicación de la orden de trabajo");
-				    		 	}else{
-					    		 	alertify.error("La propuesta no fue aceptada, intentalo más tarde");
-				    		 	}
-			    		 	}
-		    		 	}
-		    		 });
-		    		}
-		    	});
+				alertify.prompt("El presupuesto es de $ " + el.presupuesto + " <br />¿Cual es tu mejor oferta?", function (e, monto){
+					if (e){
+						console.log(monto, el.presupuesto, idTransportista);
+						if (Number(monto) <= Number(el.presupuesto) && Number(monto) > 0){
+							var oferta = $(this).attr("oferta");
+				    		var obj = new TOferta;
+				    		obj.aceptar({
+				    			"id": idTransportista,
+				    			"oferta": el.idOrden,
+				    			"monto": monto,
+				    			fn: {
+									before: function(){
+										jsShowWindowLoad("Estamos aceptando la propuesta");
+									}, after: function(resp){
+										jsRemoveWindowLoad();
+	
+										if (resp.band){
+										 	panelOfertas();
+									 	
+										 	alertify.success("Muchas gracias por tu interes, te mantendremos informado de la adjudicación de la orden de trabajo");
+									 	}else{
+									 		alertify.error("La propuesta no fue aceptada, intentalo más tarde");
+										}
+									}
+								}
+							});
+						}else
+							alertify.alert("Tiene que ser un valor menor o igual que el presupuesto");
+					}
+				});
 			});
 			
 			$(".btnRegresar").click(function(){
