@@ -101,7 +101,8 @@ var app = {
 		window.plugins.PushbotsPlugin.resetBadge();
 		
 		//window.plugins.PushbotsPlugin.toggleNotifications(false);
-		window.plugins.PushbotsPlugin.setTags(["transportista_" + idTransportista]);
+		window.plugins.PushbotsPlugin.setTag("transportistas");
+		window.plugins.PushbotsPlugin.setAlias("transportista_" + idTransportista);
 	}
 };
 

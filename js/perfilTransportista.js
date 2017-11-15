@@ -1,4 +1,5 @@
 function panelPerfil(){
+	var tplEmpresa = '<div class="panel panel-danger"><div class="panel-heading"><b campo="razonsocial"></b></div><div class="panel-body"></div></div>';
 	var tplRegion = '<div class="row"><div class="col-12"><label class="custom-control custom-checkbox"><input type="checkbox" class="custom-control-input"><span class="custom-control-indicator"></span><span class="custom-control-description"></span></label></div></div>';
 	$("#dvTitulo").html("Perfil de usuario");
 	$("nav.footer").hide();
@@ -114,42 +115,48 @@ function panelPerfil(){
 						break;
 					}
 					
-					$.each(resp.regiones, function(i, region){
-						var plantillaRegion = $(tplRegion);
-						plantillaRegion.find(".custom-control-description").html(region.nombre);
-						plantillaRegion.find("input").val(region.idRegion).prop("checked", region.checked == 1);
+					$.each(resp.empresas, function(i, empresa){
+						plantillaEmpresa = $(tplEmpresa);
+						plantillaEmpresa.find("[campo=razonsocial]").text(empresa.razonsocial);
+						$("#regiones").append(plantillaEmpresa);
 						
-						
-						plantillaRegion.find("input").click(function(){
-							var el = $(this);
-							if (el.is(":checked")){
-								console.log("Checado", el.val());
-								transportista.addRegion({
-									"transportista": idTransportista,
-									"region": region.idRegion,
-									fn:{
-										after: function(resp){
-											if (!resp.band)
-												alertify.error("No se pudo agregar la región");
+						$.each(empresa.regiones, function(i, region){
+							var plantillaRegion = $(tplRegion);
+							plantillaRegion.find(".custom-control-description").html(region.nombre);
+							plantillaRegion.find("input").val(region.idRegion).prop("checked", region.checked == 1);
+							
+							
+							plantillaRegion.find("input").click(function(){
+								var el = $(this);
+								if (el.is(":checked")){
+									console.log("Checado", el.val());
+									transportista.addRegion({
+										"transportista": idTransportista,
+										"region": region.idRegion,
+										fn:{
+											after: function(resp){
+												if (!resp.band)
+													alertify.error("No se pudo agregar la región");
+											}
 										}
-									}
-								});
-							}else{
-								transportista.delRegion({
-									"transportista": idTransportista,
-									"region": region.idRegion,
-									fn:{
-										after: function(resp){
-											if (!resp.band)
-												alertify.error("No se pudo eliminar la región");
+									});
+								}else{
+									transportista.delRegion({
+										"transportista": idTransportista,
+										"region": region.idRegion,
+										fn:{
+											after: function(resp){
+												if (!resp.band)
+													alertify.error("No se pudo eliminar la región");
+											}
 										}
-									}
-								});
-								console.log("No checado", el.val());
-							}
+									});
+									console.log("No checado", el.val());
+								}
+							});
+							
+							plantillaEmpresa.find(".panel-body").append(plantillaRegion);
 						});
-						
-						$("#regiones").append(plantillaRegion);
 					});
 					
 					jsRemoveWindowLoad();
