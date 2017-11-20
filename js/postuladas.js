@@ -33,7 +33,9 @@ function panelPostuladas(){
 				plantilla.find(".mapa").attr("id", "mapa_" + el.idOrden);
 				
 				plantilla.find("[campo=origen]").html(el.origen_json.direccion);
-				plantilla.find("[campo=destino]").html(el.destino_json.direccion);
+				$.each(el.destinos, function(i, destino){
+					plantilla.find("[campo=destino]").html(destino.direccion);
+				})
 				
 				plantilla.find(".btnDetalle").click(function(){
 					getDetalle(el);
@@ -58,18 +60,54 @@ function panelPostuladas(){
 			});
 			
 			plantilla.find(".mapa").attr("id", "mapa_" + el.idOrden);
-				
-			plantilla.find("[campo=origen]").html(el.origen_json.direccion);
-			plantilla.find("[campo=destino]").html(el.destino_json.direccion);
 			
 			$("#modulo").html(plantilla);
-			
-			el.mapa = new google.maps.Map(document.getElementById("mapa_" + el.idOrden), {
+			var mapa = new google.maps.Map(document.getElementById("mapa_" + el.idOrden), {
 				center: {lat: el.origen_json.latitude, lng: el.origen_json.longitude},
 				scrollwheel: true,
 				fullscreenControl: true,
 				zoom: 4,
 				zoomControl: true
+			});
+				
+			plantilla.find("[campo=origen]").html("");
+			var span = $("<a/>", {
+				href: "#",
+				text: el.origen_json.direccion
+			});
+			
+			span.click(function(){
+				mapa.setCenter(new google.maps.LatLng(el.origen_json.latitude, el.origen_json.longitude));
+				mapa.setZoom(15);
+				alertify.alert(el.origen_json.direccion);
+			});
+			plantilla.find("[campo=origen]").append(span);
+			
+			plantilla.find("[campo=destino]").html("");
+			var cont = 0
+			$.each(el.destinos, function(i, destino){
+				var span = $("<a/>", {
+					href: "#",
+					text: ' - ' + destino.direccion
+				});
+				cont++;
+				
+				span.click(function(){
+					mapa.setCenter(new google.maps.LatLng(destino.posicion.latitude, destino.posicion.longitude));
+					mapa.setZoom(15);
+					alertify.alert(destino.direccion);
+				});
+				plantilla.find("[campo=destino]").append(span);
+				
+				var marca = new google.maps.Marker({title: cont.toString()});
+				marca.setPosition(new google.maps.LatLng(destino.posicion.latitude, destino.posicion.longitude));
+				marca.setMap(mapa);
+				
+				marca.addListener('click', function(){
+					mapa.setCenter(marca.getPosition());
+					mapa.setZoom(15);
+					alertify.alert(destino.direccion);
+				});
 			});
 			
 			plantilla.find(".btnRegresar").click(function(){
@@ -78,14 +116,9 @@ function panelPostuladas(){
 			
 			var LatLng = new google.maps.LatLng(el.origen_json.latitude, el.origen_json.longitude);
 			el.origen = new google.maps.Marker({label: "Origen"});
-			el.mapa.setCenter(LatLng);
+			mapa.setCenter(LatLng);
 			el.origen.setPosition(LatLng);
-			el.origen.setMap(el.mapa);
-			
-			var LatLng = new google.maps.LatLng(el.destino_json.latitude, el.destino_json.longitude);
-			el.destino = new google.maps.Marker({label: "Destino"});
-			el.destino.setPosition(LatLng);
-			el.destino.setMap(el.mapa);
+			el.origen.setMap(mapa);
 		});
 	}
 }

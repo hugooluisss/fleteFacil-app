@@ -1,7 +1,8 @@
 server = "http://app.syncro.cl/";
-//server = "http://10.0.0.5/fleteFacil-web/";
-//server = "http://127.0.0.1/fleteFacil-web/";
-//server = "http://192.168.2.4/fleteFacil-web/";
+server = "http://10.0.0.5/fleteFacil-web/";
+server = "http://172.10.22.5/fleteFacil-web/";
+server = "http://192.168.2.4/fleteFacil-web/";
+
 var idTransportista = undefined;
 /*
 *

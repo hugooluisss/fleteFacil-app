@@ -46,8 +46,8 @@
 				<div class="modal-body">
 					<form onsubmit="javascript: return false" method="post" id="frmActualizarDatos" name="frmActualizarDatos">
 						<div class="alert alert-success" role="alert">
-							¿En que regiones puedes trabajar?
-							<small class="text-muted">Esto servirá para informarte de nuevas ordenes de trabajo en las regiones</small>
+							¿En que regiones puedes trabajar? ¿Con que empresas puedo postular?
+							<small class="text-muted">Esto servirá para informarte de nuevas ordenes de trabajo que publican las empresas en regiones especificas</small>
 						</div>
 						<div id="regiones">
 							

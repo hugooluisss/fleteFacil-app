@@ -5,7 +5,7 @@
 	<div class="mapa"></div>
 	<div class="row posiciones">
 		<div class="col-12 text-center">
-			<span campo="origen"></span> - <span campo="destino"></span>
+			<span campo="origen"></span> <span campo="destino"></span>
 		</div>
 	</div>
 	<p class="text-center"><i class="fa fa-calendar" aria-hidden="true"></i> <span campo="fechaservicio"></span> <span campo="hora"></span></p>

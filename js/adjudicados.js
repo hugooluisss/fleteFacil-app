@@ -34,7 +34,9 @@ function panelAdjudicados(){
 				plantilla.find(".mapa").attr("id", "mapa_" + el.idOrden);
 				
 				plantilla.find("[campo=origen]").html(el.origen_json.direccion);
-				plantilla.find("[campo=destino]").html(el.destino_json.direccion);
+				$.each(el.destinos, function(i, destino){
+					plantilla.find("[campo=destino]").html(destino.direccion);
+				})
 				
 				plantilla.find(".btnDetalle").click(function(){
 					getDetalle(el);
@@ -83,12 +85,22 @@ function panelAdjudicados(){
 			
 			plantilla.find(".mapa").attr("id", "mapa_" + el.idOrden);
 				
-			plantilla.find("[campo=origen]").html(el.origen_json.direccion);
-			plantilla.find("[campo=destino]").html(el.destino_json.direccion);
+			plantilla.find("[campo=origen]").html("");
+			var span = $("<a/>", {
+				href: "#",
+				text: el.origen_json.direccion
+			});
+			
+			span.click(function(){
+				mapa.setCenter(new google.maps.LatLng(el.origen_json.latitude, el.origen_json.longitude));
+				mapa.setZoom(15);
+				alertify.alert(el.origen_json.direccion);
+			});
+			plantilla.find("[campo=origen]").append(span);
 			
 			$("#modulo").html(plantilla);
 			
-			el.mapa = new google.maps.Map(document.getElementById("mapa_" + el.idOrden), {
+			mapa = new google.maps.Map(document.getElementById("mapa_" + el.idOrden), {
 				center: {lat: el.origen_json.latitude, lng: el.origen_json.longitude},
 				scrollwheel: true,
 				fullscreenControl: true,
@@ -98,20 +110,60 @@ function panelAdjudicados(){
 			
 			var LatLng = new google.maps.LatLng(el.origen_json.latitude, el.origen_json.longitude);
 			el.origen = new google.maps.Marker({label: "Origen"});
-			el.mapa.setCenter(LatLng);
+			mapa.setCenter(LatLng);
 			el.origen.setPosition(LatLng);
-			el.origen.setMap(el.mapa);
+			el.origen.setMap(mapa);
 			
-			var LatLng = new google.maps.LatLng(el.destino_json.latitude, el.destino_json.longitude);
-			el.destino = new google.maps.Marker({label: "Destino"});
-			el.destino.setPosition(LatLng);
-			el.destino.setMap(el.mapa);
+			plantilla.find("[campo=destino]").html("");
+			var cont = 0
+			$.each(el.destinos, function(i, destino){
+				var span = $("<a/>", {
+					href: "#",
+					text: ' - ' + destino.direccion
+				});
+				
+				$("#selPunto").append($("<option />", {
+					text: destino.direccion,
+					value: destino.idPunto
+				}));
+				
+				cont++;
+				
+				span.click(function(){
+					mapa.setCenter(new google.maps.LatLng(destino.posicion.latitude, destino.posicion.longitude));
+					mapa.setZoom(15);
+					alertify.alert(destino.direccion);
+				});
+				plantilla.find("[campo=destino]").append(span);
+				
+				var marca = new google.maps.Marker({title: cont.toString()});
+				marca.setPosition(new google.maps.LatLng(destino.posicion.latitude, destino.posicion.longitude));
+				marca.setMap(mapa);
+				
+				marca.addListener('click', function(){
+					mapa.setCenter(marca.getPosition());
+					mapa.setZoom(15);
+					alertify.alert(destino.direccion);
+				});
+			});
+			
 			idOrden = window.localStorage.getItem("idOrden");
 			
 			plantilla.find(".btnEnRuta").attr("oferta", el.idOrden).click(function(){
 				window.localStorage.removeItem("idOrden");
 				window.localStorage.setItem("idOrden", plantilla.find(".btnEnRuta").attr("oferta"));
-						
+				
+				$.post(server + 'cordenes', {
+					"orden": el.idOrden,
+					"action": 'setEnRuta',
+					"movil": '1'
+				}, function(resp){
+					if (!resp.band)
+						console.log("Error");
+					else
+						console.log("Posición reportada");
+				}, "json");
+				/*		
 				backgroundGeolocation.configure(function(location){
 					idOrden = window.localStorage.getItem("idOrden");
 					if (idOrden != undefined){
@@ -140,7 +192,7 @@ function panelAdjudicados(){
 				}, {
 					desiredAccuracy: 10,
 					stationaryRadius: 20,
-					distanceFilter: 20,
+					distanceFilter: 100,
 					interval: 120000,
 					notificationTitle: "Transporte en ruta",
 					notificationText: "Haz iniciado el reporte de la ruta",
@@ -149,7 +201,7 @@ function panelAdjudicados(){
 				});
 				
 				backgroundGeolocation.start();
-				
+				*/
 				plantilla.find(".dvReportar").show();
 				plantilla.find(".groupTerminar").show();
 				plantilla.find(".dvEnRuta").hide();

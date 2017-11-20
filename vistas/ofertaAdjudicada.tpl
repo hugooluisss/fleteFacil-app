@@ -6,7 +6,7 @@
 	<div class="mapa"></div>
 	<div class="row posiciones">
 		<div class="col-12 text-center">
-			<span campo="origen"></span> - <span campo="destino"></span>
+			<span campo="origen"></span><span campo="destino"></span>
 		</div>
 	</div>
 	<p class="text-center"><i class="fa fa-calendar" aria-hidden="true"></i> <span campo="fechaservicio"></span> <span campo="hora"></span></p>
@@ -34,7 +34,7 @@
 	<div class="dvEnRuta">
 		<hr />
 		<h6 class="card-subtitle text-danger text-center">En ruta</h6>
-		<p class="text-justify"><b>En ruta</b> significa que estás iniciando el servicio y que la carga va en camino para ser entregada al cliente. Para esto tomaremos tu ubicación cada X tiempo para informarle al cliente el lugar donde te encuentras</p>
+		<p class="text-justify"><b>En ruta</b> significa que estás iniciando el servicio y que la carga va en camino para ser entregada en alguno de los puntos. Para esto tomaremos tu ubicación cada X tiempo para informarle al cliente el lugar donde te encuentras</p>
 		<div class="row">
 			<div class="col-12 text-center">
 				<div class="btn-group btn-group-justified" style="width: 90%" role="group">
@@ -48,7 +48,7 @@
 	</div>
 	<div class="dvReportar">
 		<hr />
-		<h6 class="card-subtitle text-danger text-center">Terminar servicio</h6>
+		<h6 class="card-subtitle text-danger text-center">Entregar servicio</h6>
 		<br />
 		<p class="text-justify">La carga se encuentra en ruta, recuerda que al finalizar la entrega debes de entregar tu reporte</p>
 		<div class="row">
@@ -62,6 +62,15 @@
 			</div>
 		</div>
 		<br />
+		<div class="row">
+			<div class="col-12 text-mute text-center">¿En que <b>punto de entrega</b> te encuentras?</div>
+		</div>
+		<div class="row">
+			<div class="col-12 text-mute text-center">
+				<select id="selPunto" name="selPunto" class="form-control">
+				</select>
+			</div>
+		</div>
 		<div class="row">
 			<div class="col-12 text-mute text-center">¿Algún comentario?</div>
 		</div>
