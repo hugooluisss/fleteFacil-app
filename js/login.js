@@ -65,9 +65,9 @@ var app = {
 		});
 		
 		jsShowWindowLoad();
-		idTransportista = window.localStorage.getItem("sesion");
+		idChofer = window.localStorage.getItem("sesion");
 		
-		if (idTransportista != null && idTransportista != undefined && idTransportista != '')
+		if (idChofer != null && idChofer != undefined && idChofer != '')
 			location.href = "inicio.html";
 		
 		jsRemoveWindowLoad();
@@ -84,9 +84,9 @@ $(document).ready(function(){
 				if (str == '')
 					alertify.error("No se indicó un correo electrónico");
 				else{
-					var transportista = new TTransportista;
+					var chofer = new TChofer;
 					
-					transportista.recuperarPass(str, {
+					chofer.recuperarPass(str, {
 						before: function(){
 							$("#lnkLostPass").prop("disabled", true);
 							alertify.success("Gracias, enviaremos un correo a <b>" + str + "</b> para la recuperación de tu contraseña");
@@ -117,7 +117,7 @@ $(document).ready(function(){
 		},
 		wrapper: 'span',
 		submitHandler: function(form){
-			var obj = new TTransportista;
+			var obj = new TChofer;
 			
 			obj.login({
 				usuario: $("#txtUsuario").val(), 
@@ -126,12 +126,13 @@ $(document).ready(function(){
 					$("#frmLogin [type=submit]").prop("disabled", true);
 				},
 				after: function(data){
-					if (data.band == false){
+					if (data.band == false || (data.datos.perfil != 4 && data.datos.perfil != 5)){
 						alertify.alert("Tus datos no son válidos");
 						$("#frmLogin [type=submit]").prop("disabled", false);
 					}else{
 						window.localStorage.removeItem("sesion");
-						window.localStorage.setItem("sesion", data.transportista);
+						window.localStorage.setItem("sesion", data.datos.usuario);
+						window.localStorage.setItem("perfil", data.datos.perfil);
 						
 						location.href = "inicio.html";
 					}

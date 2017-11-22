@@ -17,7 +17,7 @@
  * under the License.
  */
 var db = null;
-var idTransportista = undefined;
+var objChofer = undefined;
 var mapa = null;
 var marca = null;
 var idOrden = null;
@@ -43,13 +43,20 @@ var app = {
 			return false;
 		}, true);
 		//window.localStorage.removeItem("sesion");
-		idTransportista = window.localStorage.getItem("sesion");
-		if (idTransportista == null || idTransportista == undefined || idTransportista == '')
+		var idChofer = window.localStorage.getItem("sesion");
+		if (idChofer == null || idChofer == undefined || idChofer == '')
 			location.href = "index.html";
-			
-		setMenu();
-		
-		setPrincipal();
+		else{
+			objChofer = new TChofer(idChofer);
+			objChofer.getData({
+				"fn": {
+					after: function(datos){
+						setMenu();
+						setPrincipal();
+					}
+				}
+			});
+		}
 		
 		window.plugins.PushbotsPlugin.initialize("591c5d2d4a9efa6e888b4567", {
 			"android":{
