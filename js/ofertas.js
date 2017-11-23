@@ -6,7 +6,7 @@ function panelOfertas(){
 	$.get("vistas/listaOfertas.tpl", function(plantillaOferta){
 		jsShowWindowLoad("Espera mientras obtenemos las ofertas para ti");
 		$.post(server + "listaOrdenesTransportista", {
-			"transportista": idTransportista,
+			"transportista": objChofer.datos.idTransportista,
 			"movil": 1
 		}, function(resp){
 			$("#modulo").html("");
@@ -77,20 +77,18 @@ function panelOfertas(){
 			plantilla.find("[campo=origen]").append(span);
 
 			plantilla.find("[campo=destino]").html("");
-			var cont = 0
-			$.each(el.destinos, function(i, destino){
-				var span = $("<a/>", {
-					href: "#",
-					text: ' - ' + destino.direccion
-				});
-				cont++;
-				span.click(function(){
-					el.mapa.setCenter(new google.maps.LatLng(destino.posicion.latitude, destino.posicion.longitude));
-					el.mapa.setZoom(15);
-					alertify.alert(destino.direccion);
-				});
-				plantilla.find("[campo=destino]").append(span);
+			var cont = 0;
+			destino = el.destinos[el.destinos.length-1];
+			var span = $("<a/>", {
+				href: "#",
+				text: ' - ' + destino.direccion
 			});
+			span.click(function(){
+				el.mapa.setCenter(new google.maps.LatLng(destino.posicion.latitude, destino.posicion.longitude));
+				el.mapa.setZoom(15);
+				alertify.alert(destino.direccion);
+			});
+			plantilla.find("[campo=destino]").append(span);
 			
 			$("#modulo").html(plantilla);
 			
@@ -131,7 +129,7 @@ function panelOfertas(){
 							var oferta = $(this).attr("oferta");
 				    		var obj = new TOferta;
 				    		obj.aceptar({
-				    			"id": idTransportista,
+				    			"id": objChofer.datos.idTransportista,
 				    			"oferta": el.idOrden,
 				    			"monto": monto,
 				    			fn: {

@@ -106,7 +106,7 @@ function panelPerfil(){
 				$("#dvNoDisponible").show();
 			break;
 		}
-		console.log(objChofer.perfil);
+		
 		$("#btnWinRegiones").hide();
 		
 		if (objChofer.perfil == 4){
@@ -157,8 +157,11 @@ function panelPerfil(){
 		}
 		
 		jsRemoveWindowLoad();
+		
+		$("#winRegiones").on('hide.bs.modal', function(e){
+			objChofer.getData({fn:{}});
+		});
 	});
-	
 	
 	function subirFotoPerfil(imageURI){
 		$.post(server + 'cclientes', {

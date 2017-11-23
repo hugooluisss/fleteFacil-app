@@ -75,7 +75,7 @@ function setPrincipal(){
 		var el = $(this);
 		alertify.confirm("¿Seguro?", function(e){
 			if(e) {
-				chofer.setSituacion({
+				objChofer.setSituacion({
 					"situacion": el.attr("situacion"),
 					fn: {
 						before: function(){

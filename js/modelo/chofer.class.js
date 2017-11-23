@@ -98,8 +98,8 @@ TChofer = function(chofer){
 	
 	this.setSituacion = function(datos){
 		if (datos.fn.before !== undefined) datos.fn.before();
-		$.post(server + 'ctransportistas', {
-			"transportista": idTransportista,
+		$.post(server + 'cchofer', {
+			"chofer": self.id,
 			"situacion": datos.situacion,
 			"action": 'setSituacion',
 			"movil": 1
