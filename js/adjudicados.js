@@ -240,7 +240,7 @@ function panelAdjudicados(){
 	function accionesOperador(el){
 		$(".btnEnRuta").attr("oferta", el.idOrden).click(function(){
 			window.localStorage.removeItem("idOrden");
-			window.localStorage.setItem("idOrden", plantilla.find(".btnEnRuta").attr("oferta"));
+			window.localStorage.setItem("idOrden", $find(".btnEnRuta").attr("oferta"));
 			
 			$.post(server + 'cordenes', {
 				"orden": el.idOrden,
