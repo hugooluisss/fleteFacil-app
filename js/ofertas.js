@@ -3,35 +3,6 @@ function panelOfertas(){
 	$("nav.footer").hide();
 	$("nav.footer").html("");
 	
-	cordova.plugins.diagnostic.isLocationAvailable(function(available){
-	    alert("Location is " + (available ? "available" : "not available"));
-	    if (available == false){
-		    cordova.plugins.diagnostic.isLocationAuthorized(function(authorized){
-	        console.log("Location is " + (authorized ? "authorized" : "unauthorized"));
-	        if(authorized){
-	            checkDeviceSetting();
-	        }else{
-	            cordova.plugins.locationAccuracy.request(function (success){
-	                console.log("Successfully requested high accuracy location mode: "+success.message);
-	            }, function onRequestFailure(error){
-	                console.error("Accuracy request failed: error code="+error.code+"; error message="+error.message);
-	                if(error.code !== cordova.plugins.locationAccuracy.ERROR_USER_DISAGREED){
-	                    if(confirm("Failed to automatically set Location Mode to 'High Accuracy'. Would you like to switch to the Location Settings page and do this manually?")){
-	                        cordova.plugins.diagnostic.switchToLocationSettings();
-	                    }
-	                }
-	            }, cordova.plugins.locationAccuracy.REQUEST_PRIORITY_HIGH_ACCURACY);
-            }, function(error){
-                console.error(error);
-            });
-	     }
-    }, function(error){
-        console.error("The following error occurred: "+error);
-    });
-	}, function(error){
-	   alert("The following error occurred: "+error);
-	});
-	
 	$.get("vistas/listaOfertas.tpl", function(plantillaOferta){
 		jsShowWindowLoad("Espera mientras obtenemos las ofertas para ti");
 		$.post(server + "listaOrdenesTransportista", {

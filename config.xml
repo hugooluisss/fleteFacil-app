@@ -34,7 +34,9 @@
 		<preference name="LoadUrlTimeoutValue" value="70000"/>
 		<preference name="android-windowSoftInputMode" value="stateVisible|adjustResize"/>
 		<preference name="EnableLocation" value="true" />
-
+		<uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+		<uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+		<uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS" />
 
 		<!-- Plugins -->  
 		<!-- Core plugins -->  
@@ -64,6 +66,7 @@
 		<gap:plugin name="pushbots-cordova-plugin" spec="^1.4.0" source="npm" />
 		<plugin name="cordova-plugin-background-mode"/>
 		<!--<plugin name="cordova-plugin-mauron85-background-geolocation"/>-->
+		
 		
 		<!-- Define app icon for each platform. -->  
 		<icon src="icon.png" />  
