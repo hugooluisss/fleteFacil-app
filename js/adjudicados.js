@@ -253,14 +253,14 @@ function panelAdjudicados(){
 					console.log("Posición reportada");
 			}, "json");
 			
-			GPSLocation.getCurrentPosition(function(position){
+			navigator.geolocation.getCurrentPosition(function(position){
 				console.log("Ok", position);
 			}, function(error){
 				console.log("Error", error);
 			});
 			
 			cordova.plugins.backgroundMode.on('enable', function(){
-				GPSLocation.getCurrentPosition(function(position){
+				navigator.geolocation.getCurrentPosition(function(position){
 					$.post(server + 'cordenes', {
 							"orden": idOrden,
 							"latitude": position.coords.latitude,
