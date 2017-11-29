@@ -326,7 +326,7 @@ function panelAdjudicados(){
 			
 			alertify.log("Iniciamos el proceso de seguimiento de la carga");
 		});
-		*/
+		
 		$(".btnTerminar").attr("oferta", el.idOrden).click(function(){
 			var oferta = $(this).attr("oferta");
 			
