@@ -58,7 +58,7 @@
 		</plugin>
 		-->
 		<gap:plugin name="pushbots-cordova-plugin" spec="^1.4.0" source="npm" />
-		<plugin name="cordova-plugin-mauron85-background-geolocation"/>
+		<plugin name="@mauron85/cordova-plugin-background-geolocation"/>
 		
 		<!-- Define app icon for each platform. -->  
 		<icon src="icon.png" />  
