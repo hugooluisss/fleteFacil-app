@@ -242,23 +242,6 @@ function panelAdjudicados(){
 			window.localStorage.removeItem("idOrden");
 			window.localStorage.setItem("idOrden", plantilla.find(".btnEnRuta").attr("oferta"));
 			
-<<<<<<< HEAD
-			$("#btnCamara").click(function(){
-				if ($("#lstImg").find("img").length < 4){
-					navigator.camera.getPicture(function(imageURI){
-						agregarFoto(imageURI);
-					}, function(message){
-						alertify.error("Ocurrio un error al obtener la imagen");
-					}, { 
-						quality: 100,
-						destinationType: Camera.DestinationType.DATA_URL,
-						encodingType: Camera.EncodingType.JPEG,
-						targetWidth: 1024,
-						targetHeight: 728,
-						correctOrientation: true,
-						allowEdit: false,
-						saveToPhotoAlbum: true
-=======
 			$.post(server + 'cordenes', {
 				"orden": el.idOrden,
 				"action": 'setEnRuta',
@@ -288,7 +271,6 @@ function panelAdjudicados(){
 						backgroundGeolocation.finish();
 					}).fail(function(){
 						console.log("Error bug");
->>>>>>> empresas
 					});
 				}else{
 					console.log("No se conoce el id de la orden");
@@ -307,26 +289,6 @@ function panelAdjudicados(){
 				debug: false
 			});
 			
-<<<<<<< HEAD
-			$("#btnGaleria").click(function(){
-				if ($("#lstImg").find("img").length < 4){
-					navigator.camera.getPicture(function(imageURI){
-						agregarFoto(imageURI);
-					}, function(message){
-						alertify.error("Ocurrio un error al obtener la imagen");
-					}, { 
-						quality: 100,
-						destinationType: Camera.DestinationType.DATA_URL,
-						encodingType: Camera.EncodingType.JPEG,
-						targetWidth: 1024,
-						targetHeight: 728,
-						correctOrientation: true,
-						allowEdit: false,
-						sourceType: navigator.camera.PictureSourceType.SAVEDPHOTOALBUM
-					});
-				}else
-					alertify.error("Solo se permiten 4 fotografías");
-=======
 			backgroundGeolocation.start();
 			
 			$(".dvReportar").show();
