@@ -108,7 +108,50 @@
 		<gap:config-file platform="ios" parent="NSPhotoLibraryUsageDescription">
 			<string>Para actualizar las imagenes</string>
 		</gap:config-file>
-		
+		<application
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@android:style/Theme.Light.NoTitleBar.Fullscreen" >
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
+        <meta-data
+            android:name="onMessageOpen"
+            android:value="com.app42.phonegap.push.PhoneGapActivity" />
+
+        <activity
+            android:name="com.app42.phonegap.push.PhoneGapActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:label="@string/app_name"
+            android:theme="@android:style/Theme.Light.NoTitleBar.Fullscreen" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <receiver
+            android:name="com.shephertz.app42.push.plugin.App42GCMReceiver"
+            android:permission="com.google.android.c2dm.permission.SEND" >
+            <intent-filter>
+
+                <!-- Receives the actual messages. -->
+                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+                <!-- Receives the registration id. -->
+                <action android:name="com.google.android.c2dm.intent.REGISTRATION" />
+                <!-- Your package name here -->
+                <category android:name="com.app42.phonegap.push" />
+            </intent-filter>
+        </receiver>
+
+        <!--
+          Application-specific subclass of intentService that will
+          handle received messages.
+        -->
+        <service android:name="com.shephertz.app42.push.plugin.App42GCMService" >
+        </service>
+    </application>
 		<!--  
 		 Define access to external domains.  
 		 <access />      - a blank access tag denies access to all external resources.  
