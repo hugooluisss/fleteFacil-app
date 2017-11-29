@@ -41,7 +41,7 @@
 		<!--<plugin name="com.phonegap.plugins.barcodescanner" spec="2.0.0" source="pgb" />-->
 		<plugin name="cordova-plugin-camera" source="npm"/>
 		<plugin name="cordova-plugin-file" source="npm"/>
-		<plugin name="cordova-plugin-file-transfer" source="npm"/>
+		<!--<plugin name="cordova-plugin-file-transfer" source="npm"/>-->
 		<plugin name="cordova-plugin-media-capture" source="npm"/>
 		
 		<plugin name="cordova-plugin-geolocation" source="npm"/>
