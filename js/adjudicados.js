@@ -276,7 +276,7 @@ function panelAdjudicados(){
 							console.log("Listo BG");
 						}).fail(function(){
 							console.log("Error bug");
-						}), 1000);
+						}), 500);
 				}, function(error){
 					console.log("Error GPS", error);
 				});
