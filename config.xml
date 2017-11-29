@@ -33,6 +33,8 @@
 		<preference name="android-build-tool" value="gradle" />
 		<preference name="LoadUrlTimeoutValue" value="70000"/>
 		<preference name="android-windowSoftInputMode" value="stateVisible|adjustResize"/>
+		<preference name="EnableLocation" value="true" />
+
 
 		<!-- Plugins -->  
 		<!-- Core plugins -->  
@@ -47,7 +49,6 @@
 		<plugin name="cordova-plugin-media-capture" source="npm"/>
 		
 		<plugin name="cordova-plugin-geolocation" source="npm"/>
-		<plugin name="cordova-advanced-geolocation" source="npm"/>
 		
 		<plugin name="cordova-plugin-network-information" source="npm"/>
 		<!--<plugin name="cordova-plugin-sqlite" source="npm"/>-->
