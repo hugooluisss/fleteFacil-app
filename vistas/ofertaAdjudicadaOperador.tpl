@@ -1,7 +1,4 @@
 <div class="orden">
-	<div class="row">
-		<div class="col-12 text-center presupuesto">PRESUPUESTO <span class="badge badge-success" campo="presupuesto"></span> <span campo="plazo"></span></div>
-	</div>
 	<div class="viewEstado text-center text-danger" style="display: none"><b>REPORTE ENTREGADO</b></div>
 	<div class="mapa"></div>
 	<div class="row posiciones">
@@ -33,8 +30,7 @@
 	<br />
 	<div class="dvEnRuta">
 		<hr />
-		<h6 class="card-subtitle text-danger text-center">En ruta</h6>
-		<p class="text-justify"><b>En ruta</b> significa que estás iniciando el servicio y que la carga va en camino para ser entregada en alguno de los puntos. Para esto tomaremos tu ubicación cada X tiempo para informarle al cliente el lugar donde te encuentras</p>
+		<p class="text-justify">Una vez la carga o proceso de entrega debes de colocar tu posición <b>EN RUTA</b> para informar tu posición y mejorar la información hacia el cliente</p>
 		<div class="row">
 			<div class="col-12 text-center">
 				<div class="btn-group btn-group-justified" style="width: 90%" role="group">

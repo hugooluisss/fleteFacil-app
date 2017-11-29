@@ -11,7 +11,7 @@
 			<p>
 			<small><b>Tu estado  es <span class="text-success">Disponible</span></b>, te estaremos enviando las nuevas cargas a las cuales puedes calificar</small>
 			</p>
-			<button type="button" class="btn btn-info btn-lg btn-block" data-toggle="modal" data-target="#winRegiones">Actualizar regiones</button>
+			<button type="button" class="btn btn-info btn-lg btn-block" data-toggle="modal" data-target="#winRegiones" id="btnWinRegiones">Actualizar regiones</button>
 			<button type="button" class="btn btn-danger btn-lg btn-block" situacion="3">Cambiar a no disponible</button>
 		</div>
 	</div>

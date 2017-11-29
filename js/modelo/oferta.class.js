@@ -19,6 +19,25 @@ TOferta = function(fn){
 			}, "json");
 	}
 	
+	this.asignarChofer = function(datos){
+		if (datos.fn.before !== undefined) datos.fn.before();
+		
+		$.post(server + 'cordenes', {
+				"chofer": datos.conductor,
+				"orden": datos.orden,
+				"patenteRampla": datos.patenteRampla,
+				"patenteCamion": datos.patenteCamion,
+				"action": 'asignarChofer',
+				"movil": '1'
+			}, function(resp){
+				if (resp.band == false)
+					console.log("No se pudo asignar");
+					
+				if (datos.fn.after !== undefined)
+					datos.fn.after(resp);
+			}, "json");
+	}
+	
 	this.sendPosicion = function(datos){
 		if (datos.fn.before !== undefined) datos.fn.before();
 		
