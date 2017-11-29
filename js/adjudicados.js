@@ -253,7 +253,7 @@ function panelAdjudicados(){
 					console.log("Posición reportada");
 			}, "json");
 			
-			cordova.plugins.backgroundMode.on('EVENT', function(){
+			cordova.plugins.backgroundMode.on('enable', function(){
 				GPSLocation.getCurrentPosition(function(){
 					$.post(server + 'cordenes', {
 							"orden": idOrden,
