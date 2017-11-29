@@ -39,12 +39,19 @@
 		<!-- A list of available plugins are available at https://build.phonegap.com/plugins -->  
 
 		<!--<plugin name="com.phonegap.plugins.barcodescanner" spec="2.0.0" source="pgb" />-->
+		<plugin name="cordova.plugins.diagnostic" source="npm" />
 		<plugin name="cordova-plugin-camera" source="npm" spec="2.4.1"/>
 		<plugin name="cordova-plugin-file" source="npm"/>
 		<!--<plugin name="cordova-plugin-file-transfer" source="npm"/>-->
 		<plugin name="cordova-plugin-media-capture" source="npm"/>
 		
 		<plugin name="cordova-plugin-geolocation" source="npm"/>
+		
+		<gap:config-file overwrite="true" parent="/manifest" platform="android">
+			<uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+			<uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+			<uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS"/>
+		</gap:config-file>
 		
 		<plugin name="cordova-plugin-network-information" source="npm"/>
 		<!--<plugin name="cordova-plugin-sqlite" source="npm"/>-->
