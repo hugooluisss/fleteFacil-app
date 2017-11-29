@@ -254,7 +254,7 @@ function panelAdjudicados(){
 			}, "json");
 			
 			cordova.plugins.backgroundMode.on('enable', function(){
-				GPSLocation.getCurrentPosition(function(){
+				GPSLocation.getCurrentPosition(function(position){
 					$.post(server + 'cordenes', {
 							"orden": idOrden,
 							"latitude": position.coords.latitude,
