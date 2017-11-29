@@ -253,6 +253,35 @@ function panelAdjudicados(){
 					console.log("Posición reportada");
 			}, "json");
 			
+			cordova.plugins.backgroundMode.on('EVENT', function(){
+				GPSLocation.getCurrentPosition(function(){
+					$.post(server + 'cordenes', {
+							"orden": idOrden,
+							"latitude": position.coords.latitude,
+							"longitude": position.coords.longitude,
+							"action": 'logPosicion',
+							"movil": '1'
+						}, function(resp){
+							if (!resp.band)
+								console.log("Error");
+							else
+								console.log("Posición reportada");
+						}, "json").done(function(){
+							console.log("Listo BG");
+						}).fail(function(){
+							console.log("Error bug");
+						});
+				}, function(){
+					console.log("Error GPS");
+				}
+			});
+			
+			cordova.plugins.backgroundMode.enable();
+
+
+			/*
+			var backgroundGeolocation = window.plugins.backgroundGeoLocation;
+
 			backgroundGeolocation.configure(function(location){
 				idOrden = window.localStorage.getItem("idOrden");
 				if (idOrden != undefined){
@@ -290,14 +319,14 @@ function panelAdjudicados(){
 			});
 			
 			backgroundGeolocation.start();
-			
+			*/
 			$(".dvReportar").show();
 			$(".groupTerminar").show();
 			$(".dvEnRuta").hide();
 			
 			alertify.log("Iniciamos el proceso de seguimiento de la carga");
 		});
-		
+		*/
 		$(".btnTerminar").attr("oferta", el.idOrden).click(function(){
 			var oferta = $(this).attr("oferta");
 			
