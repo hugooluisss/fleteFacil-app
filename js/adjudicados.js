@@ -50,7 +50,15 @@ function panelAdjudicados(){
 	});
 	
 	function getDetalle(el){
-		var plantillaUsar = objChofer.perfil == 4?"vistas/ofertaAdjudicadaSupervisor.tpl":"vistas/ofertaAdjudicadaOperador.tpl";
+		var plantillaUsar = "";
+		
+		if (objChofer.perfil == 4){
+			plantillaUsar = "vistas/ofertaAdjudicadaSupervisor.tpl";
+			console.log(objChofer.idUsuario, el.chofer);
+			if (objChofer.id == el.chofer)
+				plantillaUsar = "vistas/ofertaAdjudicadaOperador.tpl";
+		}else
+			plantillaUsar = "vistas/ofertaAdjudicadaOperador.tpl";
 		$.get(plantillaUsar, function(plantilla){
 			plantilla = $(plantilla);
 			
@@ -148,15 +156,18 @@ function panelAdjudicados(){
 			plantilla.find(".btnRegresar").click(function(){
 				panelAdjudicados();
 			});
-			
-			if(objChofer.perfil == 4)
-				accionesSupervisor();
-			else
-				accionesOperador();
+				
+			if (objChofer.perfil == 4){
+				if (objChofer.id == el.chofer)
+					accionesOperador(el);
+				else
+					accionesSupervisor(el);
+			}else
+				accionesOperador(el);
 		});
 	}
 	
-	function accionesSupervisor(){
+	function accionesSupervisor(el){
 		$.post(server + "ctransportistas", {
 			"id": objChofer.datos.idTransportista,
 			"movil": 1,
@@ -187,10 +198,47 @@ function panelAdjudicados(){
 				$("#winEquipo").find("[campo=" + campo + "]").val(valor);
 			});
 		}
+		
+		$("#frmEquipo").validate({
+			debug: true,
+			rules: {
+				selConductor: "required",
+				txtPatenteCamion: "required",
+				txtPatenteRampla: "required"
+			},
+			wrapper: 'span', 
+			submitHandler: function(form){
+				var obj = new TOferta;
+				var objConductor = jQuery.parseJSON($("#selConductor").find("option:selected").attr("json"));
+				console.log(objConductor);
+				obj.asignarChofer({
+					"conductor": objConductor.idUsuario, 
+					"orden": el.idOrden, 
+					"patenteCamion": $("#txtPatenteCamion").val(),
+					"patenteRampla": $("#txtPatenteRampla").val(),
+					"fn": {
+						before: function(){
+							$("[type=submit]").prop("disabled", true);
+						},
+						after: function(datos){
+							$("[type=submit]").prop("disabled", false);
+							if (datos.band){
+								$("#winEquipo").modal("hide");
+								alertify.success("Orden asignada al chofer");
+								panelAdjudicados();
+							}else{
+								alertify.error("No pudo ser asignado al equipo");
+							}
+						}
+					}
+				});
+	        }
+	
+	    });
 	}
 	
-	function accionesOperador(){
-		plantilla.find(".btnEnRuta").attr("oferta", el.idOrden).click(function(){
+	function accionesOperador(el){
+		$(".btnEnRuta").attr("oferta", el.idOrden).click(function(){
 			window.localStorage.removeItem("idOrden");
 			window.localStorage.setItem("idOrden", plantilla.find(".btnEnRuta").attr("oferta"));
 			
@@ -204,7 +252,7 @@ function panelAdjudicados(){
 				else
 					console.log("Posición reportada");
 			}, "json");
-			/*		
+			
 			backgroundGeolocation.configure(function(location){
 				idOrden = window.localStorage.getItem("idOrden");
 				if (idOrden != undefined){
@@ -242,15 +290,15 @@ function panelAdjudicados(){
 			});
 			
 			backgroundGeolocation.start();
-			*/
-			plantilla.find(".dvReportar").show();
-			plantilla.find(".groupTerminar").show();
-			plantilla.find(".dvEnRuta").hide();
+			
+			$(".dvReportar").show();
+			$(".groupTerminar").show();
+			$(".dvEnRuta").hide();
 			
 			alertify.log("Iniciamos el proceso de seguimiento de la carga");
 		});
 		
-		plantilla.find(".btnTerminar").attr("oferta", el.idOrden).click(function(){
+		$(".btnTerminar").attr("oferta", el.idOrden).click(function(){
 			var oferta = $(this).attr("oferta");
 			
 			window.localStorage.removeItem("idOrden");
