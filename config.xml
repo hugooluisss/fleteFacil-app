@@ -59,6 +59,7 @@
 		<plugin name="cordova-plugin-background-mode"/>
 
 		<!--<plugin name="cordova-plugin-mauron85-background-geolocation"/>-->
+		<plugin name="cordova-background-geolocation-lt" source="npm" />
 		
 		
 		<!-- Define app icon for each platform. -->  
