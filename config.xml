@@ -54,15 +54,12 @@
 		<plugin name="cordova-plugin-device" source="npm"/>
 		<!--<plugin name="cordova-plugin-sms" source="npm"/>-->
 		<plugin name="cordova-plugin-whitelist" source="npm"/>
-		<!--
 		<plugin name="cordova-plugin-mauron85-background-geolocation" spec="^2.2.0">
 			<variable name="ALWAYS_USAGE_DESCRIPTION" value="La app requiere tener habilitado el seguimiento GPS en segundo plano" />
 			<variable name="GOOGLE_PLAY_SERVICES_VERSION" value="11.0.1" />
 		</plugin>
-		-->
 		<gap:plugin name="pushbots-cordova-plugin" spec="^1.4.0" source="npm" />
 		<plugin name="cordova-plugin-background-mode"/>
-		<gap:plugin name="org.transistorsoft.cordova.background-geolocation" />
 
 		<!--<plugin name="cordova-plugin-mauron85-background-geolocation"/>-->
 		
