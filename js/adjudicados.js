@@ -271,8 +271,8 @@ function panelAdjudicados(){
 						}).fail(function(){
 							console.log("Error bug");
 						});
-				}, function(){
-					console.log("Error GPS");
+				}, function(error){
+					console.log("Error GPS", error);
 				});
 			});
 			
