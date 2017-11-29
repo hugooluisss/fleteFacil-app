@@ -238,6 +238,12 @@ function panelAdjudicados(){
 	}
 	
 	function accionesOperador(el){
+		navigator.geolocation.getCurrentPosition(function(position){
+			console.log("Ok", position);
+		}, function(error){
+			console.log("Error", error);
+		});
+		
 		$(".btnEnRuta").attr("oferta", el.idOrden).click(function(){
 			window.localStorage.removeItem("idOrden");
 			window.localStorage.setItem("idOrden", $(".btnEnRuta").attr("oferta"));
@@ -253,15 +259,9 @@ function panelAdjudicados(){
 					console.log("Posición reportada");
 			}, "json");
 			
-			navigator.geolocation.getCurrentPosition(function(position){
-				console.log("Ok", position);
-			}, function(error){
-				console.log("Error", error);
-			});
-			
 			cordova.plugins.backgroundMode.on('enable', function(){
 				navigator.geolocation.getCurrentPosition(function(position){
-					$.post(server + 'cordenes', {
+					setInterval($.post(server + 'cordenes', {
 							"orden": idOrden,
 							"latitude": position.coords.latitude,
 							"longitude": position.coords.longitude,
@@ -276,7 +276,7 @@ function panelAdjudicados(){
 							console.log("Listo BG");
 						}).fail(function(){
 							console.log("Error bug");
-						});
+						}), 1000);
 				}, function(error){
 					console.log("Error GPS", error);
 				});
