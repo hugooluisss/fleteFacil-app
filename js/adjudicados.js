@@ -238,7 +238,6 @@ function panelAdjudicados(){
 	}
 	
 	function accionesOperador(el){
-		$(".btnEnRuta").show();
 		$(".btnEnRuta").attr("oferta", el.idOrden).click(function(){
 			window.localStorage.removeItem("idOrden");
 			window.localStorage.setItem("idOrden", $(".btnEnRuta").attr("oferta"));
@@ -324,6 +323,8 @@ function panelAdjudicados(){
 			$(".dvReportar").show();
 			$(".groupTerminar").show();
 			$(".dvEnRuta").hide();
+			
+			$(".btnEnRuta").show();
 			
 			alertify.log("Iniciamos el proceso de seguimiento de la carga");
 		});
