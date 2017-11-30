@@ -333,7 +333,7 @@ function panelAdjudicados(){
 		});
 		
 		$("#btnTerminar").attr("oferta", el.idOrden).click(function(){
-			var oferta = $(this).attr("oferta");
+			var punto = $(this).attr("punto");
 			
 			window.localStorage.removeItem("idOrden");
 			idOrden = undefined;
@@ -354,7 +354,7 @@ function panelAdjudicados(){
 						var obj = new TOferta;
 						obj.terminar({
 							"id": idTransportista,
-							"oferta": oferta,
+							"punto": punto,
 							"comentario": $("#txtComentario").val(),
 							"fotografias": fotografias,
 							fn: {
