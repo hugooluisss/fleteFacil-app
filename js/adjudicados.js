@@ -70,13 +70,16 @@ function panelAdjudicados(){
 			switch(parseInt(el.idEstado)){
 				case 4: //Asignada
 					plantilla.find(".dvEnRuta").hide();
+					plantilla.find(".dvTerminar").hide();
 					
 					if (idOrden == undefined)
 						plantilla.find(".dvEnRuta").show();
+					else
+						plantilla.find(".dvTerminar").show();
 				break;
 				case '5': case '6': case '7':
 				default: 
-					plantilla.find(".groupTerminar").hide();
+					plantilla.find(".dvTerminar").hide();
 					plantilla.find(".dvEnRuta").hide();
 					plantilla.find(".btnRegresar").html("REGRESAR");
 					plantilla.find(".viewEstado").show();
