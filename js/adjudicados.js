@@ -334,7 +334,7 @@ function panelAdjudicados(){
 		
 		$("#btnTerminar").attr("oferta", el.idOrden).click(function(){
 			var punto = $("#winTerminar").attr("punto");
-			
+			console.log(punto);
 			window.localStorage.removeItem("idOrden");
 			idOrden = undefined;
 			if ($("#txtComentario").val() == ''){
