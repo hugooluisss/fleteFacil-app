@@ -299,7 +299,7 @@ function panelAdjudicados(){
 					}, function(error){
 						console.log("Error GPS", error);
 					});
-				}, 500);
+				}, 1000);
 			});
 			
 			cordova.plugins.backgroundMode.enable();
