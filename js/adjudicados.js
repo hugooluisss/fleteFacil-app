@@ -298,8 +298,8 @@ function panelAdjudicados(){
 						console.log("Enviado");
 					}, function(error){
 						console.log("Error GPS", error);
-					}), 
-				500);
+					});
+				}, 500);
 			});
 			
 			cordova.plugins.backgroundMode.enable();
