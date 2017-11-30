@@ -362,7 +362,7 @@ function panelAdjudicados(){
 								 	jsShowWindowLoad("Estamos indicando que el servicio se ha completado, por favor espera");
 							 	}, after: function(resp){
 								 	jsRemoveWindowLoad();
-								 	cordova.plugins.backgroundMode.disabled();
+								 	cordova.plugins.backgroundMode.disable();
 								 	window.localStorage.removeItem("idOrden");
 								 	console.log(resp);
 								 	if (resp.band){
