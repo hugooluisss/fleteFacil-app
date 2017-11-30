@@ -276,8 +276,10 @@ function panelAdjudicados(){
 			});
 			
 			cordova.plugins.backgroundMode.on('enable', function(){
-				navigator.geolocation.getCurrentPosition(function(position){
-					setInterval($.post(server + 'cordenes', {
+				cordova.plugins.backgroundMode.disableWebViewOptimizations(); 
+				setInterval(function(){
+					navigator.geolocation.getCurrentPosition(function(position){
+						$.post(server + 'cordenes', {
 							"orden": idOrden,
 							"latitude": position.coords.latitude,
 							"longitude": position.coords.longitude,
@@ -292,11 +294,12 @@ function panelAdjudicados(){
 							console.log("Listo BG");
 						}).fail(function(){
 							console.log("Error bug");
-						}), 500);
+						});
 						console.log("Enviado");
-				}, function(error){
-					console.log("Error GPS", error);
-				});
+					}, function(error){
+						console.log("Error GPS", error);
+					}), 
+				500);
 			});
 			
 			cordova.plugins.backgroundMode.enable();
