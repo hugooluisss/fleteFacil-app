@@ -298,8 +298,8 @@ function panelAdjudicados(){
 					console.log("Error GPS", error);
 				}, {
 					enableHighAccuracy: true, 
-					maximumAge        : 40000, 
-					timeout           : 30000
+					maximumAge        : 1200000, 
+					timeout           : 600000
 				});
 			});
 			
@@ -333,7 +333,7 @@ function panelAdjudicados(){
 		});
 		
 		$("#btnTerminar").attr("oferta", el.idOrden).click(function(){
-			var punto = $(this).attr("punto");
+			var punto = $("#winTerminar").attr("punto");
 			
 			window.localStorage.removeItem("idOrden");
 			idOrden = undefined;
