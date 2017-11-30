@@ -264,8 +264,8 @@ function panelAdjudicados(){
 			cordova.plugins.backgroundMode.setDefaults({
 				title: "En ruta",
 				text: "Estas en ruta en la orden " + el.folio,
-				icon: 'icon' // this will look for icon.png in platforms/android/res/drawable|mipmap
-				color: String // hex format like 'F14F4D'
+				icon: 'icon', // this will look for icon.png in platforms/android/res/drawable|mipmap
+				color: "F14F4D", // hex format like 'F14F4D'
 				resume: Boolean,
 				hidden: Boolean,
 				bigText: Boolean
