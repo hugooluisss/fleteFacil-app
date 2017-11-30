@@ -259,7 +259,7 @@ function panelAdjudicados(){
 					console.log("Posición reportada");
 			}, "json");
 			
-			/*
+			
 			cordova.plugins.backgroundMode.setDefaults({
 				title: "En ruta",
 				text: "Estas en ruta en la orden " + el.folio,
@@ -304,7 +304,7 @@ function panelAdjudicados(){
 			});
 			
 			cordova.plugins.backgroundMode.enable();
-			*/
+			
 			alertify.log("Estaremos reportandole tu ubicación al cliente");
 			panelAdjudicados();
 
