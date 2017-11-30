@@ -277,29 +277,31 @@ function panelAdjudicados(){
 			
 			cordova.plugins.backgroundMode.on('enable', function(){
 				cordova.plugins.backgroundMode.disableWebViewOptimizations(); 
-				setInterval(function(){
-					navigator.geolocation.getCurrentPosition(function(position){
-						$.post(server + 'cordenes', {
-							"orden": idOrden,
-							"latitude": position.coords.latitude,
-							"longitude": position.coords.longitude,
-							"action": 'logPosicion',
-							"movil": '1'
-						}, function(resp){
-							if (!resp.band)
-								console.log("Error");
-							else
-								console.log("Posición reportada");
-						}, "json").done(function(){
-							console.log("Listo BG");
-						}).fail(function(){
-							console.log("Error bug");
-						});
-						console.log("Enviado");
-					}, function(error){
-						console.log("Error GPS", error);
+				navigator.geolocation.watchPosition(function(position){
+					$.post(server + 'cordenes', {
+						"orden": idOrden,
+						"latitude": position.coords.latitude,
+						"longitude": position.coords.longitude,
+						"action": 'logPosicion',
+						"movil": '1'
+					}, function(resp){
+						if (!resp.band)
+							console.log("Error");
+						else
+							console.log("Posición reportada");
+					}, "json").done(function(){
+						console.log("Listo BG");
+					}).fail(function(){
+						console.log("Error bug");
 					});
-				}, 1000);
+					console.log("Enviado");
+				}, function(error){
+					console.log("Error GPS", error);
+				}, {
+					enableHighAccuracy: true, 
+					maximumAge        : 30000, 
+					timeout           : 27000
+				});
 			});
 			
 			cordova.plugins.backgroundMode.enable();
