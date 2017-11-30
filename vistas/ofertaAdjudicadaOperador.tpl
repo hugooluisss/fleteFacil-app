@@ -42,47 +42,6 @@
 		</div>
 		<br />
 	</div>
-	<div class="dvReportar">
-		<hr />
-		<h6 class="card-subtitle text-danger text-center">Entregar carga</h6>
-		<br />
-		<div class="col-xs-12 botonesEntrega">
-			
-		</div>
-		
-		
-		<!--
-		<p class="text-justify">La carga se encuentra en ruta, recuerda que al finalizar la entrega debes de entregar tu reporte</p>
-		<div class="row">
-			<div class="col-xs-12 text-center" id="lstImg">
-			</div>
-		</div>
-		<div class="row">
-			<div class="col-12 text-center">
-				<button id="btnCamara" indice="1" class="btn btn-default btn-sm"><i class="fa fa-camera" aria-hidden="true"></i></button>
-				<button id="btnGaleria" indice="1" class="btn btn-default btn-sm"><i class="fa fa-picture-o" aria-hidden="true"></i></button>
-			</div>
-		</div>
-		<br />
-		<div class="row">
-			<div class="col-12 text-mute text-center">¿En que <b>punto de entrega</b> te encuentras?</div>
-		</div>
-		<div class="row">
-			<div class="col-12 text-mute text-center">
-				<select id="selPunto" name="selPunto" class="form-control">
-				</select>
-			</div>
-		</div>
-		<div class="row">
-			<div class="col-12 text-mute text-center">¿Algún comentario?</div>
-		</div>
-		<div class="row">
-			<div class="col-12 text-center">
-				<textarea id="txtComentario" name="txtComentario" class="form-control" rows="5"></textarea>
-			</div>
-		</div>
-		<br />-->
-	</div>
 </div>
 
 

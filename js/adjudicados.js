@@ -25,7 +25,7 @@ function panelAdjudicados(){
 			}else{
 				$("#modulo").html('<h5 class="text-center"><span class="text-danger">' + resp.length + '</span> CARGAS ADJUDICADAS</h5>');
 			}
-				
+			
 			$.each(resp, function(i, el){
 				var plantilla = $(plantillaOferta);
 				
@@ -59,29 +59,23 @@ function panelAdjudicados(){
 				plantillaUsar = "vistas/ofertaAdjudicadaOperador.tpl";
 		}else
 			plantillaUsar = "vistas/ofertaAdjudicadaOperador.tpl";
+			
 		$.get(plantillaUsar, function(plantilla){
 			plantilla = $(plantilla);
 			
 			$("#dvTitulo").html('<i class="fa fa-arrow-left" action="back" aria-hidden="true"></i> ORDEN Nº ' + el.folio).find("[action=back]").click(function(){
 				panelAdjudicados();
 			});
-			
+			console.log(el.idEstado);
 			switch(parseInt(el.idEstado)){
 				case 4: //Asignada
-					plantilla.find(".dvReportar").hide();
 					plantilla.find(".dvEnRuta").hide();
-					plantilla.find(".groupTerminar").hide();
 					
 					if (idOrden == undefined)
 						plantilla.find(".dvEnRuta").show();
-					else{
-						plantilla.find(".dvReportar").show();
-						plantilla.find(".groupTerminar").show();
-					}
 				break;
 				case '5': case '6': case '7':
 				default: 
-					plantilla.find(".dvReportar").hide();
 					plantilla.find(".groupTerminar").hide();
 					plantilla.find(".dvEnRuta").hide();
 					plantilla.find(".btnRegresar").html("REGRESAR");
@@ -176,7 +170,6 @@ function panelAdjudicados(){
 		}, function(choferes){
 			$("#selConductor").find("option").remove();
 			$.each(choferes, function(i, chofer){
-				console.log(chofer.json);
 				$("#selConductor").append($("<option />", {
 					value: chofer.idUsuario,
 					text: chofer.nombre,
@@ -245,6 +238,8 @@ function panelAdjudicados(){
 		});
 		
 		$(".btnEnRuta").attr("oferta", el.idOrden).click(function(){
+			console.log(el.idOrden);
+			
 			window.localStorage.removeItem("idOrden");
 			window.localStorage.setItem("idOrden", el.idOrden);
 			
@@ -277,6 +272,8 @@ function panelAdjudicados(){
 			cordova.plugins.backgroundMode.on('enable', function(){
 				cordova.plugins.backgroundMode.disableWebViewOptimizations(); 
 				navigator.geolocation.watchPosition(function(position){
+					var idOrden = window.localStorage.getItem("idOrden");
+					
 					$.post(server + 'cordenes', {
 						"orden": idOrden,
 						"latitude": position.coords.latitude,
@@ -334,13 +331,12 @@ function panelAdjudicados(){
 		
 		$("#btnTerminar").attr("oferta", el.idOrden).click(function(){
 			var punto = $("#winTerminar").attr("punto");
-			console.log(punto);
 			window.localStorage.removeItem("idOrden");
 			idOrden = undefined;
 			if ($("#txtComentario").val() == ''){
 				alertify.error("Escribe un comentario");
 			}else if ($("#lstImg").find("img").length < 1){
-				alertify.error("Envianos una evidencia con en fotografía");
+				alertify.error("Envianos una evidencia en fotografía");
 			}else{
 				alertify.confirm("¿Estás seguro?", function (e) {
 					if (e) {
@@ -361,10 +357,13 @@ function panelAdjudicados(){
 							 	before: function(){
 								 	jsShowWindowLoad("Estamos indicando que el servicio se ha completado, por favor espera");
 							 	}, after: function(resp){
-								 	jsRemoveWindowLoad();
 								 	cordova.plugins.backgroundMode.disable();
 								 	window.localStorage.removeItem("idOrden");
-								 	console.log(resp);
+								 	alertify.success("El reporte de tu ubicación ha finalizado");
+								 	
+								 	$("#winTerminar").modal("hide");
+								 	jsRemoveWindowLoad();
+								 	
 								 	if (resp.band){
 									 	panelAdjudicados();
 									 	alertify.success("Muchas gracias por la información, tu trabajo fue enviado");
