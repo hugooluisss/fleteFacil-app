@@ -5,6 +5,8 @@ function panelAdjudicados(){
 	$("nav.footer").hide();
 	$("nav.footer").html("");
 	
+	cordova.plugins.backgroundMode.disable();
+	
 	$.get("vistas/listaOfertas.tpl", function(plantillaOferta){
 		jsShowWindowLoad("Espera mientras obtenemos tus ordenes");
 		$.post(server + "listaOrdenesAdjudicadas", {
@@ -259,6 +261,20 @@ function panelAdjudicados(){
 					console.log("Posición reportada");
 			}, "json");
 			
+			cordova.plugins.backgroundMode.setDefaults({
+				title: "En ruta",
+				text: "Estas en ruta en la orden " + el.folio,
+				icon: 'icon' // this will look for icon.png in platforms/android/res/drawable|mipmap
+				color: String // hex format like 'F14F4D'
+				resume: Boolean,
+				hidden: Boolean,
+				bigText: Boolean
+			});
+			
+			cordova.plugins.backgroundMode.on('activate', function() {
+				cordova.plugins.backgroundMode.disableWebViewOptimizations(); 
+			});
+			
 			cordova.plugins.backgroundMode.on('enable', function(){
 				navigator.geolocation.getCurrentPosition(function(position){
 					setInterval($.post(server + 'cordenes', {
@@ -277,6 +293,7 @@ function panelAdjudicados(){
 						}).fail(function(){
 							console.log("Error bug");
 						}), 500);
+						console.log("Enviado");
 				}, function(error){
 					console.log("Error GPS", error);
 				});
