@@ -46,12 +46,7 @@
 		<hr />
 		<p class="text-justify">¿Estás en uno de los puntos de entrega? indícalo para avisarle al cliente</p>
 		<div class="row">
-			<div class="col-12 text-center">
-				<div class="btn-group btn-group-justified" style="width: 90%" role="group">
-					<div class="btn-group" role="group" style="width: 100%">
-						<button type="button" class="btn btn-warning btn-block btnTerminar">Entregar</button>
-					</div>
-				</div>
+			<div class="col-12 text-center botonesEntrega">
 			</div>
 		</div>
 		<br />
