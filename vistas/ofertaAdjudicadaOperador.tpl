@@ -44,8 +44,14 @@
 	</div>
 	<div class="dvReportar">
 		<hr />
-		<h6 class="card-subtitle text-danger text-center">Entregar servicio</h6>
+		<h6 class="card-subtitle text-danger text-center">Entregar carga</h6>
 		<br />
+		<div class="col-xs-12 botonesEntrega">
+			
+		</div>
+		
+		
+		<!--
 		<p class="text-justify">La carga se encuentra en ruta, recuerda que al finalizar la entrega debes de entregar tu reporte</p>
 		<div class="row">
 			<div class="col-xs-12 text-center" id="lstImg">
@@ -75,18 +81,50 @@
 				<textarea id="txtComentario" name="txtComentario" class="form-control" rows="5"></textarea>
 			</div>
 		</div>
-		<br />
+		<br />-->
 	</div>
-	<div class="row">
-		<div class="col-12 text-center">
-			<div class="btn-group btn-group-justified" style="width: 90%" role="group">
-				<div class="btn-group groupTerminar" role="group" style="width: 100%">
-					<button type="button" class="btn btn-primary btn-block btnTerminar">Terminar</button>
+</div>
+
+
+
+	<div class="modal fade" id="winTerminar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="exampleModalLabel">Terminar entrega</h5>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
 				</div>
-				<div class="btn-group" role="group" style="width: 100%">
-					<button type="button" class="btn btn-primary btn-block btnRegresar">Cancelar</button>
-				</div>	
+				<div class="modal-body">
+					<div class="row">
+						<div class="col-12 text-center titulo">
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-xs-12 text-center" id="lstImg">
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-12 text-center">
+							<button id="btnCamara" indice="1" class="btn btn-default btn-sm"><i class="fa fa-camera" aria-hidden="true"></i></button>
+							<button id="btnGaleria" indice="1" class="btn btn-default btn-sm"><i class="fa fa-picture-o" aria-hidden="true"></i></button>
+						</div>
+					</div>
+					<br />
+					<div class="row">
+						<div class="col-12 text-mute text-center">¿Algún comentario?</div>
+					</div>
+					<div class="row">
+						<div class="col-12 text-center">
+							<textarea id="txtComentario" name="txtComentario" class="form-control" rows="5"></textarea>
+						</div>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button id="btnReset" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+					<button class="btn btn-danger pull-right" id="btnTerminar">Terminar entrega</button>
+				</div>
 			</div>
 		</div>
-	</div>	
-</div>
+	</div>

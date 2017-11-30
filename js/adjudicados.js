@@ -5,8 +5,6 @@ function panelAdjudicados(){
 	$("nav.footer").hide();
 	$("nav.footer").html("");
 	
-	cordova.plugins.backgroundMode.disable();
-	
 	$.get("vistas/listaOfertas.tpl", function(plantillaOferta){
 		jsShowWindowLoad("Espera mientras obtenemos tus ordenes");
 		$.post(server + "listaOrdenesAdjudicadas", {
@@ -248,7 +246,7 @@ function panelAdjudicados(){
 		
 		$(".btnEnRuta").attr("oferta", el.idOrden).click(function(){
 			window.localStorage.removeItem("idOrden");
-			window.localStorage.setItem("idOrden", $(".btnEnRuta").attr("oferta"));
+			window.localStorage.setItem("idOrden", el.idOrden);
 			
 			$.post(server + 'cordenes', {
 				"orden": el.idOrden,
@@ -261,6 +259,7 @@ function panelAdjudicados(){
 					console.log("Posición reportada");
 			}, "json");
 			
+			/*
 			cordova.plugins.backgroundMode.setDefaults({
 				title: "En ruta",
 				text: "Estas en ruta en la orden " + el.folio,
@@ -299,65 +298,41 @@ function panelAdjudicados(){
 					console.log("Error GPS", error);
 				}, {
 					enableHighAccuracy: true, 
-					maximumAge        : 30000, 
-					timeout           : 27000
+					maximumAge        : 40000, 
+					timeout           : 30000
 				});
 			});
 			
 			cordova.plugins.backgroundMode.enable();
-
-
-			/*
-			var backgroundGeolocation = window.plugins.backgroundGeoLocation;
-
-			backgroundGeolocation.configure(function(location){
-				idOrden = window.localStorage.getItem("idOrden");
-				if (idOrden != undefined){
-					$.post(server + 'cordenes', {
-						"orden": idOrden,
-						"latitude": location.latitude,
-						"longitude": location.longitude,
-						"action": 'logPosicion',
-						"movil": '1'
-					}, function(resp){
-						if (!resp.band)
-							console.log("Error");
-						else
-							console.log("Posición reportada");
-					}, "json").done(function(){
-						backgroundGeolocation.finish();
-					}).fail(function(){
-						console.log("Error bug");
-					});
-				}else{
-					console.log("No se conoce el id de la orden");
-					backgroundGeolocation.finish();
-				}
-			}, function(error){
-				console.log('Error BG');
-			}, {
-				desiredAccuracy: 10,
-				stationaryRadius: 20,
-				distanceFilter: 100,
-				interval: 120000,
-				notificationTitle: "Transporte en ruta",
-				notificationText: "Haz iniciado el reporte de la ruta",
-				stopOnStillActivity: false,
-				debug: false
-			});
-			
-			backgroundGeolocation.start();
 			*/
-			$(".dvReportar").show();
-			$(".groupTerminar").show();
-			$(".dvEnRuta").hide();
-			
-			$(".btnEnRuta").show();
-			
-			alertify.log("Iniciamos el proceso de seguimiento de la carga");
+			alertify.log("Estaremos reportandole tu ubicación al cliente");
+			panelAdjudicados();
+
+			//$(".dvReportar").show();
+			//$(".groupTerminar").show();
+			//$(".dvEnRuta").hide();
 		});
 		
-		$(".btnTerminar").attr("oferta", el.idOrden).click(function(){
+		$.each(el.destinos, function(i, destino){
+			if (destino.estado == 0){
+				var btn = $("<btn />", {
+					class: "btn btn-danger btn-block",
+					idPunto: destino.idPunto,
+					text: destino.direccion,
+					style: "font-size: 10px"
+				});
+				
+				$(".botonesEntrega").append(btn).append("<br />");
+				
+				btn.click(function(){
+					$("#winTerminar").modal();
+					$("#winTerminar").attr("punto", destino.idPunto);
+					$("#winTerminar").find(".titulo").text(destino.direccion);
+				});
+			}
+		});
+		
+		$("#btnTerminar").attr("oferta", el.idOrden).click(function(){
 			var oferta = $(this).attr("oferta");
 			
 			window.localStorage.removeItem("idOrden");
@@ -387,7 +362,7 @@ function panelAdjudicados(){
 								 	jsShowWindowLoad("Estamos indicando que el servicio se ha completado, por favor espera");
 							 	}, after: function(resp){
 								 	jsRemoveWindowLoad();
-								 	backgroundGeolocation.stop();
+								 	cordova.plugins.backgroundMode.disabled();
 								 	window.localStorage.removeItem("idOrden");
 								 	console.log(resp);
 								 	if (resp.band){
