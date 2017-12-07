@@ -78,17 +78,19 @@ function panelOfertas(){
 
 			plantilla.find("[campo=destino]").html("");
 			var cont = 0;
-			destino = el.destinos[el.destinos.length-1];
-			var span = $("<a/>", {
-				href: "#",
-				text: ' - ' + destino.direccion
-			});
-			span.click(function(){
-				el.mapa.setCenter(new google.maps.LatLng(destino.posicion.latitude, destino.posicion.longitude));
-				el.mapa.setZoom(15);
-				alertify.alert(destino.direccion);
-			});
-			plantilla.find("[campo=destino]").append(span);
+			if (el.destinos.length == 0){
+				destino = el.destinos[el.destinos.length-1];
+				var span = $("<a/>", {
+					href: "#",
+					text: ' - ' + destino.direccion
+				});
+				span.click(function(){
+					el.mapa.setCenter(new google.maps.LatLng(destino.posicion.latitude, destino.posicion.longitude));
+					el.mapa.setZoom(15);
+					alertify.alert(destino.direccion);
+				});
+				plantilla.find("[campo=destino]").append(span);
+			}
 			
 			$("#modulo").html(plantilla);
 			
