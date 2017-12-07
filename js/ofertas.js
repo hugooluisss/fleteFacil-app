@@ -78,7 +78,7 @@ function panelOfertas(){
 
 			plantilla.find("[campo=destino]").html("");
 			var cont = 0;
-			if (el.destinos.length == 0){
+			if (el.destinos.length > 0){
 				destino = el.destinos[el.destinos.length-1];
 				var span = $("<a/>", {
 					href: "#",
