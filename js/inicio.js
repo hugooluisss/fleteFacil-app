@@ -108,11 +108,11 @@ var app = {
 						//aquí se incluye al tag de tipos
 						console.log(datos.idPerfil);
 						switch(datos.idPerfil){
-							case 4:
+							case '4':
 								window.plugins.PushbotsPlugin.setTag("chofer");
 								console.log("Registrando a chofer");
 							break;
-							case 3:
+							case '3':
 								window.plugins.PushbotsPlugin.setTag("operador");
 								console.log("Registrando a chofer");
 							break;
