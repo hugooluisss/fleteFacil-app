@@ -109,11 +109,11 @@ var app = {
 						console.log(datos.idPerfil);
 						switch(datos.idPerfil){
 							case '4':
-								window.plugins.PushbotsPlugin.setTag("chofer");
+								window.plugins.PushbotsPlugin.tag(["chofer"]);
 								console.log("Registrando a chofer");
 							break;
 							case '3':
-								window.plugins.PushbotsPlugin.setTag("operador");
+								window.plugins.PushbotsPlugin.tag(["operador"]);
 								console.log("Registrando a chofer");
 							break;
 						}
