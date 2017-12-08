@@ -47,18 +47,18 @@ var app = {
 		if (idChofer == null || idChofer == undefined || idChofer == '')
 			location.href = "index.html";
 		else{
+			window.plugins.PushbotsPlugin.initialize("591c5d2d4a9efa6e888b4567", {
+				"android":{
+					"sender_id":"298644715501"
+				}
+			});
+						
 			objChofer = new TChofer(idChofer);
 			objChofer.getData({
 				"fn": {
 					after: function(datos){
 						setMenu();
 						setPrincipal();
-						
-						window.plugins.PushbotsPlugin.initialize("591c5d2d4a9efa6e888b4567", {
-							"android":{
-								"sender_id":"298644715501"
-							}
-						});
 						
 						// Should be called once app receive the notification only while the application is open or in background
 						window.plugins.PushbotsPlugin.on("notification:received", function(data){
@@ -103,7 +103,7 @@ var app = {
 						
 						window.plugins.PushbotsPlugin.resetBadge();
 						
-						window.plugins.PushbotsPlugin.toggleNotifications(false);
+						window.plugins.PushbotsPlugin.toggleNotifications(true);
 						
 						//aquí se incluye al tag de tipos
 						console.log(datos.idPerfil);
