@@ -31,12 +31,13 @@ function panelPostuladas(){
 				
 				plantilla.find("[campo=presupuesto]").html("$ " + el.presupuesto);
 				plantilla.find(".mapa").attr("id", "mapa_" + el.idOrden);
-				
-				plantilla.find("[campo=origen]").html(el.origen_json.direccion);
-				$.each(el.destinos, function(i, destino){
-					plantilla.find("[campo=destino]").html(destino.direccion);
-				})
-				
+				if (el.destinos.length > 0){
+					plantilla.find("[campo=origen]").html(el.origen_json.direccion);
+					$.each(el.destinos, function(i, destino){
+						plantilla.find("[campo=destino]").html(destino.direccion);
+					});
+				}
+					
 				plantilla.find(".btnDetalle").click(function(){
 					getDetalle(el);
 				});

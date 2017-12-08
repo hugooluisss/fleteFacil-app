@@ -91,19 +91,21 @@ function panelAdjudicados(){
 			});
 			
 			plantilla.find(".mapa").attr("id", "mapa_" + el.idOrden);
-				
-			plantilla.find("[campo=origen]").html("");
-			var span = $("<a/>", {
-				href: "#",
-				text: el.origen_json.direccion
-			});
 			
-			span.click(function(){
-				mapa.setCenter(new google.maps.LatLng(el.origen_json.latitude, el.origen_json.longitude));
-				mapa.setZoom(15);
-				alertify.alert(el.origen_json.direccion);
-			});
-			plantilla.find("[campo=origen]").append(span);
+			if (el.destinos.length > 0){	
+				plantilla.find("[campo=origen]").html("");
+				var span = $("<a/>", {
+					href: "#",
+					text: el.origen_json.direccion
+				});
+				
+				span.click(function(){
+					mapa.setCenter(new google.maps.LatLng(el.origen_json.latitude, el.origen_json.longitude));
+					mapa.setZoom(15);
+					alertify.alert(el.origen_json.direccion);
+				});
+				plantilla.find("[campo=origen]").append(span);
+			}
 			
 			$("#modulo").html(plantilla);
 			
