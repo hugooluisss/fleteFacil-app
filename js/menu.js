@@ -27,7 +27,8 @@ function setMenu(){
 	$("#btnSalir").click(function(){
 		alertify.confirm("¿Seguro?", function(e){
     		if(e) {
-    			//window.plugins.PushbotsPlugin.removeTags(["transportistas"]);
+    			window.plugins.PushbotsPlugin.removeTags(["chofer", "operador"]);
+    			window.plugins.PushbotsPlugin.removeAlias();
 	    		window.localStorage.removeItem("sesion");
 	    		window.localStorage.removeItem("idOrden");
 	    		//backgroundGeolocation.stop();
