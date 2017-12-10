@@ -43,7 +43,14 @@ TChofer = function(chofer){
 					
 				if (datos.fn.after !== undefined)
 					datos.fn.after(data);
-			}, "json");
+			}, "json").fail(function(){
+				console.log("Falló al obtener los datos del chofer");
+				
+				if (datos.fn.after !== undefined){
+					
+					datos.fn.after({band: false});
+				}
+			});
 	}
 	
 	this.recuperarPass = function(correo, fn){
