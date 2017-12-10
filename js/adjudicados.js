@@ -66,6 +66,8 @@ function panelAdjudicados(){
 			$("#dvTitulo").html('<i class="fa fa-arrow-left" action="back" aria-hidden="true"></i> ORDEN Nº ' + el.folio).find("[action=back]").click(function(){
 				panelAdjudicados();
 			});
+			
+			var idOrden = window.localStorage.getItem("idOrden");
 			console.log(el.idEstado);
 			switch(parseInt(el.idEstado)){
 				case 4: //Asignada
@@ -113,7 +115,7 @@ function panelAdjudicados(){
 				center: {lat: el.origen_json.latitude, lng: el.origen_json.longitude},
 				scrollwheel: true,
 				fullscreenControl: true,
-				zoom: 8,
+				zoom: 4,
 				zoomControl: true
 			});
 			
@@ -206,28 +208,32 @@ function panelAdjudicados(){
 			},
 			wrapper: 'span', 
 			submitHandler: function(form){
-				var obj = new TOferta;
-				var objConductor = jQuery.parseJSON($("#selConductor").find("option:selected").attr("json"));
-				console.log(objConductor);
-				obj.asignarChofer({
-					"conductor": objConductor.idUsuario, 
-					"orden": el.idOrden, 
-					"patenteCamion": $("#txtPatenteCamion").val(),
-					"patenteRampla": $("#txtPatenteRampla").val(),
-					"fn": {
-						before: function(){
-							$("[type=submit]").prop("disabled", true);
-						},
-						after: function(datos){
-							$("[type=submit]").prop("disabled", false);
-							if (datos.band){
-								$("#winEquipo").modal("hide");
-								alertify.success("Orden asignada al chofer");
-								panelAdjudicados();
-							}else{
-								alertify.error("No pudo ser asignado al equipo");
+				alertify.confirm("¿Estás seguro?", function(e){
+					if (e) {
+						var obj = new TOferta;
+						var objConductor = jQuery.parseJSON($("#selConductor").find("option:selected").attr("json"));
+						console.log(objConductor);
+						obj.asignarChofer({
+							"conductor": objConductor.idUsuario, 
+							"orden": el.idOrden, 
+							"patenteCamion": $("#txtPatenteCamion").val(),
+							"patenteRampla": $("#txtPatenteRampla").val(),
+							"fn": {
+								before: function(){
+									$("[type=submit]").prop("disabled", true);
+								},
+								after: function(datos){
+									$("[type=submit]").prop("disabled", false);
+									$("#winEquipo").modal("hide");
+									if (datos.band){
+										alertify.success("Orden asignada al chofer");
+										panelAdjudicados();
+									}else{
+										alertify.error("No pudo ser asignado al equipo");
+									}
+								}
 							}
-						}
+						});
 					}
 				});
 	        }
@@ -256,7 +262,7 @@ function panelAdjudicados(){
 				if (!resp.band)
 					console.log("Error");
 				else
-					console.log("Posición reportada");
+					console.log("Cambio de estado en ruta OK");
 			}, "json");
 			
 			
@@ -265,8 +271,8 @@ function panelAdjudicados(){
 				text: "Estas en ruta en la orden " + el.folio,
 				icon: 'icon', // this will look for icon.png in platforms/android/res/drawable|mipmap
 				color: "F14F4D", // hex format like 'F14F4D'
-				resume: Boolean,
-				hidden: Boolean,
+				resume: true,
+				hidden: false,
 				bigText: Boolean
 			});
 			
