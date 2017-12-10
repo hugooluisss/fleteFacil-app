@@ -12,7 +12,7 @@ function panelPerfil(){
 		$("#btnCamara").click(function(){
 			if (navigator.camera != undefined){
 				navigator.camera.getPicture(function(imageData) {
-						chofer.setImagenPerfil({
+						objChofer.setImagenPerfil({
 							"imagen": imageData,
 							fn: {
 								before: function(){

@@ -119,8 +119,8 @@ TChofer = function(chofer){
 	
 	this.setImagenPerfil = function(datos){
 		if (datos.fn.before !== undefined) datos.fn.before();
-		$.post(server + 'ctransportistas', {
-			"transportista": idTransportista,
+		$.post(server + 'cchofer', {
+			"chofer": self.id,
 			"imagen": datos.imagen,
 			"action": 'setImagenPerfil',
 			"movil": 1

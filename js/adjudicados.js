@@ -5,6 +5,8 @@ function panelAdjudicados(){
 	$("nav.footer").hide();
 	$("nav.footer").html("");
 	
+	$(".modal-backdrop").remove();
+	
 	$.get("vistas/listaOfertas.tpl", function(plantillaOferta){
 		jsShowWindowLoad("Espera mientras obtenemos tus ordenes");
 		$.post(server + "listaOrdenesAdjudicadas", {
@@ -365,7 +367,7 @@ function panelAdjudicados(){
 						
 						var obj = new TOferta;
 						obj.terminar({
-							"id": idTransportista,
+							//"id": idTransportista,
 							"punto": punto,
 							"comentario": $("#txtComentario").val(),
 							"fotografias": fotografias,
@@ -373,12 +375,12 @@ function panelAdjudicados(){
 							 	before: function(){
 								 	jsShowWindowLoad("Estamos indicando que el servicio se ha completado, por favor espera");
 							 	}, after: function(resp){
+							 		jsRemoveWindowLoad();
 								 	cordova.plugins.backgroundMode.disable();
 								 	window.localStorage.removeItem("idOrden");
 								 	alertify.success("El reporte de tu ubicación ha finalizado");
 								 	
 								 	$("#winTerminar").modal("hide");
-								 	jsRemoveWindowLoad();
 								 	
 								 	if (resp.band){
 									 	panelAdjudicados();
