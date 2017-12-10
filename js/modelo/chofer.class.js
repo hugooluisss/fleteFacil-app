@@ -39,6 +39,7 @@ TChofer = function(chofer){
 					self.transportista = data.transportista;
 					self.situacion = data.idSituacion;
 					self.datos = data;
+					self.imagenPerfil = data.imagenPerfil;
 				}
 					
 				if (datos.fn.after !== undefined)
@@ -127,6 +128,8 @@ TChofer = function(chofer){
 		}, function(data){
 			if (data.band == false)
 				console.log("Ocurrió un error");
+			else
+				self.imagenPerfil = datos.imagen;
 				
 			if (datos.fn.after !== undefined)
 				datos.fn.after(data);
