@@ -57,68 +57,78 @@ var app = {
 			objChofer.getData({
 				"fn": {
 					after: function(datos){
-						setMenu();
-						setPrincipal();
-						
-						// Should be called once app receive the notification only while the application is open or in background
-						window.plugins.PushbotsPlugin.on("notification:received", function(data){
-							console.log("received:", data);
-							var datos = JSON.stringify(data);
+						if (datos.band != false){
+							setMenu();
+							setPrincipal();
+							
+							// Should be called once app receive the notification only while the application is open or in background
+							window.plugins.PushbotsPlugin.on("notification:received", function(data){
+								console.log("received:", data);
+								var datos = JSON.stringify(data);
+								window.plugins.PushbotsPlugin.resetBadge();
+								
+								//Silent notifications Only [iOS only]
+								//Send CompletionHandler signal with PushBots notification Id
+								window.plugins.PushbotsPlugin.done(data.pb_n_id);
+								if (data.aps.alert != '')
+									alertify.success(data.aps.alert);
+									
+								window.plugins.PushbotsPlugin.resetBadge();
+							});
+							
+							// Should be called once the notification is clicked
+							window.plugins.PushbotsPlugin.on("notification:clicked", function(data){
+								console.log("clicked:" + JSON.stringify(data));
+								if (data.message != undefined)
+									alertify.success(data.message);
+									
+								window.plugins.PushbotsPlugin.resetBadge();
+							});	
+							
+							//window.plugins.PushbotsPlugin.debug(true);
+							// Should be called once the device is registered successfully with Apple or Google servers
+							window.plugins.PushbotsPlugin.on("registered", function(token){
+								console.log("Token de registro", token);
+							});
+							
+							//Get device token
+							window.plugins.PushbotsPlugin.getRegistrationId(function(token){
+							    console.log("Registration Id:" + token);
+							});	
+							
+							window.plugins.PushbotsPlugin.on("user:ids", function (data) {
+								console.log("user:ids" + JSON.stringify(data));
+								// userToken = data.token; 
+								// userId = data.userId
+							});
+							
 							window.plugins.PushbotsPlugin.resetBadge();
 							
-							//Silent notifications Only [iOS only]
-							//Send CompletionHandler signal with PushBots notification Id
-							window.plugins.PushbotsPlugin.done(data.pb_n_id);
-							if (data.aps.alert != '')
-								alertify.success(data.aps.alert);
-								
-							window.plugins.PushbotsPlugin.resetBadge();
-						});
-						
-						// Should be called once the notification is clicked
-						window.plugins.PushbotsPlugin.on("notification:clicked", function(data){
-							console.log("clicked:" + JSON.stringify(data));
-							if (data.message != undefined)
-								alertify.success(data.message);
-								
-							window.plugins.PushbotsPlugin.resetBadge();
-						});	
-						
-						//window.plugins.PushbotsPlugin.debug(true);
-						// Should be called once the device is registered successfully with Apple or Google servers
-						window.plugins.PushbotsPlugin.on("registered", function(token){
-							console.log("Token de registro", token);
-						});
-						
-						//Get device token
-						window.plugins.PushbotsPlugin.getRegistrationId(function(token){
-						    console.log("Registration Id:" + token);
-						});	
-						
-						window.plugins.PushbotsPlugin.on("user:ids", function (data) {
-							console.log("user:ids" + JSON.stringify(data));
-							// userToken = data.token; 
-							// userId = data.userId
-						});
-						
-						window.plugins.PushbotsPlugin.resetBadge();
-						
-						window.plugins.PushbotsPlugin.toggleNotifications(true);
-						
-						//aquí se incluye al tag de tipos
-						console.log(datos.idPerfil);
-						switch(datos.idPerfil){
-							case '4':
-								window.plugins.PushbotsPlugin.tag("chofer");
-								console.log("Registrando a chofer");
-							break;
-							case '3':
-								window.plugins.PushbotsPlugin.tag("operador");
-								console.log("Registrando a chofer");
-							break;
+							window.plugins.PushbotsPlugin.toggleNotifications(true);
+							
+							//aquí se incluye al tag de tipos
+							console.log(datos.idPerfil);
+							switch(datos.idPerfil){
+								case '4':
+									window.plugins.PushbotsPlugin.tag("chofer");
+									console.log("Registrando a chofer");
+								break;
+								case '3':
+									window.plugins.PushbotsPlugin.tag("operador");
+									console.log("Registrando a chofer");
+								break;
+							}
+							
+							window.plugins.PushbotsPlugin.setAlias("usuario_" + datos.idUsuario);
+						}else{
+							alertify.alert("Tus datos no existen, comunicate con el administrador del sistema");
+							window.localStorage.removeItem("sesion");
+				    		window.localStorage.removeItem("idOrden");
+				    		window.plugins.PushbotsPlugin.removeTags(["chofer", "operador"]);
+				    		window.plugins.PushbotsPlugin.removeAlias();
+				    		//backgroundGeolocation.stop();
+				    		location.href = "index.html";
 						}
-						
-						window.plugins.PushbotsPlugin.setAlias("usuario_" + datos.idUsuario);
 					}
 				}
 			});

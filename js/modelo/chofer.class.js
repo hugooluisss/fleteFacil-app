@@ -32,7 +32,7 @@ TChofer = function(chofer){
 				"movil": 1
 			}, function(data){
 				if (data.band == false)
-					console.log("No se pudo recuperar la información del usuario");
+					console.log("No se pudo recuperar la informaciÃ³n del usuario");
 				else{
 					self.perfil = data.idPerfil;
 					self.nombre = data.nombre;
@@ -44,12 +44,10 @@ TChofer = function(chofer){
 				if (datos.fn.after !== undefined)
 					datos.fn.after(data);
 			}, "json").fail(function(){
-				console.log("Falló al obtener los datos del chofer");
+				console.log("FallÃ³ al obtener los datos del chofer");
 				
-				if (datos.fn.after !== undefined){
-					
+				if (datos.fn.after !== undefined)
 					datos.fn.after({band: false});
-				}
 			});
 	}
 	
@@ -79,7 +77,7 @@ TChofer = function(chofer){
 			"movil": 1
 		}, function(data){
 			if (data.band == false)
-				console.log("Ocurrió un error");
+				console.log("OcurriÃ³ un error");
 				
 			if (datos.fn.after !== undefined)
 				datos.fn.after(data);
@@ -96,7 +94,7 @@ TChofer = function(chofer){
 			"movil": 1
 		}, function(data){
 			if (data.band == 'false')
-				console.log("Ocurrió un error");
+				console.log("OcurriÃ³ un error");
 				
 			if (datos.fn.after !== undefined)
 				datos.fn.after(data);
@@ -112,7 +110,7 @@ TChofer = function(chofer){
 			"movil": 1
 		}, function(data){
 			if (data.band == 'false')
-				console.log("Ocurrió un error");
+				console.log("OcurriÃ³ un error");
 				
 			if (datos.fn.after !== undefined)
 				datos.fn.after(data);
@@ -128,7 +126,7 @@ TChofer = function(chofer){
 			"movil": 1
 		}, function(data){
 			if (data.band == false)
-				console.log("Ocurrió un error");
+				console.log("OcurriÃ³ un error");
 				
 			if (datos.fn.after !== undefined)
 				datos.fn.after(data);
