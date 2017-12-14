@@ -300,6 +300,8 @@ function panelAdjudicados(){
 							console.log("Error bug");
 						});
 						console.log("Enviado");
+					}else{
+						console.log("No se envió, está casi en el mismo lugar");
 					}
 				}else{
 					cordova.plugins.backgroundMode.disable();
@@ -316,8 +318,11 @@ function panelAdjudicados(){
 		});
 		
 		var idOrden = window.localStorage.getItem("idOrden");
-		if (idOrden != undefined && idOrden != '')
+		if (idOrden != undefined && idOrden != ''){
 			cordova.plugins.backgroundMode.enable();
+			console.log("Está en modo ruta");
+		}else
+			console.log("No estaba en modo ruta", idOrden);
 		
 		$(".btnEnRuta").attr("oferta", el.idOrden).click(function(){
 			console.log(el.idOrden);
