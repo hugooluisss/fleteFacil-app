@@ -310,7 +310,7 @@ function panelAdjudicados(){
 					window.localStorage.setItem("longitude", position.coords.longitude);
 					
 					if (idOrden != undefined && idOrden != ''){
-						if (getDistancia(lat, ln, position.coords.latitude, position.coords.longitude) > 1){
+						if (getDistancia(lat, lng, position.coords.latitude, position.coords.longitude) > 1){
 							$.post(server + 'cordenes', {
 								"orden": idOrden,
 								"latitude": position.coords.latitude,
