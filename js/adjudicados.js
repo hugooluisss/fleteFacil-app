@@ -264,6 +264,61 @@ function panelAdjudicados(){
 			console.log("Error", error);
 		});
 		
+		cordova.plugins.backgroundMode.on('activate', function() {
+			cordova.plugins.backgroundMode.disableWebViewOptimizations(); 
+		});
+		
+		cordova.plugins.backgroundMode.on('enable', function(){
+			cordova.plugins.backgroundMode.disableWebViewOptimizations(); 
+			navigator.geolocation.watchPosition(function(position){
+				var idOrden = window.localStorage.getItem("idOrden");
+				
+				var lat = window.localStorage.getItem("latitude");
+				var lng = window.localStorage.getItem("longitude");
+				lat = lat == null?0:lat;
+				lng = lng == null?0:lng;
+				
+				window.localStorage.setItem("latitude", position.coords.latitude);
+				window.localStorage.setItem("longitude", position.coords.longitude);
+				
+				if (idOrden != undefined && idOrden != ''){
+					if (getDistancia(lat, lng, position.coords.latitude, position.coords.longitude) > 1){
+						$.post(server + 'cordenes', {
+							"orden": idOrden,
+							"latitude": position.coords.latitude,
+							"longitude": position.coords.longitude,
+							"action": 'logPosicion',
+							"movil": '1'
+						}, function(resp){
+							if (!resp.band)
+								console.log("Error");
+							else
+								console.log("Posición reportada");
+						}, "json").done(function(){
+							console.log("Listo BG");
+						}).fail(function(){
+							console.log("Error bug");
+						});
+						console.log("Enviado");
+					}
+				}else{
+					cordova.plugins.backgroundMode.disable();
+					console.log("Terminando seguimiento");
+				}
+					
+			}, function(error){
+				console.log("Error GPS", error);
+			}, {
+				enableHighAccuracy: false, 
+				maximumAge        : 1200000, 
+				timeout           : 1200000
+			});
+		});
+		
+		var idOrden = window.localStorage.getItem("idOrden");
+		if (idOrden != undefined && idOrden != '')
+			cordova.plugins.backgroundMode.enable();
+		
 		$(".btnEnRuta").attr("oferta", el.idOrden).click(function(){
 			console.log(el.idOrden);
 			
@@ -290,57 +345,6 @@ function panelAdjudicados(){
 				resume: true,
 				hidden: false,
 				bigText: Boolean
-			});
-			
-			cordova.plugins.backgroundMode.on('activate', function() {
-				cordova.plugins.backgroundMode.disableWebViewOptimizations(); 
-			});
-			
-			cordova.plugins.backgroundMode.on('enable', function(){
-				cordova.plugins.backgroundMode.disableWebViewOptimizations(); 
-				navigator.geolocation.watchPosition(function(position){
-					var idOrden = window.localStorage.getItem("idOrden");
-					
-					var lat = window.localStorage.getItem("latitude");
-					var lng = window.localStorage.getItem("longitude");
-					lat = lat == null?0:lat;
-					lng = lng == null?0:lng;
-					
-					window.localStorage.setItem("latitude", position.coords.latitude);
-					window.localStorage.setItem("longitude", position.coords.longitude);
-					
-					if (idOrden != undefined && idOrden != ''){
-						if (getDistancia(lat, lng, position.coords.latitude, position.coords.longitude) > 1){
-							$.post(server + 'cordenes', {
-								"orden": idOrden,
-								"latitude": position.coords.latitude,
-								"longitude": position.coords.longitude,
-								"action": 'logPosicion',
-								"movil": '1'
-							}, function(resp){
-								if (!resp.band)
-									console.log("Error");
-								else
-									console.log("Posición reportada");
-							}, "json").done(function(){
-								console.log("Listo BG");
-							}).fail(function(){
-								console.log("Error bug");
-							});
-							console.log("Enviado");
-						}
-					}else{
-						cordova.plugins.backgroundMode.disable();
-						console.log("Terminando seguimiento");
-					}
-						
-				}, function(error){
-					console.log("Error GPS", error);
-				}, {
-					enableHighAccuracy: false, 
-					maximumAge        : 1200000, 
-					timeout           : 1200000
-				});
 			});
 			
 			cordova.plugins.backgroundMode.enable();
