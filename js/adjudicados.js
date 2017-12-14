@@ -326,9 +326,9 @@ function panelAdjudicados(){
 				}, function(error){
 					console.log("Error GPS", error);
 				}, {
-					enableHighAccuracy: true, 
+					enableHighAccuracy: false, 
 					maximumAge        : 1200000, 
-					timeout           : 600000
+					timeout           : 1200000
 				});
 			});
 			
@@ -363,8 +363,8 @@ function panelAdjudicados(){
 		
 		$("#btnTerminar").attr("oferta", el.idOrden).click(function(){
 			var punto = $("#winTerminar").attr("punto");
-			window.localStorage.removeItem("idOrden");
-			idOrden = undefined;
+			//window.localStorage.removeItem("idOrden");
+			//idOrden = undefined;
 			if ($("#txtComentario").val() == ''){
 				alertify.error("Escribe un comentario");
 			}else if ($("#lstImg").find("img").length < 1){
