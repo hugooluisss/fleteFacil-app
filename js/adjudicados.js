@@ -268,6 +268,16 @@ function panelAdjudicados(){
 			cordova.plugins.backgroundMode.disableWebViewOptimizations(); 
 		});
 		
+		cordova.plugins.backgroundMode.setDefaults({
+			title: "En ruta",
+			text: "Estas en ruta en la orden " + el.folio,
+			icon: 'icon', // this will look for icon.png in platforms/android/res/drawable|mipmap
+			color: "F14F4D", // hex format like 'F14F4D'
+			resume: true,
+			hidden: false,
+			bigText: Boolean
+		});
+		
 		cordova.plugins.backgroundMode.on('enable', function(){
 			cordova.plugins.backgroundMode.disableWebViewOptimizations(); 
 			navigator.geolocation.watchPosition(function(position){
@@ -306,6 +316,8 @@ function panelAdjudicados(){
 				}else{
 					cordova.plugins.backgroundMode.disable();
 					console.log("Terminando seguimiento");
+					window.localStorage.removeItem("latitude");
+					window.localStorage.removeItem("longitude");
 				}
 					
 			}, function(error){
@@ -340,17 +352,6 @@ function panelAdjudicados(){
 				else
 					console.log("Cambio de estado en ruta OK");
 			}, "json");
-			
-			
-			cordova.plugins.backgroundMode.setDefaults({
-				title: "En ruta",
-				text: "Estas en ruta en la orden " + el.folio,
-				icon: 'icon', // this will look for icon.png in platforms/android/res/drawable|mipmap
-				color: "F14F4D", // hex format like 'F14F4D'
-				resume: true,
-				hidden: false,
-				bigText: Boolean
-			});
 			
 			cordova.plugins.backgroundMode.enable();
 			
@@ -412,6 +413,8 @@ function panelAdjudicados(){
 							 		jsRemoveWindowLoad();
 							 		if (resp.faltantes == 0){
 									 	cordova.plugins.backgroundMode.disable();
+									 	window.localStorage.removeItem("latitude");
+									 	window.localStorage.removeItem("longitude");
 									 	window.localStorage.removeItem("idOrden");
 									 	alertify.success("El reporte de tu ubicación ha finalizado");
 									}else{
