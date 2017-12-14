@@ -50,6 +50,7 @@ function panelOfertas(){
 		$("#dvTitulo").html('<i class="fa fa-arrow-left" action="back" aria-hidden="true"></i> ORDEN Nº ' + el.folio).find("[action=back]").click(function(){
 			panelOfertas();
 		});
+		var puntos = [];
 		
 		$("nav.footer").show();
 		
@@ -103,6 +104,7 @@ function panelOfertas(){
 			});
 			
 			var LatLng = new google.maps.LatLng(el.origen_json.latitude, el.origen_json.longitude);
+			puntos.push(new google.maps.LatLng(el.origen_json.latitude, el.origen_json.longitude));
 			el.origen = new google.maps.Marker({label: "Origen"});
 			el.mapa.setCenter(LatLng);
 			el.origen.setPosition(LatLng);
@@ -119,7 +121,19 @@ function panelOfertas(){
 					el.mapa.setZoom(15);
 					alertify.alert(destino.direccion);
 				});
+				
+				puntos.push(new google.maps.LatLng(destino.posicion.latitude, destino.posicion.longitude));
 			});
+			
+			var flightPath = new google.maps.Polyline({
+				path: puntos,
+				geodesic: true,
+				strokeColor: '#F00000',
+				strokeOpacity: 1.0,
+				strokeWeight: 2
+			});
+			
+			flightPath.setMap(el.mapa);
 			
 			$("nav.footer").html('<div class="btn-group btn-group-justified" role="group"><div class="btn-group" role="group" style="width: 100%"><button type="button" class="btn btnRegresar btn-primary btn-block">VER OTRO</button></div><div class="btn-group" role="group" style="width: 100%"><button type="button" class="btnAceptar btn btn-primary btn-block">ACEPTAR</button></div></div>');
 			

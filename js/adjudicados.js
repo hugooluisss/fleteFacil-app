@@ -53,6 +53,7 @@ function panelAdjudicados(){
 	
 	function getDetalle(el){
 		var plantillaUsar = "";
+		var puntos = [];
 		
 		if (objChofer.perfil == 4){
 			plantillaUsar = "vistas/ofertaAdjudicadaSupervisor.tpl";
@@ -122,6 +123,7 @@ function panelAdjudicados(){
 			});
 			
 			var LatLng = new google.maps.LatLng(el.origen_json.latitude, el.origen_json.longitude);
+			puntos.push(new google.maps.LatLng(el.origen_json.latitude, el.origen_json.longitude));
 			el.origen = new google.maps.Marker({label: "Origen"});
 			mapa.setCenter(LatLng);
 			el.origen.setPosition(LatLng);
@@ -153,12 +155,24 @@ function panelAdjudicados(){
 					mapa.setZoom(15);
 					alertify.alert(destino.direccion);
 				});
+				
+				puntos.push(new google.maps.LatLng(destino.posicion.latitude, destino.posicion.longitude));
 			});
 			
 			idOrden = window.localStorage.getItem("idOrden");
 			plantilla.find(".btnRegresar").click(function(){
 				panelAdjudicados();
 			});
+			
+			var flightPath = new google.maps.Polyline({
+				path: puntos,
+				geodesic: true,
+				strokeColor: '#F00000',
+				strokeOpacity: 1.0,
+				strokeWeight: 2
+			});
+			
+			flightPath.setMap(mapa);
 				
 			if (objChofer.perfil == 4){
 				if (objChofer.id == el.chofer)

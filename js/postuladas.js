@@ -49,6 +49,8 @@ function panelPostuladas(){
 	});
 	
 	function getDetalle(el){
+		var puntos = [];
+		
 		$.get("vistas/ofertaPostulada.tpl", function(plantilla){
 			plantilla = $(plantilla);
 			
@@ -70,7 +72,8 @@ function panelPostuladas(){
 				zoom: 4,
 				zoomControl: true
 			});
-				
+			
+			puntos.push(new google.maps.LatLng(el.origen_json.latitude, el.origen_json.longitude));
 			plantilla.find("[campo=origen]").html("");
 			var span = $("<a/>", {
 				href: "#",
@@ -109,6 +112,7 @@ function panelPostuladas(){
 					mapa.setZoom(15);
 					alertify.alert(destino.direccion);
 				});
+				puntos.push(new google.maps.LatLng(destino.posicion.latitude, destino.posicion.longitude));
 			});
 			
 			plantilla.find(".btnRegresar").click(function(){
@@ -120,6 +124,16 @@ function panelPostuladas(){
 			mapa.setCenter(LatLng);
 			el.origen.setPosition(LatLng);
 			el.origen.setMap(mapa);
+			
+			var flightPath = new google.maps.Polyline({
+				path: puntos,
+				geodesic: true,
+				strokeColor: '#F00000',
+				strokeOpacity: 1.0,
+				strokeWeight: 2
+			});
+			
+			flightPath.setMap(mapa);
 		});
 	}
 }
