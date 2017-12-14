@@ -61,7 +61,7 @@
 						</div>
 					</div>
 					<div class="form-group row">
-						<label for="txtRut" class="col-6">NIT</label>
+						<label for="txtRut" class="col-6">RUT</label>
 						<div class="col-6">
 							<input id="txtRut" name="txtRut" value="" class="form-control" disabled="true" readonly="true" campo="nit"/>
 						</div>
