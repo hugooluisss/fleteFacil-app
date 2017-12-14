@@ -376,9 +376,13 @@ function panelAdjudicados(){
 								 	jsShowWindowLoad("Estamos indicando que el servicio se ha completado, por favor espera");
 							 	}, after: function(resp){
 							 		jsRemoveWindowLoad();
-								 	cordova.plugins.backgroundMode.disable();
-								 	window.localStorage.removeItem("idOrden");
-								 	alertify.success("El reporte de tu ubicación ha finalizado");
+							 		if (resp.faltantes == 0){
+									 	cordova.plugins.backgroundMode.disable();
+									 	window.localStorage.removeItem("idOrden");
+									 	alertify.success("El reporte de tu ubicación ha finalizado");
+									}else{
+										alertify.success("Gracias, puedes continuar tu recorrido");
+									}
 								 	
 								 	$("#winTerminar").modal("hide");
 								 	
