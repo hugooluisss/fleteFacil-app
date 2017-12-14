@@ -309,24 +309,26 @@ function panelAdjudicados(){
 					window.localStorage.setItem("latitude", position.coords.latitude);
 					window.localStorage.setItem("longitude", position.coords.longitude);
 					
-					if (idOrden != undefined && idOrden != '' && getDistancia(lat, ln, position.coords.latitude, position.coords.longitude) > 1){
-						$.post(server + 'cordenes', {
-							"orden": idOrden,
-							"latitude": position.coords.latitude,
-							"longitude": position.coords.longitude,
-							"action": 'logPosicion',
-							"movil": '1'
-						}, function(resp){
-							if (!resp.band)
-								console.log("Error");
-							else
-								console.log("Posición reportada");
-						}, "json").done(function(){
-							console.log("Listo BG");
-						}).fail(function(){
-							console.log("Error bug");
-						});
-						console.log("Enviado");
+					if (idOrden != undefined && idOrden != ''){
+						if (getDistancia(lat, ln, position.coords.latitude, position.coords.longitude) > 1){
+							$.post(server + 'cordenes', {
+								"orden": idOrden,
+								"latitude": position.coords.latitude,
+								"longitude": position.coords.longitude,
+								"action": 'logPosicion',
+								"movil": '1'
+							}, function(resp){
+								if (!resp.band)
+									console.log("Error");
+								else
+									console.log("Posición reportada");
+							}, "json").done(function(){
+								console.log("Listo BG");
+							}).fail(function(){
+								console.log("Error bug");
+							});
+							console.log("Enviado");
+						}
 					}else{
 						cordova.plugins.backgroundMode.disable();
 						console.log("Terminando seguimiento");
