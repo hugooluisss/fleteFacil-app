@@ -300,7 +300,16 @@ function panelAdjudicados(){
 				cordova.plugins.backgroundMode.disableWebViewOptimizations(); 
 				navigator.geolocation.watchPosition(function(position){
 					var idOrden = window.localStorage.getItem("idOrden");
-					if (idOrden != undefined && idOrden != ''){
+					
+					var lat = window.localStorage.getItem("latitude");
+					var lng = window.localStorage.getItem("longitude");
+					lat = lat == null?0:lat;
+					lng = lng == null?0:lng;
+					
+					window.localStorage.setItem("latitude", position.coords.latitude);
+					window.localStorage.setItem("longitude", position.coords.longitude);
+					
+					if (idOrden != undefined && idOrden != '' && getDistancia(lat, ln, position.coords.latitude, position.coords.longitude) > 1){
 						$.post(server + 'cordenes', {
 							"orden": idOrden,
 							"latitude": position.coords.latitude,
