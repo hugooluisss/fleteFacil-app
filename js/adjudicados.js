@@ -291,7 +291,7 @@ function panelAdjudicados(){
 				
 				if (idOrden != undefined && idOrden != ''){
 					var ultimoUpdate = new Date(fecha);
-					if (dt.getTime() - (60 * 1000) <= fecha){
+					if (dt.getTime() - (60 * 8640) <= fecha){
 						window.localStorage.setItem("fecha", ultimoUpdate.getTime());
 						
 						$.post(server + 'cordenes', {
