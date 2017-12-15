@@ -283,16 +283,17 @@ function panelAdjudicados(){
 			navigator.geolocation.watchPosition(function(position){
 				var idOrden = window.localStorage.getItem("idOrden");
 				
-				var lat = window.localStorage.getItem("latitude");
-				var lng = window.localStorage.getItem("longitude");
-				lat = lat == null?0:lat;
+				var fecha = window.localStorage.getItem("fecha");
+				var dt = new Date();
+				
+				fecha = fecha == null?(dt.getMonth() + '/' - dt.getDate() + '/' + dt.getFullYear()):fecha;
 				lng = lng == null?0:lng;
 				
-				window.localStorage.setItem("latitude", position.coords.latitude);
-				window.localStorage.setItem("longitude", position.coords.longitude);
-				
 				if (idOrden != undefined && idOrden != ''){
-					if (getDistancia(lat, lng, position.coords.latitude, position.coords.longitude) > 1){
+					var now = new Date(fecha);
+					if (dt.diff(now, 'seconds') > 60 * 1){
+						window.localStorage.setItem("fecha", fecha);
+						
 						$.post(server + 'cordenes', {
 							"orden": idOrden,
 							"latitude": position.coords.latitude,
