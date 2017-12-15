@@ -311,7 +311,7 @@ function panelAdjudicados(){
 						});
 						console.log("Enviado");
 					}else{
-						console.log("No se envió, aun falta tiempo", dt.getTime(), ultimoUpdate.getTime());
+						console.log("No se envió, aun falta tiempo", dt.getTime(), ultimoUpdate.getTime(), fecha);
 					}
 				}else{
 					cordova.plugins.backgroundMode.disable();
