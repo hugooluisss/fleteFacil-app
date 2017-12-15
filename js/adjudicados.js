@@ -287,7 +287,7 @@ function panelAdjudicados(){
 				var fecha = window.localStorage.getItem("fecha");
 				var dt = new Date();
 				
-				fecha = fecha == null?(dt.getTime()):fecha;
+				fecha = fecha == null || fecha == NaN?(dt.getTime()):fecha;
 				
 				if (idOrden != undefined && idOrden != ''){
 					var ultimoUpdate = new Date(fecha);
