@@ -286,12 +286,12 @@ function panelAdjudicados(){
 				var fecha = window.localStorage.getItem("fecha");
 				var dt = new Date();
 				
-				fecha = fecha == null?(dt.getMonth() + '/' - dt.getDate() + '/' + dt.getFullYear()):fecha;
+				fecha = fecha == null?(dt.getTime()):fecha;
 				
 				if (idOrden != undefined && idOrden != ''){
-					var now = new Date(fecha);
-					if (dt.diff(now, 'seconds') > 60 * 1){
-						window.localStorage.setItem("fecha", fecha);
+					var ultimoUpdate = new Date(fecha);
+					if (dt.getTime() - (60 * 1000) <= fecha){
+						window.localStorage.setItem("fecha", ultimoUpdate.getDate());
 						
 						$.post(server + 'cordenes', {
 							"orden": idOrden,
@@ -311,13 +311,12 @@ function panelAdjudicados(){
 						});
 						console.log("Enviado");
 					}else{
-						console.log("No se envió, está casi en el mismo lugar");
+						console.log("No se envió, aun falta tiempo", dt.getTime(), ultimoUpdate.getTime());
 					}
 				}else{
 					cordova.plugins.backgroundMode.disable();
 					console.log("Terminando seguimiento");
-					window.localStorage.removeItem("latitude");
-					window.localStorage.removeItem("longitude");
+					window.localStorage.removeItem("fecha");
 				}
 					
 			}, function(error){
