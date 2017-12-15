@@ -287,7 +287,6 @@ function panelAdjudicados(){
 				var dt = new Date();
 				
 				fecha = fecha == null?(dt.getMonth() + '/' - dt.getDate() + '/' + dt.getFullYear()):fecha;
-				lng = lng == null?0:lng;
 				
 				if (idOrden != undefined && idOrden != ''){
 					var now = new Date(fecha);
