@@ -339,6 +339,7 @@ function panelAdjudicados(){
 			console.log(el.idOrden);
 			
 			window.localStorage.removeItem("idOrden");
+			window.localStorage.removeItem("fecha");
 			window.localStorage.setItem("idOrden", el.idOrden);
 			
 			$.post(server + 'cordenes', {
