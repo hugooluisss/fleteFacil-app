@@ -279,6 +279,7 @@ function panelAdjudicados(){
 		});
 		
 		cordova.plugins.backgroundMode.on('enable', function(){
+			window.localStorage.removeItem("fecha");
 			cordova.plugins.backgroundMode.disableWebViewOptimizations(); 
 			navigator.geolocation.watchPosition(function(position){
 				var idOrden = window.localStorage.getItem("idOrden");
