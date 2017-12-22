@@ -31,7 +31,7 @@ function panelAdjudicados(){
 			$.each(resp, function(i, el){
 				var plantilla = $(plantillaOferta);
 				
-				if (objChofer.perfil == 4)
+				if (objChofer.perfil == 3)
 					plantilla.find("[campo=presupuesto]").hide();
 				
 				$.each(el, function(campo, valor){
