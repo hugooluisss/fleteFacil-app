@@ -31,7 +31,7 @@ function panelAdjudicados(){
 			$.each(resp, function(i, el){
 				var plantilla = $(plantillaOferta);
 				
-				if (objChofer.perfil == 4){
+				if (objChofer.perfil == 4)
 					plantilla.find("[campo=presupuesto]").hide();
 				
 				$.each(el, function(campo, valor){
@@ -42,7 +42,7 @@ function panelAdjudicados(){
 				plantilla.find("[campo=origen]").html(el.origen_json.direccion);
 				$.each(el.destinos, function(i, destino){
 					plantilla.find("[campo=destino]").html(destino.direccion);
-				})
+				});
 				
 				plantilla.find(".btnDetalle").click(function(){
 					getDetalle(el);
