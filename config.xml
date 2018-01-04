@@ -42,7 +42,11 @@
 
 		<!--<plugin name="com.phonegap.plugins.barcodescanner" spec="2.0.0" source="pgb" />-->
 		<!--<plugin name="cordova.plugins.diagnostic" source="npm" />-->
-		<plugin name="cordova-plugin-camera" source="npm" spec="2.4.1"/>
+		<plugin name="cordova-plugin-camera" source="npm" spec="2.4.1">
+			<variable name="CAMERA_USAGE_DESCRIPTION" value="La app necesita tomar fotos de la camara para completar el reporte del transportista" />
+			<variable name="PHOTOLIBRARY_USAGE_DESCRIPTION" value="El reporte puede estar en una imagen en la galeria, es por esto que la app necesita acceso" />
+
+		</plugin>
 		<plugin name="cordova-plugin-file" source="npm"/>
 		<!--<plugin name="cordova-plugin-file-transfer" source="npm"/>-->
 		<plugin name="cordova-plugin-media-capture" source="npm"/>
@@ -104,8 +108,8 @@
 		<gap:splash src="res/screen/ios/screen-ipad-landscape.png"     gap:platform="ios"   width="1024" height="768" />  
 		<gap:splash src="res/screen/ios/screen-ipad-portrait-2x.png"           gap:platform="ios"       width="1536" height="2048" />
 		<gap:splash src="res/screen/ios/screen-ipad-landscape-2x.png"          gap:platform="ios"       width="2048" height="1536" />
-		<gap:splash src="res/screen/ios/screen-ipad-portrait-iphone5.png"          gap:platform="ios"       width="320" height="568" />
-		<gap:splash src="res/screen/ios/screen-ipad-landscape-iphone5.png"          gap:platform="ios"      width="568" height="320" />
+		<gap:splash src="res/screen/ios/screen-iphone5-portrait.png"          gap:platform="ios"       width="320" height="568" />
+		<gap:splash src="res/screen/ios/screen-phone5-landscape.png"          gap:platform="ios"      width="568" height="320" />
 		
 		<gap:splash src="res/screen/windows-phone/screen-portrait.jpg"   gap:platform="winphone" />  
 		<gap:config-file platform="ios" parent="CFBundleShortVersionString">  
@@ -116,10 +120,11 @@
 			<string>103</string>
 		</gap:config-file>
 		-->
+		<!--
 		<gap:config-file platform="ios" parent="NSPhotoLibraryUsageDescription">
-			<string>Para actualizar las imagenes</string>
+			<string>Permite enviar el reporte por medio de una imagen de la galeria</string>
 		</gap:config-file>
-		
+		-->
 		<!--  
 		 Define access to external domains.  
 		 <access />      - a blank access tag denies access to all external resources.  
