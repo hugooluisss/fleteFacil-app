@@ -3,7 +3,7 @@
 	<widget xmlns   = "http://www.w3.org/ns/widgets"  
 		xmlns:gap = "http://phonegap.com/ns/1.0"  
 		id = "com.syncro.app"
-		version = "200.0.4">  
+		version = "200.0.5">  
 		
 		<name>Syncro</name>  
 		<description>La primera empresa en Chile que mediante el uso de tecnologia, Data Analisis y una Red de Transportistas de alto nivel, ofrece servicios de transporte de carga en todo el pais, con costos hasta un 20% mas bajos que el un servicio tradicional, tracking permanente de carga, atencion personalizada y disponibilidad inmediata.</description>  
@@ -130,7 +130,14 @@
 		 <access />      - a blank access tag denies access to all external resources.  
 		 <access origin="*" /> - a wildcard access tag allows access to all external resource.  
 		 Otherwise, you can specify specific domains:  
-		-->  
+		-->
+		
+		<gap:config-file platform="ios" parent="UIBackgroundModes" overwrite="true">
+			<array>
+				<string>location</string>
+			</array>
+		</gap:config-file>
+ 
 		<access origin="*"/>
 		<allow-intent href="geo:*" />
 			<!--  
