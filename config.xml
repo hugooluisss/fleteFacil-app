@@ -3,7 +3,7 @@
 	<widget xmlns   = "http://www.w3.org/ns/widgets"  
 		xmlns:gap = "http://phonegap.com/ns/1.0"  
 		id = "com.syncro.app"
-		version = "200.0.3">  
+		version = "200.0.4">  
 		
 		<name>Syncro</name>  
 		<description>La primera empresa en Chile que mediante el uso de tecnologia, Data Analisis y una Red de Transportistas de alto nivel, ofrece servicios de transporte de carga en todo el pais, con costos hasta un 20% mas bajos que el un servicio tradicional, tracking permanente de carga, atencion personalizada y disponibilidad inmediata.</description>  
