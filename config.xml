@@ -107,9 +107,13 @@
 		
 		<gap:splash src="res/screen/windows-phone/screen-portrait.jpg"   gap:platform="winphone" />  
 		<gap:config-file platform="ios" parent="CFBundleShortVersionString">  
-			<string>103</string>  
+			<string>203</string>  
 		</gap:config-file>
-		
+		<!--
+		<gap:config-file platform="ios" parent="CFBundleVersion">
+			<string>103</string>
+		</gap:config-file>
+		-->
 		<gap:config-file platform="ios" parent="NSPhotoLibraryUsageDescription">
 			<string>Para actualizar las imagenes</string>
 		</gap:config-file>
