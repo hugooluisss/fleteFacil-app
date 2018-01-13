@@ -14,6 +14,8 @@
 			<br />
 			<br />
 			<i class="fa fa-calendar" aria-hidden="true"></i> <span campo="fechaservicio"></span>
+			<br />
+			<span campo="estado" style="padding: 3px 3px 3px 3px"></span>
 		</div>
 	</div>
 	<div class="col-7 text-center">

@@ -28,7 +28,7 @@ function panelPostuladas(){
 				$.each(el, function(campo, valor){
 					plantilla.find("[campo=" + campo + "]").html(valor);
 				});
-				
+				plantilla.find("[campo=estado]").html("");
 				plantilla.find("[campo=presupuesto]").html("$ " + el.presupuesto);
 				plantilla.find(".mapa").attr("id", "mapa_" + el.idOrden);
 				if (el.destinos.length > 0){

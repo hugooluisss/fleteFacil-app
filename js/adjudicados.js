@@ -39,6 +39,11 @@ function panelAdjudicados(){
 				});
 				plantilla.find(".mapa").attr("id", "mapa_" + el.idOrden);
 				
+				if (el.idEstado == 5)
+					plantilla.find("[campo=estado]").addClass("text-white bg-success");
+				else
+					plantilla.find("[campo=estado]").addClass("text-white bg-primary");
+				
 				plantilla.find("[campo=origen]").html(el.origen_json.direccion);
 				$.each(el.destinos, function(i, destino){
 					plantilla.find("[campo=destino]").html(destino.direccion);
