@@ -2,7 +2,7 @@ server = "http://dashboard.syncro.cl/";
 //server = "http://10.0.0.5/fleteFacil-web/";
 //server = "http://172.10.22.5/fleteFacil-web/";
 //server = "http://192.168.1.69/fleteFacil-web/";
-//server = "http://192.168.2.4/fletefacil-web/";
+server = "http://192.168.2.2/fletefacil-web/";
 //server = "http://192.168.0.7/fleteFacil-web/";
 
 var idTransportista = undefined;

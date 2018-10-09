@@ -181,7 +181,7 @@ function panelAdjudicados(){
 			});
 			
 			flightPath.setMap(mapa);
-				
+			
 			if (objChofer.perfil == 4){
 				if (objChofer.id == el.chofer)
 					accionesOperador(el);
